@@ -1,0 +1,178 @@
+.circle-layout {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Adjust POV and Time selectors positioning */
+.pov-time-holder {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+/* Circle filter section */
+.circle-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Icon wrapper */
+.icons-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+/* Circle icons wrapper */
+.circle-icons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Adjust individual icons */
+.icon-item {
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+}
+
+/* Center BellIcon */
+.centered-bell {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Selected icon display */
+.selected-icon-display {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  min-height: 300px;
+}
+
+.selected-icon {
+  font-size: 2.5em;
+  margin-top: 10px;
+}
+
+/* Bold header styling */
+.bold-header {
+  font-size: 1.2em !important;
+  color: white !important;
+}
+
+/* Dropdown styles */
+.color-selector {
+  padding: 5px;
+  text-align: center;
+  font-size: medium;
+}
+
+
+.color-circle {
+  display: grid;
+  flex:none !important;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: none !important;
+  align-items: center;
+}
+/* Add some space below POV and Time selectors */
+.pov-time-holder {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.circle-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+/* Icon wrapper */
+.icons-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.circle-icons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.icon-item {
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+}
+
+/* Center BellIcon */
+.centered-bell {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.selected-icon-display {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  min-height: 300px;
+}
+
+.selected-icon {
+  font-size: 2.5em;
+  margin-top: 10px;
+}
+
+/* Dropdown styling */
+.color-selector {
+  padding: 5px;
+  text-align: center;
+  font-size: medium;
+  border-radius: 5px;
+}
+
+.bold-header {
+  font-size: 1.2em !important;
+  color: white !important;
+}

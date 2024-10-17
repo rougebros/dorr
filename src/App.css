@@ -1,0 +1,170 @@
+/* Ensure the App fills the entire viewport */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure it takes the full viewport height */
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header should be fixed in height, with evenly distributed icons */
+.App-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px;
+  background-color: #282c34;
+}
+
+.header-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-icon {
+  height: 25px; /* Reduced icon size */
+  margin: 5px;
+  cursor: pointer;
+}
+
+/* Row Definitions */
+.row {
+  display: flex;
+  justify-content: space-around;
+  margin: 2px 0; /* Add space between rows */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Part C - Adjust height and center text */
+.smaller {
+  height: 10%; /* Increased height for POV and Time */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Vertically center content */
+}
+
+/* Specific row size adjustments */
+.small {
+  flex: 0 1 auto;
+}
+
+.big {
+  flex: 1;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 1px 1px;
+  margin: 0 2px;
+  border: 1px solid #ccc;
+}
+
+.column-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 1px;
+  margin: 0 2px;
+}
+
+/* Footer fixed in height */
+.App-footer {
+  height: 6%; /* Footer smaller to fit within viewport */
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.bold-header {
+  font-size: 1.5em; /* Larger font for headers */
+  font-weight: bold;
+  margin-bottom: 10px; /* Margin below header */
+  color: #333; /* Darker color for better readability */
+}
+
+/* Flex container for F1 and F2 */
+.f-sections-container {
+  display: flex;
+  padding: 2px;
+  flex-wrap: nowrap;
+}
+
+/* F1 and F2 sections with max-height */
+.f-section {
+  flex: 1;
+  padding: 3px;
+  border-radius: 8px;
+  background-color: inherit;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 50%;
+  overflow-y: auto; /* Allows scrolling if content overflows */
+  margin: 0 1px;
+}
+
+.f-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove default margin and padding from all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Adjusting both POV and Time sections to fit side by side */
+.pov-time-holder {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.divider {
+  width: 0px;
+  background-color: #ccc; /* Gray divider */
+  height: 100%; /* Full height of the container */
+  margin: 0 1px; /* Adjust as needed */
+}
+
+.e-text-description {
+  font-size: 1.1em; /* Adjust the font size */
+  color: #333; /* Softer dark color for readability */
+  text-align: center; /* Center the text */
+  margin-top: 15px; /* Space between the icons and the text */
+  margin-bottom: 20px; /* Space between the text and the next section */
+  padding: 0 20px; /* Padding for better text readability */
+}
+
+/* Main body of the App */
+.App-body {
+  flex: 1;
+  padding: 1px;
+  margin-right: 0;
+  overflow: hidden; /* Prevent overflow pushing the footer */
+}
+
+/* Disable Section B and C if language is not selected */
+.disabled-section {
+  filter: grayscale(100%);
+  cursor: not-allowed !important;
+}

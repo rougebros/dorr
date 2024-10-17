@@ -1,0 +1,133 @@
+.c2-pov-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%; /* Match width with C2TimeSelector */
+}
+
+.breadcrumb {
+  width: 100%;
+  text-align: left;
+  padding-left: 6px;
+  padding-top: 2px;
+}
+
+.breadcrumb-item {
+  font-size: 0.7em; /* Smaller breadcrumb text */
+  color: #61DAFB;
+  cursor: pointer;
+}
+
+/* Horizontal scroll for POV options */
+.pov-options {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scroll */
+}
+
+.pov-options::-webkit-scrollbar {
+  height: 4px; /* Smaller scrollbar */
+}
+
+.pov-options::-webkit-scrollbar-thumb {
+  background-color: #61DAFB;
+  border-radius: 10px;
+}
+
+.pov-options::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+/* POV items styling */
+.pov-item {
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 80px;
+  max-width: 120px;
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.pov-item span {
+  font-size: 2.2em; /* Larger icons */
+}
+
+.pov-item-label {
+  font-size: 0.7em !important; /* Smaller text under icons */
+}
+
+.pov-item:hover {
+  background-color: #f0f0f0;
+}
+
+.selected {
+  border: 2px solid #61DAFB;
+  background-color: #e0f7fa;
+  margin: 2px;
+  margin-top: 0px;
+
+}
+
+/* Add spacing for Add button */
+.add-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.add-btn {
+  padding: 5px 10px;
+  background-color: #61DAFB;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em; /* Compact button */
+}
+
+.add-btn:hover {
+  background-color: #4aa0ce;
+}
+.selector-container {
+  border: 1px solid #ccc; /* Thin gray border */
+  border-radius: 5px; /* Slightly rounded corners */
+  width: 50%; /* Ensure it takes full width */
+  box-sizing: border-box; /* Make sure padding is included within the width */
+  margin-right: 1px;
+  margin-left: 2px;
+}
+
+.breadcrumb-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Keep Add, Search, and Breadcrumb text aligned */
+}
+
+.breadcrumb-item {
+  font-size: 0.8em; /* Adjust size of breadcrumb */
+  color: #61DAFB;
+  cursor: pointer;
+}
+
+.breadcrumb-item:hover {
+  text-decoration: underline; /* Add underline on hover for better UX */
+}
+
+.breadcrumb-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Keep Favorite, Search, Add, and Breadcrumb text aligned */
+}
+
+.favorite-icon {
+  font-size: 1em; /* Match size with SearchIcon */
+  color: gray; /* Same gray color as SearchIcon */
+  margin-right: 2px; /* Add some space between the Favorite icon and the Search icon */
+  cursor: pointer;
+}

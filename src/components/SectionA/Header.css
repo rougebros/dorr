@@ -1,0 +1,232 @@
+/* Ensure logo and icons are the correct size */
+.App-logo, .App-icon {
+  height: 17vmin; /* Adjusted size */
+}
+
+/* Apply animation to the logo */
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App-header {
+  display: flex;
+  justify-content: center;
+  background-color: #282c34;
+  position: relative;
+  height: 80px;
+}
+
+/* Keep icons the same size */
+.App-logo, .App-icon {
+  height: 17vmin;
+}
+
+/* Position icon and text */
+.header-icon-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+/* Disable state (grayed-out icons) */
+.App-icon.disabled {
+  filter: grayscale(100%);
+  cursor: not-allowed;
+}
+
+/* Label styles */
+.icon-label {
+  font-size: 0.8em; /* Make text smaller */
+  color: #61dafb;
+  margin-top: 5px;
+  text-align: center;
+  cursor: pointer; /* Add pointer cursor for clickable labels */
+}
+
+/* Make the label gray when the icon is disabled */
+.header-icon-container .disabled + .icon-label {
+  color: gray;
+}
+
+/* Dropdown styles */
+.dropdown-content {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  top: 60px; /* Position just below the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  min-width: 100px;
+}
+
+.dropdown-content p {
+  margin: 0;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.8em; /* Reduce font size for dropdown items */
+}
+.dropdown-content p:hover {
+  background-color: #f1f1f1 !important; /* Hover effect */
+
+}
+.language-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px; /* Consistent padding */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+  box-sizing: border-box; /* Include padding in width */
+  width: 100%; /* Ensure full width to prevent shifting */
+}
+
+/* Hover effect for all dropdown items */
+.language-row:hover,
+.network-row:hover,
+.layout-row:hover {
+  background-color: #f1f1f1 !important; /* Hover effect */
+  /* Ensure no change in padding or margin */
+}
+
+/* Set fixed height for language dropdown items */
+.language-dropdown {
+  max-height: 639px; /* Adjust the height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  width: 170px;
+}
+
+/* Ensure the entire row is highlighted when selected */
+.language-row[style*="background-color: #f1f1f1"],
+.network-row[style*="background-color: #f1f1f1"],
+.layout-row[style*="background-color: #f1f1f1"] {
+  background-color: #e0e0e0 !important; /* Highlight selected row */
+}
+
+/* Custom scrollbar for Webkit browsers */
+.language-dropdown::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.language-dropdown::-webkit-scrollbar-thumb {
+  background-color: #61DAFB; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.language-dropdown::-webkit-scrollbar-thumb:hover {
+  background-color: #55B3D7; /* Color of the scrollbar thumb on hover */
+}
+
+.language-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the scrollbar track */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Custom scrollbar for Firefox */
+.language-dropdown {
+  scrollbar-width: thin; /* Make scrollbar thin */
+  scrollbar-color: #61DAFB #f1f1f1; /* Thumb color and track color */
+}
+
+.network-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px; /* Same as language dropdown */
+  cursor: pointer; /* Pointer cursor for the entire row */
+  font-size: 0.8em; /* Reduce font size for dropdown items */
+}
+
+.network-row input {
+  margin-right: 8px; /* Space between checkbox and label */
+}
+
+/* Keep hover active on selected rows */
+.language-row:hover, .network-row:hover, .layout-row:hover {
+  background-color: #f1f1f1 !important; /* Hover effect */
+}
+
+.language-row[style*="background-color: #e0e0e0"]:hover,
+.network-row[style*="background-color: #e0e0e0"]:hover,
+.layout-row[style*="background-color: #e0e0e0"]:hover {
+  background-color: #e0e0e0 !important; /* Keep selected color on hover */
+}
+
+.edit-icon {
+  cursor: pointer;
+  font-size: 1em; /* Adjust icon size */
+}
+.infomodal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.infomodal-content {
+  background: white;
+  padding: 5px;
+  border-radius: 8px;
+  position: relative;
+  text-align: center;
+}
+
+.infomodal-content img {
+  max-width: 100%;
+  height: auto;
+}
+.slide-number {
+  font-size: 1em; /* Adjust size as needed */
+  margin: 0 10px; /* Add spacing between arrows and number */
+  color: #333; /* Text color */
+}
+.dropdown-content p {
+  display: flex;
+  align-items: center; /* Ensures icons and text are vertically aligned */
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9em; /* Slightly increase text size for better readability */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  margin: 0; /* Remove any default margin */
+}
+
+.dropdown-content p:hover {
+  background-color: #f1f1f1 !important; /* Hover effect */
+}
+
+.hsettings-icon {
+  margin-right: 12px; /* Add more spacing between the icon and text */
+  font-size: 1.5em; /* Increase the icon size */
+  color: #888; /* Make the icon a bit gray */
+}
+
+.dropdown-content {
+  min-width: 165px; /* Adjust minimum width for the dropdown */
+}
+
+/* Ensure the entire row is highlighted on hover */
+.language-row:hover,
+.network-row:hover,
+.dropdown-content p:hover {
+  background-color: #f1f1f1;
+}
+

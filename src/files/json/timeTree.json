@@ -1,0 +1,73 @@
+{
+    "time": {
+      "past": {
+        "label": "PAST",
+        "icon": "⌛"
+      },
+      "now": {
+        "label": "NOW",
+        "icon": "⏳",
+        "children": {
+          "this_day": {
+            "label": "This Day",
+            "icon": "🌅",
+            "children": {
+              "early_morning": {
+                "label": "Early Morning",
+                "icon": "🌅"
+              },
+              "morning": {
+                "label": "Morning",
+                "icon": "🌄"
+              },
+              "brunch_time": {
+                "label": "Brunch Time",
+                "icon": "🥐"
+              },
+              "noon": {
+                "label": "Noon",
+                "icon": "☀️"
+              },
+              "afternoon": {
+                "label": "Afternoon",
+                "icon": "🌞"
+              },
+              "evening": {
+                "label": "Evening",
+                "icon": "🌇"
+              },
+              "night": {
+                "label": "Night",
+                "icon": "🌙"
+              },
+              "midnight": {
+                "label": "Midnight",
+                "icon": "🌌"
+              }
+            }
+          },
+          "this_week": {
+            "label": "This Week",
+            "icon": "📅"
+          },
+          "this_month": {
+            "label": "This Month",
+            "icon": "🗓️"
+          },
+          "this_year": {
+            "label": "This Year",
+            "icon": "🎆"
+          },
+          "this_life": {
+            "label": "This Lifetime",
+            "icon": "👣"
+          }
+        }
+      },
+      "future": {
+        "label": "FUTURE",
+        "icon": "🔮"
+      }
+    }
+  }
+  

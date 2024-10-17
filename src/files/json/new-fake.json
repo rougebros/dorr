@@ -1,0 +1,1138 @@
+{
+  "data": [
+    {
+      "what": "#stray #cats",
+      "filters": {
+        "selfPresentPain": [
+          {
+            "id": 1,
+            "text": "Lack of food for stray cats",
+            "entity": "pains"
+          }
+        ],
+        "selfFutureSeek": [
+          {
+            "id": 2,
+            "text": "Find a shelter for stray cats",
+            "entity": "gains"
+          }
+        ],
+        "peersPresentPain": [
+          {
+            "id": 3,
+            "text": "Community ignoring stray cat issues",
+            "entity": "pains"
+          }
+        ],
+        "peersPresentSeek": [
+          {
+            "id": 4,
+            "text": "Join a stray cat rescue group",
+            "entity": "gains"
+          }
+        ],
+        "peersPastSeek": [
+          {
+            "id": 5,
+            "text": "Volunteered at a cat shelter last year",
+            "entity": "gains"
+          }
+        ],
+        "publicPresentPain": [
+          {
+            "id": 6,
+            "text": "Stray cats causing hygiene issues in the community",
+            "entity": "pains"
+          }
+        ],
+        "publicPresentGain": [
+          {
+            "id": 7,
+            "text": "Community outreach for cat adoption",
+            "entity": "gains"
+          }
+        ]
+      },
+      "gods": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "rating": 60,
+          "children": [
+            {
+              "id": 1.1,
+              "name": "Ally the Cat Rescuer",
+              "rating": 40
+            },
+            {
+              "id": 1.2,
+              "name": "Sophie the Cat Lover",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Emily Johnson",
+          "rating": 40,
+          "children": [
+            {
+              "id": 2.1,
+              "name": "Charlie the Shelter Owner",
+              "rating": 25
+            },
+            {
+              "id": 2.2,
+              "name": "Nina the Vet",
+              "rating": 15
+            }
+          ]
+        }
+      ],
+      "foes": [
+        {
+          "id": 1,
+          "name": "Jane Smith",
+          "rating": 50,
+          "children": [
+            {
+              "id": 1.1,
+              "name": "Greg the Negligent Owner",
+              "rating": 30
+            },
+            {
+              "id": 1.2,
+              "name": "Lara the Disinterested Citizen",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Michael Brown",
+          "rating": 50,
+          "children": [
+            {
+              "id": 2.1,
+              "name": "Tina the Hoarder",
+              "rating": 30
+            },
+            {
+              "id": 2.2,
+              "name": "Tom the Reluctant Adopter",
+              "rating": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "what": "#restaurant #pizza",
+      "filters": {
+        "selfPresentPain": [
+          {
+            "id": 8,
+            "text": "Long waiting times for pizza delivery",
+            "entity": "pains"
+          }
+        ],
+        "selfFutureSeek": [
+          {
+            "id": 9,
+            "text": "Find a new pizza place with faster delivery",
+            "entity": "gains"
+          }
+        ],
+        "peersPresentPain": [
+          {
+            "id": 10,
+            "text": "Friends complaining about poor service",
+            "entity": "pains"
+          }
+        ],
+        "peersPresentSeek": [
+          {
+            "id": 11,
+            "text": "Organize a pizza party",
+            "entity": "gains"
+          }
+        ],
+        "peersPastSeek": [
+          {
+            "id": 12,
+            "text": "Went to a pizza festival last summer",
+            "entity": "gains"
+          }
+        ],
+        "publicPresentPain": [
+          {
+            "id": 13,
+            "text": "Hygiene concerns in local pizza restaurants",
+            "entity": "pains"
+          }
+        ],
+        "publicPresentGain": [
+          {
+            "id": 14,
+            "text": "Community pizza night to promote local businesses",
+            "entity": "gains"
+          }
+        ]
+      },
+      "gods": [
+        {
+          "id": 3,
+          "name": "Gordon Ramsay",
+          "rating": 70,
+          "children": [
+            {
+              "id": 3.1,
+              "name": "Pizza Master",
+              "rating": 50
+            },
+            {
+              "id": 3.2,
+              "name": "Local Chef",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Jamie Oliver",
+          "rating": 50,
+          "children": [
+            {
+              "id": 4.1,
+              "name": "Healthy Eater",
+              "rating": 30
+            },
+            {
+              "id": 4.2,
+              "name": "Community Organizer",
+              "rating": 20
+            }
+          ]
+        }
+      ],
+      "foes": [
+        {
+          "id": 3,
+          "name": "Fast Food Chain",
+          "rating": 80,
+          "children": [
+            {
+              "id": 3.1,
+              "name": "Low Quality Pizza",
+              "rating": 50
+            },
+            {
+              "id": 3.2,
+              "name": "Unfriendly Staff",
+              "rating": 30
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Frozen Pizza Brand",
+          "rating": 40,
+          "children": [
+            {
+              "id": 4.1,
+              "name": "Unhealthy Ingredients",
+              "rating": 20
+            },
+            {
+              "id": 4.2,
+              "name": "Poor Taste",
+              "rating": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "what": "#transport #van",
+      "filters": {
+        "selfPresentPain": [
+          {
+            "id": 15,
+            "text": "Van breakdown during a trip",
+            "entity": "pains"
+          }
+        ],
+        "selfFutureSeek": [
+          {
+            "id": 16,
+            "text": "Upgrade to a more reliable vehicle",
+            "entity": "gains"
+          }
+        ],
+        "peersPresentPain": [
+          {
+            "id": 17,
+            "text": "Friends struggling with transport issues",
+            "entity": "pains"
+          }
+        ],
+        "peersPresentSeek": [
+          {
+            "id": 18,
+            "text": "Plan a road trip with friends",
+            "entity": "gains"
+          }
+        ],
+        "peersPastSeek": [
+          {
+            "id": 19,
+            "text": "Went on a memorable van trip last year",
+            "entity": "gains"
+          }
+        ],
+        "publicPresentPain": [
+          {
+            "id": 20,
+            "text": "Traffic congestion affecting travel",
+            "entity": "pains"
+          }
+        ],
+        "publicPresentGain": [
+          {
+            "id": 21,
+            "text": "Community carpooling initiative",
+            "entity": "gains"
+          }
+        ]
+      },
+      "gods": [
+        {
+          "id": 5,
+          "name": "Van Lifers",
+          "rating": 60,
+          "children": [
+            {
+              "id": 5.1,
+              "name": "Adventure Seekers",
+              "rating": 40
+            },
+            {
+              "id": 5.2,
+              "name": "Travel Bloggers",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Road Trip Enthusiasts",
+          "rating": 50,
+          "children": [
+            {
+              "id": 6.1,
+              "name": "Campers",
+              "rating": 30
+            },
+            {
+              "id": 6.2,
+              "name": "Hikers",
+              "rating": 20
+            }
+          ]
+        }
+      ],
+      "foes": [
+        {
+          "id": 5,
+          "name": "Traffic Police",
+          "rating": 70,
+          "children": [
+            {
+              "id": 5.1,
+              "name": "Speed Traps",
+              "rating": 40
+            },
+            {
+              "id": 5.2,
+              "name": "Unfair Fines",
+              "rating": 30
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Poor Road Conditions",
+          "rating": 40,
+          "children": [
+            {
+              "id": 6.1,
+              "name": "Potholes",
+              "rating": 20
+            },
+            {
+              "id": 6.2,
+              "name": "Bad Weather",
+              "rating": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "what": "#health #leg",
+      "filters": {
+        "selfPresentPain": [
+          {
+            "id": 22,
+            "text": "Chronic pain in my leg",
+            "entity": "pains"
+          }
+        ],
+        "selfFutureSeek": [
+          {
+            "id": 23,
+            "text": "Visit a specialist for my leg",
+            "entity": "gains"
+          }
+        ],
+        "peersPresentPain": [
+          {
+            "id": 24,
+            "text": "Friends with similar leg issues",
+            "entity": "pains"
+          }
+        ],
+        "peersPresentSeek": [
+          {
+            "id": 25,
+            "text": "Join a support group for leg pain",
+            "entity": "gains"
+          }
+        ],
+        "peersPastSeek": [
+          {
+            "id": 26,
+            "text": "Participated in a health workshop last month",
+            "entity": "gains"
+          }
+        ],
+        "publicPresentPain": [
+          {
+            "id": 27,
+            "text": "Lack of awareness about leg injuries",
+            "entity": "pains"
+          }
+        ],
+        "publicPresentGain": [
+          {
+            "id": 28,
+            "text": "Community health fairs for education",
+            "entity": "gains"
+          }
+        ]
+      },
+      "gods": [
+        {
+          "id": 7,
+          "name": "Physiotherapists",
+          "rating": 70,
+          "children": [
+            {
+              "id": 7.1,
+              "name": "Sports Therapists",
+              "rating": 40
+            },
+            {
+              "id": 7.2,
+              "name": "Rehabilitation Specialists",
+              "rating": 30
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "Health Coaches",
+          "rating": 50,
+          "children": [
+            {
+              "id": 8.1,
+              "name": "Nutritionists",
+              "rating": 30
+            },
+            {
+              "id": 8.2,
+              "name": "Fitness Trainers",
+              "rating": 20
+            }
+          ]
+        }
+      ],
+      "foes": [
+        {
+          "id": 7,
+          "name": "Sedentary Lifestyle",
+          "rating": 60,
+          "children": [
+            {
+              "id": 7.1,
+              "name": "Lack of Exercise",
+              "rating": 40
+            },
+            {
+              "id": 7.2,
+              "name": "Poor Diet",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "Injuries from Overexertion",
+          "rating": 40,
+          "children": [
+            {
+              "id": 8.1,
+              "name": "Muscle Strains",
+              "rating": 20
+            },
+            {
+              "id": 8.2,
+              "name": "Joint Pain",
+              "rating": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "what": "#fruites #apple",
+      "filters": {
+        "selfPresentPain": [
+          {
+            "id": 29,
+            "text": "Inaccessibility of fresh fruits",
+            "entity": "pains"
+          }
+        ],
+        "selfFutureSeek": [
+          {
+            "id": 30,
+            "text": "Grow my own apple trees",
+            "entity": "gains"
+          }
+        ],
+        "peersPresentPain": [
+          {
+            "id": 31,
+            "text": "Friends with limited fruit options",
+            "entity": "pains"
+          }
+        ],
+        "peersPresentSeek": [
+          {
+            "id": 32,
+            "text": "Organize a fruit exchange event",
+            "entity": "gains"
+          }
+        ],
+        "peersPastSeek": [
+          {
+            "id": 33,
+            "text": "Visited a local orchard last summer",
+            "entity": "gains"
+          }
+        ],
+        "publicPresentPain": [
+          {
+            "id": 34,
+            "text": "High prices for fresh produce",
+            "entity": "pains"
+          }
+        ],
+        "publicPresentGain": [
+          {
+            "id": 35,
+            "text": "Community-supported agriculture programs",
+            "entity": "gains"
+          }
+        ]
+      },
+      "gods": [
+        {
+          "id": 9,
+          "name": "Local Farmers",
+          "rating": 60,
+          "children": [
+            {
+              "id": 9.1,
+              "name": "Organic Growers",
+              "rating": 40
+            },
+            {
+              "id": 9.2,
+              "name": "Sustainable Farmers",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "Health Advocates",
+          "rating": 50,
+          "children": [
+            {
+              "id": 10.1,
+              "name": "Nutrition Experts",
+              "rating": 30
+            },
+            {
+              "id": 10.2,
+              "name": "Dietitians",
+              "rating": 20
+            }
+          ]
+        }
+      ],
+      "foes": [
+        {
+          "id": 9,
+          "name": "Fast Food Chains",
+          "rating": 70,
+          "children": [
+            {
+              "id": 9.1,
+              "name": "Processed Foods",
+              "rating": 50
+            },
+            {
+              "id": 9.2,
+              "name": "Unhealthy Alternatives",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "Importers",
+          "rating": 40,
+          "children": [
+            {
+              "id": 10.1,
+              "name": "High Transportation Costs",
+              "rating": 20
+            },
+            {
+              "id": 10.2,
+              "name": "Quality Degradation",
+              "rating": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "what": "#sofa #cloth",
+      "filters": {
+        "selfPresentPain": [
+          {
+            "id": 36,
+            "text": "Uncomfortable seating at home",
+            "entity": "pains"
+          }
+        ],
+        "selfFutureSeek": [
+          {
+            "id": 37,
+            "text": "Purchase a new sofa for better comfort",
+            "entity": "gains"
+          }
+        ],
+        "peersPresentPain": [
+          {
+            "id": 38,
+            "text": "Friends with outdated furniture",
+            "entity": "pains"
+          }
+        ],
+        "peersPresentSeek": [
+          {
+            "id": 39,
+            "text": "Plan a furniture swap event",
+            "entity": "gains"
+          }
+        ],
+        "peersPastSeek": [
+          {
+            "id": 40,
+            "text": "Helped a friend redecorate their living room",
+            "entity": "gains"
+          }
+        ],
+        "publicPresentPain": [
+          {
+            "id": 41,
+            "text": "Lack of variety in furniture stores",
+            "entity": "pains"
+          }
+        ],
+        "publicPresentGain": [
+          {
+            "id": 42,
+            "text": "Local artisans showcasing unique designs",
+            "entity": "gains"
+          }
+        ]
+      },
+      "gods": [
+        {
+          "id": 11,
+          "name": "Interior Designers",
+          "rating": 60,
+          "children": [
+            {
+              "id": 11.1,
+              "name": "Modern Stylists",
+              "rating": 40
+            },
+            {
+              "id": 11.2,
+              "name": "Eclectic Designers",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Local Craftsmen",
+          "rating": 50,
+          "children": [
+            {
+              "id": 12.1,
+              "name": "Sofa Makers",
+              "rating": 30
+            },
+            {
+              "id": 12.2,
+              "name": "Upholsterers",
+              "rating": 20
+            }
+          ]
+        }
+      ],
+      "foes": [
+        {
+          "id": 11,
+          "name": "Mass-Produced Furniture Brands",
+          "rating": 70,
+          "children": [
+            {
+              "id": 11.1,
+              "name": "Low-Quality Materials",
+              "rating": 50
+            },
+            {
+              "id": 11.2,
+              "name": "Lack of Customization",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Big Box Stores",
+          "rating": 40,
+          "children": [
+            {
+              "id": 12.1,
+              "name": "Limited Selection",
+              "rating": 20
+            },
+            {
+              "id": 12.2,
+              "name": "High Prices",
+              "rating": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "what": "#freedom #women #iran",
+      "filters": {
+        "selfPresentPain": [
+          {
+            "id": 43,
+            "text": "Restrictions on women's rights",
+            "entity": "pains"
+          }
+        ],
+        "selfFutureSeek": [
+          {
+            "id": 44,
+            "text": "Advocate for women's freedoms",
+            "entity": "gains"
+          }
+        ],
+        "peersPresentPain": [
+          {
+            "id": 45,
+            "text": "Friends facing gender discrimination",
+            "entity": "pains"
+          }
+        ],
+        "peersPresentSeek": [
+          {
+            "id": 46,
+            "text": "Join local women's rights groups",
+            "entity": "gains"
+          }
+        ],
+        "peersPastSeek": [
+          {
+            "id": 47,
+            "text": "Participated in a women's rights march last year",
+            "entity": "gains"
+          }
+        ],
+        "publicPresentPain": [
+          {
+            "id": 48,
+            "text": "Cultural barriers against women",
+            "entity": "pains"
+          }
+        ],
+        "publicPresentGain": [
+          {
+            "id": 49,
+            "text": "Increased awareness for women's rights issues",
+            "entity": "gains"
+          }
+        ]
+      },
+      "gods": [
+        {
+          "id": 13,
+          "name": "Women Leaders",
+          "rating": 70,
+          "children": [
+            {
+              "id": 13.1,
+              "name": "Activists",
+              "rating": 40
+            },
+            {
+              "id": 13.2,
+              "name": "Role Models",
+              "rating": 30
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "Community Organizers",
+          "rating": 50,
+          "children": [
+            {
+              "id": 14.1,
+              "name": "Advocates for Change",
+              "rating": 30
+            },
+            {
+              "id": 14.2,
+              "name": "Supporters of Equality",
+              "rating": 20
+            }
+          ]
+        }
+      ],
+      "foes": [
+        {
+          "id": 13,
+          "name": "Oppressive Regimes",
+          "rating": 80,
+          "children": [
+            {
+              "id": 13.1,
+              "name": "Corrupt Officials",
+              "rating": 50
+            },
+            {
+              "id": 13.2,
+              "name": "Gender-Biased Policies",
+              "rating": 30
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "Cultural Norms",
+          "rating": 40,
+          "children": [
+            {
+              "id": 14.1,
+              "name": "Traditions Restricting Freedom",
+              "rating": 20
+            },
+            {
+              "id": 14.2,
+              "name": "Stereotypes Against Women",
+              "rating": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "what": "#kids #labour #iran",
+      "filters": {
+        "selfPresentPain": [
+          {
+            "id": 50,
+            "text": "Child labor affecting community health",
+            "entity": "pains"
+          }
+        ],
+        "selfFutureSeek": [
+          {
+            "id": 51,
+            "text": "Support education for all children",
+            "entity": "gains"
+          }
+        ],
+        "peersPresentPain": [
+          {
+            "id": 52,
+            "text": "Friends affected by child labor issues",
+            "entity": "pains"
+          }
+        ],
+        "peersPresentSeek": [
+          {
+            "id": 53,
+            "text": "Join local initiatives against child labor",
+            "entity": "gains"
+          }
+        ],
+        "peersPastSeek": [
+          {
+            "id": 54,
+            "text": "Volunteered in a children's education program",
+            "entity": "gains"
+          }
+        ],
+        "publicPresentPain": [
+          {
+            "id": 55,
+            "text": "Societal acceptance of child labor",
+            "entity": "pains"
+          }
+        ],
+        "publicPresentGain": [
+          {
+            "id": 56,
+            "text": "Community awareness programs on child rights",
+            "entity": "gains"
+          }
+        ]
+      },
+      "gods": [
+        {
+          "id": 15,
+          "name": "Child Rights Activists",
+          "rating": 70,
+          "children": [
+            {
+              "id": 15.1,
+              "name": "Advocates for Education",
+              "rating": 40
+            },
+            {
+              "id": 15.2,
+              "name": "Social Workers",
+              "rating": 30
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "Educators",
+          "rating": 50,
+          "children": [
+            {
+              "id": 16.1,
+              "name": "Teachers for Underprivileged",
+              "rating": 30
+            },
+            {
+              "id": 16.2,
+              "name": "Community Mentors",
+              "rating": 20
+            }
+          ]
+        }
+      ],
+      "foes": [
+        {
+          "id": 15,
+          "name": "Exploitive Employers",
+          "rating": 80,
+          "children": [
+            {
+              "id": 15.1,
+              "name": "Child Labor Employers",
+              "rating": 50
+            },
+            {
+              "id": 15.2,
+              "name": "Human Rights Violators",
+              "rating": 30
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "Societal Neglect",
+          "rating": 40,
+          "children": [
+            {
+              "id": 16.1,
+              "name": "Inaction on Child Rights",
+              "rating": 20
+            },
+            {
+              "id": 16.2,
+              "name": "Cultural Acceptance of Child Labor",
+              "rating": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "what": "#mechanic #motorcycle",
+      "filters": {
+        "selfPresentPain": [
+          {
+            "id": 57,
+            "text": "High repair costs for motorcycles",
+            "entity": "pains"
+          }
+        ],
+        "selfFutureSeek": [
+          {
+            "id": 58,
+            "text": "Learn motorcycle maintenance skills",
+            "entity": "gains"
+          }
+        ],
+        "peersPresentPain": [
+          {
+            "id": 59,
+            "text": "Friends with unreliable motorcycles",
+            "entity": "pains"
+          }
+        ],
+        "peersPresentSeek": [
+          {
+            "id": 60,
+            "text": "Organize a motorcycle maintenance workshop",
+            "entity": "gains"
+          }
+        ],
+        "peersPastSeek": [
+          {
+            "id": 61,
+            "text": "Helped fix a friend's motorcycle last summer",
+            "entity": "gains"
+          }
+        ],
+        "publicPresentPain": [
+          {
+            "id": 62,
+            "text": "Road safety concerns for motorcycles",
+            "entity": "pains"
+          }
+        ],
+        "publicPresentGain": [
+          {
+            "id": 63,
+            "text": "Community rides for motorcycle safety awareness",
+            "entity": "gains"
+          }
+        ]
+      },
+      "gods": [
+        {
+          "id": 17,
+          "name": "Motorcycle Experts",
+          "rating": 70,
+          "children": [
+            {
+              "id": 17.1,
+              "name": "Mechanics",
+              "rating": 40
+            },
+            {
+              "id": 17.2,
+              "name": "Riding Instructors",
+              "rating": 30
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "Safety Advocates",
+          "rating": 50,
+          "children": [
+            {
+              "id": 18.1,
+              "name": "Road Safety Trainers",
+              "rating": 30
+            },
+            {
+              "id": 18.2,
+              "name": "Motorcycle Safety Campaigners",
+              "rating": 20
+            }
+          ]
+        }
+      ],
+      "foes": [
+        {
+          "id": 17,
+          "name": "Negligent Riders",
+          "rating": 60,
+          "children": [
+            {
+              "id": 17.1,
+              "name": "Speeders",
+              "rating": 40
+            },
+            {
+              "id": 17.2,
+              "name": "Disregard for Safety Gear",
+              "rating": 20
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "Poorly Maintained Roads",
+          "rating": 40,
+          "children": [
+            {
+              "id": 18.1,
+              "name": "Potholes",
+              "rating": 20
+            },
+            {
+              "id": 18.2,
+              "name": "Lack of Signage",
+              "rating": 20
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

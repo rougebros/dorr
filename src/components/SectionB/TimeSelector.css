@@ -1,0 +1,184 @@
+.c2-time-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.breadcrumb-item {
+  font-size: 0.8em; /* Smaller breadcrumb text */
+  color: #61DAFB;
+  cursor: pointer;
+}
+
+/* Icon container aligned with breadcrumb */
+.breadcrumb-actions {
+  display: flex;
+  gap: 2px; /* Space between icons */
+  align-items: center;
+}
+
+/* Add and Search Icon Styling */
+.add-icon, .search-icon {
+  font-size: 1.2em;
+  cursor: pointer;
+  color: gray; /* Gray color for icons */
+}
+
+.add-icon:hover, .search-icon:hover {
+  color: darkgray; /* Dark gray hover effect */
+}
+
+/* Horizontal scroll for second-layer options */
+.time-options {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scroll */
+}
+
+.time-options::-webkit-scrollbar {
+  height: 4px; /* Smaller scrollbar */
+}
+
+.time-options::-webkit-scrollbar-thumb {
+  background-color: #61DAFB;
+  border-radius: 10px;
+}
+
+.time-options::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+.time-item {
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 80px;
+  max-width: 120px;
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.time-item span {
+  font-size: 2.2em; /* Larger icons */
+}
+
+.time-item-label {
+  font-size: 0.7em !important; /* Small text under icons */
+}
+
+.time-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Highlight the selected time item */
+.time-item.selected {
+  border: 2px solid #61DAFB;
+  background-color: #e0f7fa;
+  margin: 2px;
+  margin-top: 0px;
+}
+
+.add-end {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.add-btn {
+  padding: 5px 10px;
+  background-color: #61DAFB;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em; /* Compact button */
+}
+
+.add-btn:hover {
+  background-color: #4aa0ce;
+}
+
+.date-picker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-selected {
+  margin-top: 5px;
+  font-size: 0.9em; /* Compact text */
+  color: #333;
+}
+.c2-time-container {
+  border: 1px solid #ccc; /* Thin gray border */
+  border-radius: 5px; /* Slightly rounded corners */
+  width: 50%; /* Ensure it takes full width */
+  box-sizing: border-box; /* Ensure padding is inside width */
+}
+
+.breadcrumb-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align Add, Search, and Breadcrumb text */
+}
+
+.breadcrumb-item {
+  font-size: 0.8em; /* Adjust size of breadcrumb text */
+  color: #61DAFB;
+  cursor: pointer;
+}
+
+.breadcrumb-item:hover {
+  text-decoration: underline; /* Underline breadcrumb on hover */
+}
+.selector-container {
+  border: 1px solid #ccc; /* Thin gray border */
+  border-radius: 5px; /* Slightly rounded corners */
+  width: 50%; /* Ensure it takes full width */
+  box-sizing: border-box; /* Make sure padding is included within the width */
+  margin-right: 2px;
+}
+
+.breadcrumb-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Keep Add, Search, and Breadcrumb text aligned */
+}
+
+.breadcrumb-item {
+  font-size: 0.8em; /* Adjust size of breadcrumb */
+  color: #61DAFB;
+  cursor: pointer;
+}
+
+.breadcrumb-item:hover {
+  text-decoration: underline; /* Add underline on hover for better UX */
+}
+.breadcrumb-actions {
+  display: flex;
+  align-items: center;
+}
+
+.favorite-icon {
+  font-size: 1em; /* Match size with SearchIcon */
+  color: gray; /* Same gray color as SearchIcon */
+  margin-right: 2px; /* Add some space between the Favorite icon and the Search icon */
+  cursor: pointer;
+}
+
+.favorite-icon:hover {
+  color: darkgray; /* Hover effect */
+}

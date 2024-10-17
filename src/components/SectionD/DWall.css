@@ -1,0 +1,368 @@
+.d-wall-container {
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: #fff;
+  max-height: 180px;
+  min-height: 180px;
+  overflow-y: auto;
+  width: 80%;
+  margin: 2px;
+  padding: 2px;
+}
+
+/* No items message styling */
+.wall-list p {
+  color: #666;
+  text-align: center;
+  font-style: italic;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+/* Custom scrollbar */
+.d-wall-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.d-wall-container::-webkit-scrollbar-thumb {
+  background-color: #61dafb;
+  border-radius: 10px;
+}
+
+.d-wall-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+.wall-header {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  flex-grow: 1;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left-icons {
+  display: flex;
+  gap: 5px;
+}
+
+.header-right-icon {
+  font-size: 1em;
+}
+
+/* Style the SVG icons */
+.header-left-icons svg {
+  cursor: pointer;
+  transition: fill 0.3s ease;
+  width: 20px;
+  height: 20px;
+}
+
+/* List of Items */
+.wall-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.parent-item {
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  background-color: rgba(255, 255, 0, 0.2); /* Default yellow background for seeks */
+}
+
+.parent-item:hover {
+  background-color: rgba(255, 255, 0, 0.4); /* Yellow hover for seeks */
+}
+
+/* Highlight selected parent or child */
+.selected {
+  border: 2px solid #61dafb;
+  background-color: rgba(97, 218, 251, 0.2); /* Slight blue background when selected */
+}
+
+.child-items {
+  padding-left: 15px;
+}
+
+.wall-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  text-align: left;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s;
+  position: relative;
+}
+
+.wall-item:hover {
+  background-color: rgba(255, 255, 0, 0.3); /* Hover effect in yellow for wall of seeks */
+}
+
+/* Truncated Text with Tooltip */
+.item-text {
+  font-size: 0.85em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+}
+
+.item-text:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+  max-width: 200px;
+}
+
+/* Icons next to items */
+.item-icons {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.item-icons span {
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+/* Temperature Icon Tooltip */
+.temperature-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.percentage-hover {
+  display: none;
+}
+
+/* Show the tooltip on hover */
+.temperature-icon:hover .tooltip {
+  display: block;
+}
+.mute-icon, .bell-icon {
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: color 0.2s;
+}
+
+.mute-icon:hover, .bell-icon:hover {
+  color: #61dafb; /* Highlight on hover */
+}
+
+.details-icon {
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.more-icon {
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.mute-icon, .bell-icon {
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: color 0.2s;
+}
+
+.mute-icon:hover, .bell-icon:hover {
+  color: #61dafb; /* Highlight on hover */
+}
+
+.details-icon {
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.more-icon {
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+/* Icons for parent nodes */
+.parent-icons {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end; /* Align to the right */
+}
+
+.child-items {
+  padding-left: 15px;
+}
+.parent-icons {
+  display: flex;
+  gap: 5px;
+  align-items: center; /* Ensure vertical alignment with parent text */
+  justify-content: flex-end;
+  margin-left: auto; /* Push icons to the right */
+}
+
+.item-icons {
+  display: flex;
+  gap: 5px;
+  align-items: center; /* Ensure vertical alignment with child text */
+}
+
+.mute-icon,
+.bell-icon {
+  cursor: pointer;
+}
+
+.details-icon {
+  margin-left: 5px;
+}
+
+.more-icon {
+  margin-left: 5px;
+}
+.parent-item {
+  display: flex;
+  align-items: center; /* Vertically align text and icons */
+  justify-content: space-between; /* Spread the text and icons apart */
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  background-color: rgba(255, 255, 0, 0.2); /* Default yellow background for seeks */
+}
+
+.parent-text {
+  flex-grow: 1; /* Allow text to take up available space */
+  overflow: hidden; /* Ensure the text doesn't overflow */
+}
+
+.parent-icons {
+  display: flex;
+  gap: 5px;
+  align-items: center; /* Ensure icons are vertically aligned with the text */
+  justify-content: flex-end; /* Align icons to the right */
+}
+.d-wall-container {
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: #fff;
+  max-height: 180px;
+  min-height: 180px;
+  overflow-y: auto;
+  width: 80%;
+  margin: 2px;
+  padding: 2px;
+}
+
+/* Custom scrollbar */
+.d-wall-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.d-wall-container::-webkit-scrollbar-thumb {
+  background-color: #61dafb;
+  border-radius: 10px;
+}
+
+.d-wall-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+/* Adjust the pie chart size and border color */
+.pie-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px; /* Set your desired height */
+  width: 130px;  /* Set your desired width */
+  margin: auto;
+}
+
+.pie-chart-container .border {
+  border-color: silver; /* Silver divider line */
+}
+
+/* Tooltip for temperature icon */
+.tooltip {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 0.75em;
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.temperature-icon:hover .tooltip {
+  display: block;
+}
+
+/* Parent and child item styles */
+.parent-icons {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.item-icons {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+/* Adjust font sizes */
+.parent-item {
+  font-size: 0.85em; /* Smaller font size for parent node */
+}
+
+.wall-item {
+  font-size: 0.75em; /* Smaller font size for child node */
+}

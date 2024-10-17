@@ -1,0 +1,279 @@
+{
+  "seeds": [
+    {
+      "what": "#job #construction #cleaner",
+      "filters": [
+        {
+          "pov": "self",
+          "time": "past",
+          "category": "gains",
+          "items": [
+            {
+              "id": 1,
+              "parent": "#tools",
+              "isG": true,
+              "rate": 80,
+              "children": [
+                { "id": 1.1, "text": "Advanced cleaning tools available", "isG": true, "rate": 50 },
+                { "id": 1.2, "text": "Safety training on using tools", "isG": false, "rate": 30 }
+              ]
+            },
+            {
+              "id": 2,
+              "parent": "#efficiency",
+              "isG": true,
+              "rate": 20,
+              "children": [
+                { "id": 2.1, "text": "Increased cleaning speed", "isG": true, "rate": 40 },
+                { "id": 2.2, "text": "Reduced downtime during shifts", "isG": false, "rate": 35 }
+              ]
+            }
+          ]
+        },
+        {
+          "pov": "peers",
+          "time": "past",
+          "category": "pains",
+          "items": [
+            {
+              "id": 3,
+              "parent": "#safety",
+              "isG": false,
+              "rate": 70,
+              "children": [
+                { "id": 3.1, "text": "Lack of protective gear", "isG": true, "rate": 40 },
+                { "id": 3.2, "text": "Inadequate safety protocols", "isG": false, "rate": 30 }
+              ]
+            },
+            {
+              "id": 4,
+              "parent": "#fatigue",
+              "isG": false,
+              "rate": 30,
+              "children": [
+                { "id": 4.1, "text": "Long working hours", "isG": true, "rate": 30 },
+                { "id": 4.2, "text": "Increased injury risks due to exhaustion", "isG": false, "rate": 30 }
+              ]
+            }
+          ]
+        },
+        {
+          "pov": "public",
+          "time": "past",
+          "category": "gains",
+          "items": [
+            {
+              "id": 5,
+              "parent": "#recruitment",
+              "isG": true,
+              "rate": 75,
+              "children": [
+                { "id": 5.1, "text": "Increased job openings", "isG": true, "rate": 50 },
+                { "id": 5.2, "text": "Better wages for cleaners", "isG": false, "rate": 35 }
+              ]
+            },
+            {
+              "id": 6,
+              "parent": "#community service",
+              "isG": true,
+              "rate": 25,
+              "children": [
+                { "id": 6.1, "text": "Positive impact on public cleanliness", "isG": true, "rate": 45 },
+                { "id": 6.2, "text": "Recognition of cleaners' contributions", "isG": false, "rate": 30 }
+              ]
+            }
+          ]
+        },
+        {
+          "pov": "self",
+          "time": "now",
+          "category": "pains",
+          "items": [
+            {
+              "id": 7,
+              "parent": "#efficiency",
+              "isG": false,
+              "rate": 60,
+              "children": [
+                { "id": 7.1, "text": "Low productivity due to poor tools", "isG": false, "rate": 40 },
+                { "id": 7.2, "text": "Lack of clear work guidelines", "isG": true, "rate": 20 }
+              ]
+            },
+            {
+              "id": 8,
+              "parent": "#management",
+              "isG": false,
+              "rate": 40,
+              "children": [
+                { "id": 8.1, "text": "Inconsistent leadership and direction", "isG": true, "rate": 40 },
+                { "id": 8.2, "text": "Lack of support from supervisors", "isG": false, "rate": 30 }
+              ]
+            }
+          ]
+        },
+        {
+          "pov": "self",
+          "time": "now",
+          "category": "gains",
+          "items": [
+            {
+              "id": 7,
+              "parent": "#cleaner",
+              "isG": false,
+              "rate": 60,
+              "children": [
+                { "id": 7.1, "text": "Garden", "isG": false, "rate": 40 },
+                { "id": 7.2, "text": "House", "isG": true, "rate": 20 }
+              ]
+            },
+            {
+              "id": 8,
+              "parent": "#cleaing items",
+              "isG": false,
+              "rate": 30,
+              "children": [
+                { "id": 8.1, "text": "Washing Broom", "isG": true, "rate": 70 },
+                { "id": 8.2, "text": "Ditergents", "isG": false, "rate": 10 }
+              ]
+            }
+          ]
+        },
+        {
+          "pov": "peers",
+          "time": "now",
+          "category": "gains",
+          "items": [
+            {
+              "id": 9,
+              "parent": "#cleanliness",
+              "isG": true,
+              "rate": 75,
+              "children": [
+                { "id": 9.1, "text": "Improved hygiene standards", "isG": true, "rate": 45 },
+                { "id": 9.2, "text": "Cleaner work environments", "isG": false, "rate": 30 }
+              ]
+            },
+            {
+              "id": 10,
+              "parent": "#teamwork",
+              "isG": true,
+              "rate": 15,
+              "children": [
+                { "id": 10.1, "text": "Increased collaboration among workers", "isG": true, "rate": 50 },
+                { "id": 10.2, "text": "Shared best practices", "isG": false, "rate": 30 }
+              ]
+            }
+          ]
+        },
+        {
+          "pov": "public",
+          "time": "now",
+          "category": "pains",
+          "items": [
+            {
+              "id": 11,
+              "parent": "#Work Conditions",
+              "isG": false,
+              "rate": 80,
+              "children": [
+                { "id": 11.1, "text": "Unsafe working conditions", "isG": true, "rate": 50 },
+                { "id": 11.2, "text": "Overworked cleaners", "isG": false, "rate": 30 }
+              ]
+            },
+            {
+              "id": 12,
+              "parent": "#pollution",
+              "isG": false,
+              "rate": 20,
+              "children": [
+                { "id": 12.1, "text": "Improper disposal of cleaning chemicals", "isG": true, "rate": 35 },
+                { "id": 12.2, "text": "Negative environmental impact", "isG": false, "rate": 25 }
+              ]
+            }
+          ]
+        },
+        {
+          "pov": "self",
+          "time": "future",
+          "category": "gains",
+          "items": [
+            {
+              "id": 13,
+              "parent": "#tools",
+              "isG": true,
+              "rate": 90,
+              "children": [
+                { "id": 13.1, "text": "New cleaning technologies", "isG": true, "rate": 50 },
+                { "id": 13.2, "text": "Higher efficiency with improved tools", "isG": false, "rate": 40 }
+              ]
+            },
+            {
+              "id": 14,
+              "parent": "#education",
+              "isG": true,
+              "rate": 10,
+              "children": [
+                { "id": 14.1, "text": "Access to advanced cleaning courses", "isG": true, "rate": 45 },
+                { "id": 14.2, "text": "Professional certifications for cleaners", "isG": false, "rate": 40 }
+              ]
+            }
+          ]
+        },
+        {
+          "pov": "peers",
+          "time": "future",
+          "category": "pains",
+          "items": [
+            {
+              "id": 15,
+              "parent": "#safety",
+              "isG": false,
+              "rate": 70,
+              "children": [
+                { "id": 15.1, "text": "Future health risks from poor safety measures", "isG": true, "rate": 40 },
+                { "id": 15.2, "text": "Increased accidents due to unsafe conditions", "isG": false, "rate": 30 }
+              ]
+            },
+            {
+              "id": 16,
+              "parent": "#Job Stability",
+              "isG": false,
+              "rate": 30,
+              "children": [
+                { "id": 16.1, "text": "Job losses due to automation", "isG": true, "rate": 30 },
+                { "id": 16.2, "text": "Unstable work hours", "isG": false, "rate": 30 }
+              ]
+            }
+          ]
+        },
+        {
+          "pov": "public",
+          "time": "future",
+          "category": "gains",
+          "items": [
+            {
+              "id": 17,
+              "parent": "#recruitment",
+              "isG": true,
+              "rate": 95,
+              "children": [
+                { "id": 17.1, "text": "Cleaner public spaces", "isG": true, "rate": 50 },
+                { "id": 17.2, "text": "Increased public satisfaction", "isG": false, "rate": 35 }
+              ]
+            },
+            {
+              "id": 18,
+              "parent": "#innovation",
+              "isG": true,
+              "rate": 5,
+              "children": [
+                { "id": 18.1, "text": "Innovative cleaning methods introduced", "isG": true, "rate": 50 },
+                { "id": 18.2, "text": "Sustainable cleaning technologies", "isG": false, "rate": 40 }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

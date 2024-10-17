@@ -1,0 +1,1143 @@
+{
+    "tree": [
+      {
+        "id": "1",
+        "name": "job",
+        "icon": "👔",
+        "meta": {
+            "DORR" : {
+                "type": "url",
+              "value": "https://maps.example.com/job_location",
+              "priority": {
+                "vertical": 1,
+                "horizontal": 2
+              }
+            },
+            "map": {
+              "type": "url",
+              "value": "https://maps.example.com/job_location",
+              "priority": {
+                "vertical": 1,
+                "horizontal": 2
+              }
+            },
+            "time": {
+              "type": "datetime",
+              "value": "2024-09-15T09:00:00Z",
+              "priority": {
+                "vertical": 2,
+                "horizontal": 1
+              }
+            },
+            "calendar": {
+              "type": "url",
+              "value": "https://calendar.example.com/job_event",
+              "priority": {
+                "vertical": 3,
+                "horizontal": 3
+              }
+            },
+            "paymentOptions": {
+              "type": "payment",
+              "value": {
+                "methods": ["credit_card", "paypal"],
+                "currency": "USD"
+              },
+              "priority": {
+                "vertical": 1,
+                "horizontal": 4
+              }
+            },
+            "attachments": {
+              "type": "list",
+              "value": [
+                {
+                  "type": "pdf",
+                  "url": "https://example.com/job_description.pdf",
+                  "description": "Job description document",
+                  "priority": {
+                    "vertical": 2,
+                    "horizontal": 2
+                  }
+                }
+              ],
+              "priority": {
+                "vertical": 4,
+                "horizontal": 5
+              }
+            },
+            "reminders": {
+              "type": "list",
+              "value": [
+                {
+                  "type": "email",
+                  "time": "2024-09-14T12:00:00Z",
+                  "message": "Reminder for the job interview",
+                  "priority": {
+                    "vertical": 3,
+                    "horizontal": 1
+                  }
+                }
+              ],
+              "priority": {
+                "vertical": 5,
+                "horizontal": 4
+              }
+            },
+            "sharingOptions": {
+              "type": "list",
+              "value": ["linkedin", "email"],
+              "priority": {
+                "vertical": 4,
+                "horizontal": 6
+              }
+            },
+            "ratingLevel": {
+              "type": "percentage",  
+              "value": 85,          
+              "priority": {
+                "vertical": 5,
+                "horizontal": 7
+              }
+            },
+            "ratingClasses": {
+              "type": "class",
+              "value": "A",       
+              "priority": {
+                "vertical": 6,
+                "horizontal": 8
+              }
+            }
+          },
+        "children": [
+          {
+            "id": "1.1",
+            "name": "construction",
+            "icon": "🏗️",
+            "meta": {},
+            "children": [
+              {
+                "id": "1.1.1",
+                "name": "electrician",
+                "icon": "⚡",
+                "meta": {}
+              },
+              {
+                "id": "1.1.2",
+                "name": "plumber",
+                "icon": "🚰",
+                "meta": {}
+              },
+              {
+                "id": "1.1.3",
+                "name": "cleaner",
+                "icon": "🧹",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "1.2",
+            "name": "finance",
+            "icon": "💼",
+            "meta": {},
+            "children": [
+              {
+                "id": "1.2.1",
+                "name": "accounting",
+                "icon": "📊",
+                "meta": {}
+              },
+              {
+                "id": "1.2.2",
+                "name": "investment",
+                "icon": "📈",
+                "meta": {}
+              },
+              {
+                "id": "1.2.3",
+                "name": "banking",
+                "icon": "🏦",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "1.3",
+            "name": "tech",
+            "icon": "💻",
+            "meta": {},
+            "children": [
+              {
+                "id": "1.3.1",
+                "name": "developer",
+                "icon": "👨‍💻",
+                "meta": {}
+              },
+              {
+                "id": "1.3.2",
+                "name": "designer",
+                "icon": "🎨",
+                "meta": {}
+              },
+              {
+                "id": "1.3.3",
+                "name": "manager",
+                "icon": "👩‍💼",
+                "meta": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "transport",
+        "icon": "🚗",
+        "meta": {},
+        "children": [
+          {
+            "id": "2.1",
+            "name": "car",
+            "icon": "🚙",
+            "meta": {},
+            "children": [
+              {
+                "id": "2.1.1",
+                "name": "rental",
+                "icon": "🚗",
+                "meta": {}
+              },
+              {
+                "id": "2.1.2",
+                "name": "luxury",
+                "icon": "🚘",
+                "meta": {}
+              },
+              {
+                "id": "2.1.3",
+                "name": "maintenance",
+                "icon": "🛠️",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "2.2",
+            "name": "bike",
+            "icon": "🚴",
+            "meta": {},
+            "children": [
+              {
+                "id": "2.2.1",
+                "name": "electric",
+                "icon": "⚡🚴",
+                "meta": {}
+              },
+              {
+                "id": "2.2.2",
+                "name": "rental",
+                "icon": "🚴",
+                "meta": {}
+              },
+              {
+                "id": "2.2.3",
+                "name": "accessories",
+                "icon": "🔧",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "2.3",
+            "name": "truck",
+            "icon": "🚚",
+            "meta": {},
+            "children": [
+              {
+                "id": "2.3.1",
+                "name": "freight",
+                "icon": "🚛",
+                "meta": {}
+              },
+              {
+                "id": "2.3.2",
+                "name": "moving",
+                "icon": "🏡🚚",
+                "meta": {}
+              },
+              {
+                "id": "2.3.3",
+                "name": "repair",
+                "icon": "🔧",
+                "meta": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "ecommerce",
+        "icon": "🛒",
+        "meta": {},
+        "children": [
+          {
+            "id": "3.1",
+            "name": "electronics",
+            "icon": "📱",
+            "meta": {},
+            "children": [
+              {
+                "id": "3.1.1",
+                "name": "laptops",
+                "icon": "💻",
+                "meta": {}
+              },
+              {
+                "id": "3.1.2",
+                "name": "smartphones",
+                "icon": "📱",
+                "meta": {}
+              },
+              {
+                "id": "3.1.3",
+                "name": "accessories",
+                "icon": "🎧",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "3.2",
+            "name": "clothing",
+            "icon": "👗",
+            "meta": {},
+            "children": [
+              {
+                "id": "3.2.1",
+                "name": "men",
+                "icon": "👔",
+                "meta": {}
+              },
+              {
+                "id": "3.2.2",
+                "name": "women",
+                "icon": "👗",
+                "meta": {}
+              },
+              {
+                "id": "3.2.3",
+                "name": "kids",
+                "icon": "🧒",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "3.3",
+            "name": "furniture",
+            "icon": "🛋️",
+            "meta": {},
+            "children": [
+              {
+                "id": "3.3.1",
+                "name": "sofas",
+                "icon": "🛋️",
+                "meta": {}
+              },
+              {
+                "id": "3.3.2",
+                "name": "beds",
+                "icon": "🛏️",
+                "meta": {}
+              },
+              {
+                "id": "3.3.3",
+                "name": "chairs",
+                "icon": "🪑",
+                "meta": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "name": "health",
+        "icon": "🩺",
+        "meta": {},
+        "children": [
+          {
+            "id": "4.1",
+            "name": "mentalhealth",
+            "icon": "🧠",
+            "meta": {},
+            "children": [
+              {
+                "id": "4.1.1",
+                "name": "therapy",
+                "icon": "🛋️",
+                "meta": {}
+              },
+              {
+                "id": "4.1.2",
+                "name": "meditation",
+                "icon": "🧘‍♀️",
+                "meta": {}
+              },
+              {
+                "id": "4.1.3",
+                "name": "counseling",
+                "icon": "🗣️",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "4.2",
+            "name": "physicaltherapy",
+            "icon": "💪",
+            "meta": {},
+            "children": [
+              {
+                "id": "4.2.1",
+                "name": "knee",
+                "icon": "🦵",
+                "meta": {}
+              },
+              {
+                "id": "4.2.2",
+                "name": "back",
+                "icon": "🦴",
+                "meta": {}
+              },
+              {
+                "id": "4.2.3",
+                "name": "shoulder",
+                "icon": "💪",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "4.3",
+            "name": "nutrition",
+            "icon": "🥗",
+            "meta": {},
+            "children": [
+              {
+                "id": "4.3.1",
+                "name": "diet",
+                "icon": "🥗",
+                "meta": {}
+              },
+              {
+                "id": "4.3.2",
+                "name": "fasting",
+                "icon": "🍽️",
+                "meta": {}
+              },
+              {
+                "id": "4.3.3",
+                "name": "supplements",
+                "icon": "💊",
+                "meta": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "name": "food",
+        "icon": "🍽️",
+        "meta": {},
+        "children": [
+          {
+            "id": "5.1",
+            "name": "fruits",
+            "icon": "🍎",
+            "meta": {},
+            "children": [
+              {
+                "id": "5.1.1",
+                "name": "apples",
+                "icon": "🍏",
+                "meta": {}
+              },
+              {
+                "id": "5.1.2",
+                "name": "bananas",
+                "icon": "🍌",
+                "meta": {}
+              },
+              {
+                "id": "5.1.3",
+                "name": "oranges",
+                "icon": "🍊",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "5.2",
+            "name": "vegetables",
+            "icon": "🥦",
+            "meta": {},
+            "children": [
+              {
+                "id": "5.2.1",
+                "name": "carrots",
+                "icon": "🥕",
+                "meta": {}
+              },
+              {
+                "id": "5.2.2",
+                "name": "potatoes",
+                "icon": "🥔",
+                "meta": {}
+              },
+              {
+                "id": "5.2.3",
+                "name": "spinach",
+                "icon": "🥬",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "5.3",
+            "name": "restaurants",
+            "icon": "🍴",
+            "meta": {},
+            "children": [
+              {
+                "id": "5.3.1",
+                "name": "italian",
+                "icon": "🍕",
+                "meta": {}
+              },
+              {
+                "id": "5.3.2",
+                "name": "japanese",
+                "icon": "🍣",
+                "meta": {}
+              },
+              {
+                "id": "5.3.3",
+                "name": "fastfood",
+                "icon": "🍔",
+                "meta": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "name": "education",
+        "icon": "🎓",
+        "meta": {},
+        "children": [
+          {
+            "id": "6.1",
+            "name": "school",
+            "icon": "🏫",
+            "meta": {},
+            "children": [
+              {
+                "id": "6.1.1",
+                "name": "primary",
+                "icon": "🧒",
+                "meta": {}
+              },
+              {
+                "id": "6.1.2",
+                "name": "secondary",
+                "icon": "🧑",
+                "meta": {}
+              },
+              {
+                "id": "6.1.3",
+                "name": "highschool",
+                "icon": "🎒",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "6.2",
+            "name": "highereducation",
+            "icon": "🎓",
+            "meta": {},
+            "children": [
+              {
+                "id": "6.2.1",
+                "name": "university",
+                "icon": "🎓",
+                "meta": {}
+              },
+              {
+                "id": "6.2.2",
+                "name": "college",
+                "icon": "🎓",
+                "meta": {}
+              },
+              {
+                "id": "6.2.3",
+                "name": "vocational",
+                "icon": "🛠️",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "6.3",
+            "name": "onlinelearning",
+            "icon": "💻",
+            "meta": {},
+            "children": [
+              {
+                "id": "6.3.1",
+                "name": "courses",
+                "icon": "📝",
+                "meta": {}
+              },
+              {
+                "id": "6.3.2",
+                "name": "certificates",
+                "icon": "📜",
+                "meta": {}
+              },
+              {
+                "id": "6.3.3",
+                "name": "tutorials",
+                "icon": "📚",
+                "meta": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "name": "services",
+        "icon": "🛠️",
+        "meta": {},
+        "children": [
+          {
+            "id": "7.1",
+            "name": "cleaning",
+            "icon": "🧹",
+            "meta": {},
+            "children": [
+              {
+                "id": "7.1.1",
+                "name": "residential",
+                "icon": "🏠",
+                "meta": {}
+              },
+              {
+                "id": "7.1.2",
+                "name": "commercial",
+                "icon": "🏢",
+                "meta": {}
+              },
+              {
+                "id": "7.1.3",
+                "name": "specialized (e.g. carpet)",
+                "icon": "🧼",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "7.2",
+            "name": "repairs",
+            "icon": "🛠️",
+            "meta": {},
+            "children": [
+              {
+                "id": "7.2.1",
+                "name": "home",
+                "icon": "🏡",
+                "meta": {}
+              },
+              {
+                "id": "7.2.2",
+                "name": "vehicle",
+                "icon": "🚗",
+                "meta": {}
+              },
+              {
+                "id": "7.2.3",
+                "name": "appliances",
+                "icon": "🧺",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "7.3",
+            "name": "consulting",
+            "icon": "💼",
+            "meta": {},
+            "children": [
+              {
+                "id": "7.3.1",
+                "name": "legal",
+                "icon": "⚖️",
+                "meta": {}
+              },
+              {
+                "id": "7.3.2",
+                "name": "business",
+                "icon": "💼",
+                "meta": {}
+              },
+              {
+                "id": "7.3.3",
+                "name": "financial",
+                "icon": "📊",
+                "meta": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+      "id": "8",
+      "name": "entertainment",
+      "icon": "🎬",
+      "meta": {},
+      "children": [
+        {
+          "id": "8.1",
+          "name": "movies",
+          "icon": "🎥",
+          "meta": {},
+          "children": [
+            {
+              "id": "8.1.1",
+              "name": "action",
+              "icon": "💥",
+              "meta": {}
+            },
+            {
+              "id": "8.1.2",
+              "name": "comedy",
+              "icon": "😂",
+              "meta": {}
+            },
+            {
+              "id": "8.1.3",
+              "name": "drama",
+              "icon": "🎭",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "id": "8.2",
+          "name": "music",
+          "icon": "🎵",
+          "meta": {},
+          "children": [
+            {
+              "id": "8.2.1",
+              "name": "classical",
+              "icon": "🎻",
+              "meta": {}
+            },
+            {
+              "id": "8.2.2",
+              "name": "pop",
+              "icon": "🎤",
+              "meta": {}
+            },
+            {
+              "id": "8.2.3",
+              "name": "rock",
+              "icon": "🎸",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "id": "8.3",
+          "name": "games",
+          "icon": "🎮",
+          "meta": {},
+          "children": [
+            {
+              "id": "8.3.1",
+              "name": "video",
+              "icon": "🎮",
+              "meta": {}
+            },
+            {
+              "id": "8.3.2",
+              "name": "board",
+              "icon": "🧩",
+              "meta": {}
+            },
+            {
+              "id": "8.3.3",
+              "name": "sports",
+              "icon": "🏅",
+              "meta": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "name": "travel",
+      "icon": "✈️",
+      "meta": {},
+      "children": [
+        {
+          "id": "9.1",
+          "name": "destinations",
+          "icon": "🌍",
+          "meta": {},
+          "children": [
+            {
+              "id": "9.1.1",
+              "name": "beach",
+              "icon": "🏖️",
+              "meta": {}
+            },
+            {
+              "id": "9.1.2",
+              "name": "mountains",
+              "icon": "🏔️",
+              "meta": {}
+            },
+            {
+              "id": "9.1.3",
+              "name": "cities",
+              "icon": "🏙️",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "id": "9.2",
+          "name": "transportation",
+          "icon": "🚗",
+          "meta": {},
+          "children": [
+            {
+              "id": "9.2.1",
+              "name": "flights",
+              "icon": "✈️",
+              "meta": {}
+            },
+            {
+              "id": "9.2.2",
+              "name": "trains",
+              "icon": "🚂",
+              "meta": {}
+            },
+            {
+              "id": "9.2.3",
+              "name": "buses",
+              "icon": "🚌",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "id": "9.3",
+          "name": "accommodation",
+          "icon": "🏨",
+          "meta": {},
+          "children": [
+            {
+              "id": "9.3.1",
+              "name": "hotels",
+              "icon": "🏨",
+              "meta": {}
+            },
+            {
+              "id": "9.3.2",
+              "name": "hostels",
+              "icon": "🛏️",
+              "meta": {}
+            },
+            {
+              "id": "9.3.3",
+              "name": "airbnb",
+              "icon": "🏠",
+              "meta": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "name": "lifestyle",
+      "icon": "🧘",
+      "meta": {},
+      "children": [
+        {
+          "id": "10.1",
+          "name": "hobbies",
+          "icon": "🎨",
+          "meta": {},
+          "children": [
+            {
+              "id": "10.1.1",
+              "name": "painting",
+              "icon": "🎨",
+              "meta": {}
+            },
+            {
+              "id": "10.1.2",
+              "name": "dancing",
+              "icon": "💃",
+              "meta": {}
+            },
+            {
+              "id": "10.1.3",
+              "name": "gardening",
+              "icon": "🌿",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "id": "10.2",
+          "name": "fitness",
+          "icon": "🏋️",
+          "meta": {},
+          "children": [
+            {
+              "id": "10.2.1",
+              "name": "gym",
+              "icon": "🏋️",
+              "meta": {}
+            },
+            {
+              "id": "10.2.2",
+              "name": "yoga",
+              "icon": "🧘‍♀️",
+              "meta": {}
+            },
+            {
+              "id": "10.2.3",
+              "name": "running",
+              "icon": "🏃",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "id": "10.3",
+          "name": "fashion",
+          "icon": "👗",
+          "meta": {},
+          "children": [
+            {
+              "id": "10.3.1",
+              "name": "clothing",
+              "icon": "👗",
+              "meta": {}
+            },
+            {
+              "id": "10.3.2",
+              "name": "accessories",
+              "icon": "👜",
+              "meta": {}
+            },
+            {
+              "id": "10.3.3",
+              "name": "shoes",
+              "icon": "👟",
+              "meta": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "name": "housing",
+      "icon": "🏡",
+      "meta": {},
+      "children": [
+        {
+          "id": "11.1",
+          "name": "buying",
+          "icon": "🏡",
+          "meta": {},
+          "children": [
+            {
+              "id": "11.1.1",
+              "name": "houses",
+              "icon": "🏠",
+              "meta": {}
+            },
+            {
+              "id": "11.1.2",
+              "name": "apartments",
+              "icon": "🏢",
+              "meta": {}
+            },
+            {
+              "id": "11.1.3",
+              "name": "land",
+              "icon": "🏞️",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "id": "11.2",
+          "name": "renting",
+          "icon": "🏠",
+          "meta": {},
+          "children": [
+            {
+              "id": "11.2.1",
+              "name": "houses",
+              "icon": "🏠",
+              "meta": {}
+            },
+            {
+              "id": "11.2.2",
+              "name": "apartments",
+              "icon": "🏢",
+              "meta": {}
+            },
+            {
+              "id": "11.2.3",
+              "name": "rooms",
+              "icon": "🛏️",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "id": "11.3",
+          "name": "renovations",
+          "icon": "🛠️",
+          "meta": {},
+          "children": [
+            {
+              "id": "11.3.1",
+              "name": "interior",
+              "icon": "🛋️",
+              "meta": {}
+            },
+            {
+              "id": "11.3.2",
+              "name": "exterior",
+              "icon": "🏡",
+              "meta": {}
+            },
+            {
+              "id": "11.3.3",
+              "name": "landscaping",
+              "icon": "🌳",
+              "meta": {}
+            }
+          ]
+        }
+      ]
+      },
+      {
+        "id": "12",
+        "name": "animals",
+        "icon": "🐾",
+        "meta": {},
+        "children": [
+          {
+            "id": "12.1",
+            "name": "pets",
+            "icon": "🐕",
+            "meta": {},
+            "children": [
+              {
+                "id": "12.1.1",
+                "name": "dogs",
+                "icon": "🐶",
+                "meta": {}
+              },
+              {
+                "id": "12.1.2",
+                "name": "cats",
+                "icon": "🐱",
+                "meta": {}
+              },
+              {
+                "id": "12.1.3",
+                "name": "fish",
+                "icon": "🐟",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "12.2",
+            "name": "wildlife",
+            "icon": "🦁",
+            "meta": {},
+            "children": [
+              {
+                "id": "12.2.1",
+                "name": "forests",
+                "icon": "🌲",
+                "meta": {}
+              },
+              {
+                "id": "12.2.2",
+                "name": "oceans",
+                "icon": "🌊",
+                "meta": {}
+              },
+              {
+                "id": "12.2.3",
+                "name": "deserts",
+                "icon": "🏜️",
+                "meta": {}
+              }
+            ]
+          },
+          {
+            "id": "12.3",
+            "name": "conservation",
+            "icon": "🌿",
+            "meta": {},
+            "children": [
+              {
+                "id": "12.3.1",
+                "name": "endangered",
+                "icon": "🐅",
+                "meta": {}
+              },
+              {
+                "id": "12.3.2",
+                "name": "habitats",
+                "icon": "🌍",
+                "meta": {}
+              },
+              {
+                "id": "12.3.3",
+                "name": "activism",
+                "icon": "✊",
+                "meta": {}
+              }
+            ]
+          }
+        ]
+      }
+
+
+    ]
+  }
+  

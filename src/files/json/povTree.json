@@ -1,0 +1,157 @@
+{
+  "pov": {
+    "self": {
+      "label": "Self",
+      "icon": "👁️",
+      "children": {
+        "health": {
+          "label": "Health",
+          "icon": "🏋️",
+          "children": null
+        },
+        "mindset": {
+          "label": "Mindset",
+          "icon": "🧠",
+          "children": null
+        },
+        "habits": {
+          "label": "Habits",
+          "icon": "🕒",
+          "children": null
+        },
+        "finance": {
+          "label": "Finance",
+          "icon": "💰",
+          "children": null
+        },
+        "emotions": {
+          "label": "Emotions",
+          "icon": "❤️",
+          "children": null
+        },
+        "learning": {
+          "label": "Learning",
+          "icon": "📚",
+          "children": null
+        },
+        "spirituality": {
+          "label": "Spirituality",
+          "icon": "🌱",
+          "children": null
+        },
+        "work": {
+          "label": "Work",
+          "icon": "💼",
+          "children": null
+        }
+      }
+    },
+    "peers": {
+      "label": "Peers",
+      "icon": "🫂",
+      "children": {
+        "friends": {
+          "label": "Closed Friends",
+          "icon": "👫",
+          "children": {
+            "health": {
+              "label": "John",
+              "icon": "👤",
+              "children": null
+            },
+            "mindset": {
+              "label": "Nick",
+              "icon": "👤",
+              "children": null
+            },
+            "habits": {
+              "label": "Json",
+              "icon": "👤",
+              "children": null
+            }
+          }
+        },
+        "family": {
+          "label": "Family",
+          "icon": "👪",
+          "children": null
+        },
+        "colleagues": {
+          "label": "Colleagues",
+          "icon": "👔",
+          "children": null
+        },
+        "neighbors": {
+          "label": "Neighbors",
+          "icon": "🏘️",
+          "children": null
+        },
+        "far_friends": {
+          "label": "Far Friends",
+          "icon": "🌌",
+          "children": {
+            "bob": {
+              "label": "Bob",
+              "icon": "🪰",
+              "children": null
+            }
+          }
+        }
+      }
+    },
+    "public": {
+      "label": "Public",
+      "icon": "🌍",
+      "children": {
+        "americas": {
+          "label": "America",
+          "icon": "🌎",
+          "children": {
+            "usa": {
+              "label": "USA",
+              "icon": "🇺🇸",
+              "children": null
+            },
+            "canada": {
+              "label": "Canada",
+              "icon": "🇨🇦",
+              "children": null
+            }
+          }
+        },
+        "africa_asia": {
+          "label": "Africa and Asia",
+          "icon": "🌍",
+          "children": {
+            "egypt": {
+              "label": "Egypt",
+              "icon": "🇪🇬",
+              "children": null
+            },
+            "india": {
+              "label": "India",
+              "icon": "🇮🇳",
+              "children": null
+            }
+          }
+        },
+        "east_asia_aus": {
+          "label": "East Asia & Australia",
+          "icon": "🌏",
+          "children": {
+            "japan": {
+              "label": "Japan",
+              "icon": "🇯🇵",
+              "children": null
+            },
+            "australia": {
+              "label": "Australia",
+              "icon": "🇦🇺",
+              "children": null
+            }
+          }
+        }
+      }
+    }
+  }
+}

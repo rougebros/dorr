@@ -1,0 +1,16 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  className="bell-icon"
+  fill="currentColor"
+  width="100%"
+  height="100%"
+>
+  <!-- Bell Outline -->
+  <path
+    className="bell-outline"
+    d="M12 2C8.686 2 6 4.686 6 8v4.879l-1.707 1.707C4.098 14.902 4 15.451 4 16v1h16v-1c0-.549-.098-1.098-.293-1.414L18 12.879V8c0-3.314-2.686-6-6-6zm0 18c1.104 0 2-.896 2-2h-4c0 1.104.896 2 2 2z"
+  />
+  <!-- Bell Clapper -->
+  <circle className="bell-clapper" cx="12" cy="16.5" r="1.5" />
+</svg>
