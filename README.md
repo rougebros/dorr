@@ -144,4 +144,5 @@ DORR is open-source and available under the MIT License.
 - [SWOT Analysis](https://docs.google.com/spreadsheets/d/1YWogPVsf1BwZtVXYDJ-wCnU1yS5HVwWM_RsftsBpBDE)
 - [Project Documentation](https://docs.google.com/document/d/1lD7nrnuxVRRinCb6HwbX5E-hdAyT_ePMl3l60wewWQQ)
 - [An Old Presentations](https://docs.google.com/presentation/d/1RzFvezBZFz1p7q7fKkBV49bZeQtI7O7pgm3tKMw0-f4/)
+- [Miro](https://miro.com/welcome/dzZyOUhGQUNsUDNkYmdqR0xUTGk1MThpcGZrWTQ4d1R4WDF0RHZaS21uelVvam00YXRHenVlVkU1RmlUTW5uNXwzMDc0NDU3MzQ3NjAyODExMTYwfDM=?share_link_id=818575512783)
 - [Video Walkthrough] TBA
