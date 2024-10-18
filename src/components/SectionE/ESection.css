@@ -2,7 +2,7 @@
 .e-section-container {
     display: flex;
     width: 100%;
-    min-height: 280px;
+    min-height: 270px;
     margin-top: 3px;
     align-items: center; /* Vertically center the large icons */
   }

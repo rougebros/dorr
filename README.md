@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+# DORR: Ratings Beyond Stars
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+**DORR** *(Definitions of Recurring Ranked Rates)* aims to shift away from the conventional **five-star rating systems** to a more meaningful and customizable ranking model. 
 
-In the project directory, you can run:
+DORR provides dynamic, customizable, colorful rates representing different behaviours. With the power to connect via multiple options (e.g., Bluetooth, innovative P2P, LoRa, Torr, WebRTC, centralized servers, etc), DORR promotes a human-centered way of expressing experiences.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Why DORR?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### A Wise Man Once Said:
+"A *truly happy & fortunate person* is one who **values the experiences of others**—both positive and negative. 
+If we all learn from each other's experiences, the failures in our lives wouldn't be so abundant."
 
-### `npm test`
+The current rating systems often fail to capture the complexity of human experiences, reducing nuanced feedback to a single, aggregated star rating. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+DORR seeks to enrich the process of giving and receiving feedback by providing a richer framework for evaluating interactions, experiences, and the impact of actions. With colorful icons, meaningful metrics, and customizable connections, DORR offers an innovative approach to highlight shared experiences that are about more than just five stars.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Rating Flow Overview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![DORR Rating Flow](src/files/media/dorr2.png)  
+_Visual representation of the DORR rating flow_
 
-### `npm run eject`
+1. **Step 1: Select Language, Network, Layout, and Related Settings**  
+   Choose the preferred language, select the network connection (Local, Bluetooth, P2P, etc.), and pick a layout (Wall format). You can also manage settings such as creating profiles, adding SOS contacts, and adding peers.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Step 2: Select POV/Time**  
+   Choose the Point of View (POV) for (self, peers, public) and the timeline (past, now, future).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Step 3: Select Hashtag Tree (WHAT)**  
+   Navigate through the hashtag tree to select the category or item that best represents what you want to rate.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Step 4: Select Pain or Gain (WHY) OR Add Foe or God (WHO)**  
+   Choose whether you're addressing a pain (🩸) or a gain (🔆). Optionally add influences like foes (👹) or gods (👑).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. **Step 5: Add Thoughts (HOW)**  
+   Add relevant thoughts about the experience, either as actions to do (💜) or not to do (❌).
 
-## Learn More
+6. **Step 6: Add Promises (WHOM/WHEN/WHERE)**  
+   Capture commitments or actions that will be done, including the person involved, location, and timing (💙).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+7. **Step 7: Rate Deeds (Relief or Regret)**  
+   Rate the deeds that have taken place using relief (💚) or regret (❌) icons to reflect the impact of those actions.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Sections Overview
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![DORR Sections Layout]()  
+_Visual representation of different DORR sections_
 
-### Analyzing the Bundle Size
+### Section A: Header and Navigation
+- Header for language, network, and layout options.
+- Navigation for information and setting page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Section B: Point of View (POV) and Time Selector
+- Filters the ratings and experiences by different perspectives (self, peers, public).
+- Filter by timeline (past, now, future).
 
-### Making a Progressive Web App
+### Section C: Hashtags
+- Select the relevant hashtags tree (e.g., #cats or #pizza) you are interested in.
+- Each hashtag can be assigned a color to represent different behaviours in the next sections.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Section D: Wall of Seeks & Pains
+- **D1**: Wall of Seeks - Displays lists of requests or "seeks" shared by others or oneself.
+- **D2**: Wall of Pains - Displays experiences of pains, regrets, or challenges others have faced.
+- Different levels of interaction: add, details, pin, broadcast, subscribe, etc.
 
-### Advanced Configuration
+### Section E: Map, Chats, Tasks & Social Media
+- **E1**: Visual maps of where certain experiences are occurring.
+- **E2**: Chat lists related to selected items.
+- **E3**: Task lists related to selected items.
+- **E4**: Social media feeds for selected items.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Section F: Hall of Fame & Hall of Shame
+- Displays highlighted contributions based on selected hashtags and filters.
+- Recognizes users, experiences, and actions either in a positive (Hall of Fame) or negative (Hall of Shame) light.
 
-### Deployment
+### Section G: Footer
+- Shortcuts for colorful icons for easier interaction with ratings.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## How DORR Works
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![DORR Sections Layout](src/files/media/dorr.png)  
+_Visual representation of different DORR sections_
+
+DORR is built on the idea of using a **rich, expressive ranking system** instead of the limiting five-star ratings. Ratings are ongoing, dynamic, and represent a wider array of experiences.
+
+1. **Capturing the Experience**: Select a POV, assign meaningful hashtags, and use colored rates to represent pains, gains, or other facets of the experience.
+2. **Customizable Connections**: Whether you’re using innovative P2P technologies, Bluetooth, or other communication methods, you can connect to multiple networks, broadcast, or receive ratings—all within a single app.
+3. **Recurring Interactions**: Instead of leaving experiences rated once, users can continuously update the status of an interaction as it evolves.
+
+---
+
+## Running Locally
+
+1. Clone the repository: `git clone https://github.com/rougebros/dorr.git`
+2. Install dependencies: `npm install`
+3. Start the server: `npm start`
+
+Make sure to have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+
+---
+
+## Contributing
+
+Contributions are warmly welcomed! Whether you’re a developer, designer, or simply passionate about transforming rating systems:
+
+- **Comment on SWOT or Project Links**
+- **Fork the repository**
+- **Create a feature branch**
+- **Submit a pull request**
+
+Feel free to explore open issues or propose new features!
+
+---
+
+## Contact
+
+If you have any questions or feedback, please reach out:
+
+- **Email**: rougebros@gmail.com
+- **GitHub**: [rougebros](https://github.com/rougebros/dorr)
+
+Together, let’s create a future where every experience is rated with true depth!
+
+---
+
+## License
+
+DORR is open-source and available under the MIT License.
+
+---
+
+## Additional Resources
+
+- [SWOT Analysis](https://docs.google.com/spreadsheets/d/1YWogPVsf1BwZtVXYDJ-wCnU1yS5HVwWM_RsftsBpBDE)
+- [Project Documentation](https://docs.google.com/document/d/1lD7nrnuxVRRinCb6HwbX5E-hdAyT_ePMl3l60wewWQQ)
+- [An Old Presentations](https://docs.google.com/presentation/d/1RzFvezBZFz1p7q7fKkBV49bZeQtI7O7pgm3tKMw0-f4/)
+- [Video Walkthrough] TBA
