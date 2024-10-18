@@ -51,7 +51,7 @@ _Visual representation of the DORR rating flow_
 
 ## Sections Overview
 
-![DORR Sections Layout]()  
+![DORR Sections Layout](src/files/media/sections.png)  
 _Visual representation of different DORR sections_
 
 ### Section A: Header and Navigation
