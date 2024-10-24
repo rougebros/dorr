@@ -1,145 +1,178 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './TreeTags.css';
-import treeData from '../../files/json/fake-data.json'; // Import the actual data
 import { useLocalization } from '../toolkit/LocalizationContext';
 
+// Mock function to simulate fetching JSON files for each hashtag
+const fetchHashtagFiles = async () => {
+  const files = [
+    '/files/json/transport_truck.json',
+    '/files/json/cat_stray.json',
+    '/files/json/restaurant_sushi.json'
+  ];
+
+  const jsonFiles = await Promise.all(files.map(file => fetch(file).then(res => res.json())));
+  return jsonFiles;
+};
+
 function TreeTags() {
-  const [tags, setTags] = useState([]); // For storing selected hierarchy
+  const [tags, setTags] = useState([]); // For storing selected hashtags
+  const [treeData, setTreeData] = useState([]); // Store combined tree data
+  const [filteredData, setFilteredData] = useState([]); // Store filtered tree data
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedIcon, setSelectedIcon] = useState(''); // For displaying the correct icon
+  const [searchQuery, setSearchQuery] = useState('');
+  const inputRef = useRef(null); // Reference to the input field for focus control
   const modalRef = useRef(null);
   const { translate } = useLocalization();
 
-  // Helper function to match the tag with its corresponding icon from the tree data
-  const attachIconsToTags = (tags = []) => {
-    const findIconForTag = (node, targetTag) => {
-      if (`#${node.name}` === targetTag) {
-        return node.icon;
-      }
-      if (node.children) {
-        for (let child of node.children) {
-          const icon = findIconForTag(child, targetTag);
-          if (icon) return icon;
-        }
-      }
-      return null;
+  // Load and combine data from all JSON files
+  useEffect(() => {
+    const loadData = async () => {
+      const allTreeData = await fetchHashtagFiles();
+      const combinedData = allTreeData.map(data => ({
+        name: data.hashtag, // Keep clean tag without #
+        icon: data.icon,
+        painsCount: data.dorr_rates.filter(rate => rate.colorid === "🩸").length,
+        gainsCount: data.dorr_rates.filter(rate => rate.colorid === "🔆").length,
+        totalCount: data.dorr_rates.filter(rate => rate.colorid === "🩸").length + data.dorr_rates.filter(rate => rate.colorid === "🔆").length // Total pains + gains
+      }));
+
+      // Sort based on total number of pains and gains
+      const sortedData = combinedData.sort((a, b) => b.totalCount - a.totalCount);
+      setTreeData(sortedData);
+      setFilteredData(sortedData);
     };
 
-    const tagsArray = tags.map((tag) => `#${tag}`);
-    const tagsWithIcons = tagsArray.map(tag => {
-      const icon = treeData.tree.map(root => findIconForTag(root, tag)).filter(Boolean)[0];
-      return icon ? `${icon} ${tag}` : tag; // Attach icon if found, else return plain tag
-    });
+    loadData();
+  }, []);
 
-    return tagsWithIcons;
-  };
-
-  // Initialize with the 'what' param from the URL and add icons
+  // Read the selected hashtags and find the correct icon on page reload
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const what = params.get('what');
     if (what) {
-      const tagsWithIcons = attachIconsToTags(what.split('#').filter(Boolean));
-      setTags(tagsWithIcons); // Set the tags with icons if present in the URL
-    }
-  }, []);
+      const selectedTags = what.split('+').filter(Boolean); // Split by '+' instead of '##'
+      setTags(selectedTags);
 
+      // Find the icon from the loaded data
+      const tagData = treeData.find(node => node.name.toLowerCase().includes(what));
+      if (tagData) {
+        setSelectedIcon(tagData.icon); // Set the correct icon
+      }
+    }
+  }, [window.location.search, treeData]);
+
+  // Update the URL when a hashtag is selected
   const updateURLParams = (whatValue) => {
     const params = new URLSearchParams(window.location.search);
-    params.set('what', whatValue);
+    params.set('what', whatValue.join('+')); // Join the tags with '+'
     window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
-    window.location.reload(); // This forces a full page refresh
+    window.location.reload(); // Forces a full page refresh
   };
 
-  // Function to get full path of the clicked node and clean out emojis/icons
-  const findFullPath = (targetNode) => {
-    const stack = []; // Stack to store nodes
-    let path = []; // To store the correct path
-    let fullPathFound = false; // Stop walking after finding the correct path
-
-    // Initialize stack with tree roots
-    treeData.tree.forEach((root) => stack.push({ node: root, path: [] }));
-
-    // Loop through the tree
-    while (stack.length > 0 && !fullPathFound) {
-      const { node, path: currentPath } = stack.pop();
-      const newPath = [...currentPath, `${node.icon} #${node.name}`]; // Build the path with icon and name
-
-      // Check if the current node is the target node
-      if (node.name === targetNode.name) {
-        path = newPath;
-        fullPathFound = true; // Stop further traversal once found
-        break;
-      }
-
-      // Add children to the stack to continue traversing
-      if (node.children) {
-        node.children.forEach((child) => {
-          stack.push({ node: child, path: newPath });
-        });
-      }
-    }
-
-    return path; // Return the found path
-  };
-
-  // Function to clean up emojis/icons for URL
-  const cleanPath = (path) => {
-    return path
-      .map(segment => segment.replace(/[^\w\s#]/g, '').trim()) // Remove icons and trim
-      .filter(Boolean)
-      .join('#');
-  };
-
-  // Function to handle node click
+  // Handle node click and update URL with selected hashtags, clearing previous selection
   const handleNodeClick = (targetNode, event) => {
-    event.stopPropagation(); // Prevent the event from bubbling up to parent nodes
-    const fullPath = findFullPath(targetNode); // Get the full path
-    if (fullPath.length > 0) {
-      setTags(fullPath); // Set the full path as tags
-      setIsModalOpen(false); // Close the modal
-
-      const cleanedPath = cleanPath(fullPath); // Clean path for URL
-      updateURLParams(cleanedPath); // Update the URL
-    }
+    event.stopPropagation(); // Prevent the event from bubbling up
+    const selectedTags = [targetNode.name]; // Replace previous selection with new hashtag
+    setTags(selectedTags);
+    updateURLParams(selectedTags);
+    setIsModalOpen(false); // Close the modal when a hashtag is selected
   };
 
-  // Function to handle removing a tag and refreshing the page
-  const handleTagRemove = (indexToRemove) => {
-    const updatedTags = tags.filter((_, i) => i !== indexToRemove);
-    setTags(updatedTags); // Update tags state
-    const cleanedTags = cleanPath(updatedTags.map(tag => tag.replace(/[^\w\s#]/g, '')));
-    updateURLParams(cleanedTags); // Update the URL after tag removal
+  // Handle search query changes
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filtered = treeData.filter(node => node.name.toLowerCase().includes(query));
+    setFilteredData(filtered);
   };
 
-  // Function to render the tree nodes
-  const renderTree = (nodes) => {
-    return nodes.map((node) => (
-      <div
-        className="tree-node"
-        key={node.id}
-        onClick={(event) => handleNodeClick(node, event)}
-      >
-        <div className="tree-node-content">
-          {node.icon} {node.name}
-        </div>
-        {node.children && (
-          <div className="tree-children">{renderTree(node.children)}</div>
-        )}
+// Function to render the mind map with the search bar spanning three columns
+const renderMindMap = (nodes) => {
+  // Split the nodes into three parts to display in three columns
+  const thirdLength = Math.ceil(nodes.length / 3);
+  const firstColumnNodes = nodes.slice(0, thirdLength);
+  const secondColumnNodes = nodes.slice(thirdLength, 2 * thirdLength);
+  const thirdColumnNodes = nodes.slice(2 * thirdLength);
+
+  return (
+    <div className="mind-map-grid">
+
+      {/* First Column */}
+      <div className="mind-map-column">
+        {firstColumnNodes.map((node) => (
+          <div className="tree-node" key={node.name} onClick={(event) => handleNodeClick(node, event)}>
+            <div className="tree-node-content">
+              <span className="icon">{node.icon}</span>
+              <span className="hashtag">{node.name}</span>
+              <span className="counts">
+                {node.painsCount > 0 && <span className="pain-count">🩸 {node.painsCount}</span>}
+                {node.gainsCount > 0 && <span className="gain-count">🔆 {node.gainsCount}</span>}
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
-    ));
+
+      {/* Second Column */}
+      <div className="mind-map-column">
+        {secondColumnNodes.map((node) => (
+          <div className="tree-node" key={node.name} onClick={(event) => handleNodeClick(node, event)}>
+            <div className="tree-node-content">
+              <span className="icon">{node.icon}</span>
+              <span className="hashtag">{node.name}</span>
+              <span className="counts">
+                {node.painsCount > 0 && <span className="pain-count">🩸 {node.painsCount}</span>}
+                {node.gainsCount > 0 && <span className="gain-count">🔆 {node.gainsCount}</span>}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Third Column */}
+      <div className="mind-map-column">
+        {thirdColumnNodes.map((node) => (
+          <div className="tree-node" key={node.name} onClick={(event) => handleNodeClick(node, event)}>
+            <div className="tree-node-content">
+              <span className="icon">{node.icon}</span>
+              <span className="hashtag">{node.name}</span>
+              <span className="counts">
+                {node.painsCount > 0 && <span className="pain-count">🩸 {node.painsCount}</span>}
+                {node.gainsCount > 0 && <span className="gain-count">🔆 {node.gainsCount}</span>}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
+
+
+  // Function to handle input click to show modal like dropdown
+  const handleInputClick = () => {
+    setIsModalOpen(true); // Open the modal when the input is clicked
+    inputRef.current?.focus(); // Focus on the input for immediate typing
   };
 
   return (
     <div className="tree-tags-container">
-      <div className="tags-input">
+      <div className="tags-input" onClick={handleInputClick}>
         {tags.length > 0 ? (
           tags.map((tag, index) => (
             <div className="tag-item" key={index}>
-              {tag} <span className="tag-remove" onClick={() => handleTagRemove(index)}>x</span>
+              <span className="icon">{selectedIcon}</span> {/* Show the correct icon */}
+              {tag} <span className="tag-remove" onClick={() => {
+                setTags([]); // Clear all selected tags when one is removed
+                updateURLParams([]); // Clear the URL when tag is removed
+              }}>x</span>
             </div>
           ))
         ) : (
-          <div className="empty-what-message">{translate('20', 'WHAT IS YOUR #WHAT?')}</div>
+          <div className="empty-what-message" ref={inputRef}>{translate('20', 'WHAT IS YOUR #WHAT?')}</div>
         )}
       </div>
 
@@ -148,16 +181,21 @@ function TreeTags() {
         <span role="img" aria-label="tree">🌱</span>
       </div>
 
-      {/* Modal for displaying mind map */}
+      {/* Modal for displaying mind map as a dropdown */}
       {isModalOpen && (
-        <div className="modal">
+        <div className="modal" style={{ top: '100px', left: '10px' }}> {/* Adjusted to show below input */}
           <div className="modal-content" ref={modalRef}>
-            <span className="close" onClick={() => setIsModalOpen(false)}>
-              &times;
-            </span>
-            <h2>Mind Map</h2>
+            <span className="close" onClick={() => setIsModalOpen(false)}>&times;</span>
+            <input
+              type="text"
+              placeholder="Search hashtags..."
+              className="search-input"
+              value={searchQuery}
+              onChange={handleSearch}
+              autoFocus
+            />
             <div className="mind-map">
-              {renderTree(treeData.tree)}
+              {renderMindMap(filteredData)}
             </div>
           </div>
         </div>

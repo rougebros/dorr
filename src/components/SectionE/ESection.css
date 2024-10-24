@@ -2,7 +2,8 @@
 .e-section-container {
     display: flex;
     width: 100%;
-    min-height: 270px;
+    min-height: 230px;
+    max-height: 220px;
     margin-top: 3px;
     align-items: center; /* Vertically center the large icons */
   }
@@ -50,7 +51,7 @@
     justify-content: flex-start;
     align-items: center;
     border-right: 1px solid #ccc;
-    padding: 5px 0;
+  
   }
   
   /* Smaller icons in the sidebar */

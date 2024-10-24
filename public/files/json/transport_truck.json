@@ -1,0 +1,116 @@
+{
+  "hashtag": "#transport #truck",
+  "icon": "🚚",
+  "dorr_rates": [
+    {
+      "colorid": "🩸",  
+      "type": "#pains",
+      "tags": ["@mechanic", "@accident"],
+      "hue_percent": 80,
+      "meta": {
+        "details": "Engine breakdown during long-haul transport",
+        "location": "Highway"
+      },
+      "filters": {
+        "pov": ["self", "peers", "public"],
+        "time": ["past", "now"]
+      },
+      "sub_rates": [
+        {
+          "type": "#thoughts",
+          "meta": {
+            "notes": "Delays caused by repair time"
+          }
+        },
+        {
+          "colorid": "💙",  
+          "type": "#tasks",
+          "meta": {
+            "task": "Find a mechanic"
+          },
+          "sub_rates": [
+            {
+              "colorid": "💚", 
+              "type": "#deeds",
+              "meta": {
+                "result": "Mechanic found and truck repaired"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "colorid": "🔆",  
+      "type": "#seek",
+      "tags": ["@logistics", "@supplychain"],
+      "hue_percent": 60,
+      "meta": {
+        "details": "Looking for a faster route to avoid delays"
+      },
+      "filters": {
+        "pov": ["self", "peers", "public"],
+        "time": ["now", "future"]
+      },
+      "sub_rates": [
+        {
+          "colorid": "💜",
+          "type": "#thoughts",
+          "meta": {
+            "notes": "Consider alternative logistics companies"
+          }
+        },
+        {
+          "colorid": "💙",  
+          "type": "#tasks",
+          "meta": {
+            "task": "Contact logistics providers",
+            "doer": "@manager"
+          },
+          "sub_rates": [
+            {
+              "colorid": "💚", 
+              "type": "#deeds",
+              "meta": {
+                "result": "New provider hired"
+              }
+            },
+            {
+              "colorid": "❌", 
+              "type": "#notdone",
+              "meta": {
+                "result": "Failed to secure provider"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "colorid": "G",  
+      "type": "#godly",
+      "tags": ["@manager", "@logistics"],
+      "hue_percent": 100,
+      "meta": {
+        "details": "Successfully revolutionized the logistics process, cutting transport time by 50%"
+      },
+      "filters": {
+        "pov": ["self", "peers"],
+        "time": ["now"]
+      }
+    },
+    {
+      "colorid": "F",  
+      "type": "#foe",
+      "tags": ["@supplier", "@accident"],
+      "hue_percent": 30,
+      "meta": {
+        "details": "Failed to deliver crucial supplies due to poor coordination"
+      },
+      "filters": {
+        "pov": ["peers", "public"],
+        "time": ["past"]
+      }
+    }
+  ]
+}
