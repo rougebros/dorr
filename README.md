@@ -46,6 +46,7 @@ DORR seeks to enrich the process of giving and receiving feedback by providing a
 
 ![DORR Rating Flow](src/files/media/dorr2.png)  
 _Visual representation of the DORR rating flow_
+
 ---
 
 ## Sections Overview
