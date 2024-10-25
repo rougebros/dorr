@@ -1,3 +1,4 @@
+/* Container for each D section (D1 or D2) */
 .d-wall-container {
   border: 1px solid;
   border-radius: 5px;
@@ -5,22 +6,123 @@
   max-height: 180px;
   min-height: 180px;
   overflow-y: auto;
-  width: 80%;
-  margin: 2px;
-  padding: 2px;
+  width: 80%; /* Maintain width within the container */
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
-/* No items message styling */
-.wall-list p {
-  color: #666;
-  text-align: center;
-  font-style: italic;
-  padding: 10px;
-  background-color: #f0f0f0;
+/* Section that stacks the icons vertically */
+.d-icon-section-stack {
+  display: flex;
+  flex-direction: column; /* Stack icons vertically */
+  gap: 10px; /* Space between icons */
+  width: 100%; /* Take full width of the parent container */
+}
+
+/* Individual Icon Styling */
+.d-icon-item {
+  width: 100%; /* Icon takes the full width of the container */
+  height: 40px; /* Set a consistent height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; /* Adjust font size to fit well within 50px height */
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+}
+
+/* Hover effect for icons */
+.d-icon-item:hover {
+  background-color: #eee;
+  border-radius: 8px;
+}
+
+.d-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Item List Styling */
+.d-item-list {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.item-text {
+  font-size: 0.85em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+.d-child-item {
+  display: flex;
+  align-items: center;
+  background-color: white;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-/* Custom scrollbar */
+/* Active icon highlight */
+.d-icon-item.active {
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+}
+
+/* Tab Section */
+.d-tab-section {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 20px; /* Adjust this to the height of the header section */
+  background-color: white;
+  z-index: 9; /* Slightly lower z-index to remain under the header */
+  border-bottom: 1px solid #ccc;
+}
+
+.d-tab-item {
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  font-size: small;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+}
+
+/* Active Tab: D1 (parent color) */
+.d-tab-item.d1.active {
+  background-color: #FAC710; /* D1 color for background */
+  color: white; /* White text for better visibility */
+  border-bottom-color: #FAC710; /* Keep the underline color the same */
+}
+
+/* Active Tab: D2 (parent color) */
+.d-tab-item.d2.active {
+  background-color: #C81D11; /* D2 color for background */
+  color: white; /* White text for better visibility */
+  border-bottom-color: #C81D11; /* Keep the underline color the same */
+}
+
+/* Active tab styling */
+.d-tab-item.active {
+  font-weight: bold;
+}
+
+/* Hover effect for non-active tabs */
+.d-tab-item:hover {
+  background-color: #f0f0f0; /* Light background on hover */
+}
+/* Scrollbar styling for container */
 .d-wall-container::-webkit-scrollbar {
   width: 6px;
 }
@@ -33,10 +135,8 @@
 .d-wall-container::-webkit-scrollbar-track {
   background-color: #f0f0f0;
 }
-
 .wall-header {
   font-size: 1.2em;
-  margin-bottom: 5px;
   flex-grow: 1;
 }
 
@@ -44,149 +144,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky; /* Make it sticky */
-  top: 0; /* Stick to the top */
-  background-color: white; /* Set a background color to prevent transparency */
-  z-index: 10; /* Ensure it stays on top of scrolling content */
-  border-bottom: 1px solid #ccc; /* Optional: Add a bottom border to separate header from content */
+  position: sticky;
+  z-index: 10;
+  border-bottom: 1px solid #ccc;
 }
 
 .header-left-icons {
   display: flex;
   gap: 5px;
 }
-
-.header-right-icon {
-  font-size: 1em;
-}
-
-/* List of Items */
-.wall-list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-/* Parent and child items (D1 and D2) */
-.parent-item, .child-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  background-color: white;
-}
-
-/* Hover effect: Colorful background with black text */
-.parent-item:hover, .child-item:hover {
-  background-color: #FAC710; /* Yellow for seeks (D1) */
-  color: black;
-}
-
-.parent-item.d2:hover, .child-item.d2:hover {
-  background-color: #C81D11; /* Red for pains (D2) */
-  color: black;
-}
-
-/* Color for parent and child items based on wall type */
-.parent-item.d1, .child-item.d1 {
-  color: #FAC710;
-}
-
-.parent-item.d2, .child-item.d2 {
-  color: #C81D11;
-}
-
-/* Indentation for child items */
-.child-item {
-  padding-left: 15px; /* Indent to show hierarchy */
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-/* Tooltip for truncated text */
-.item-text {
-  font-size: 0.85em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 150px;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-}
-
-.item-text:hover::after {
-  content: attr(title);
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-  padding: 5px;
-  border-radius: 3px;
-  font-size: 0.75em;
-  white-space: nowrap;
-  z-index: 1000;
-  pointer-events: none;
-  max-width: 200px;
-}
-
-/* Icon action area (aligned to the right) */
-.icon-action {
-  cursor: pointer;
-  margin-left: 5px;
-  display: flex;
-  justify-content: flex-end; /* Align icons to the right */
-}
-
-.more-icon {
-  font-size: 1.1em;
-  cursor: pointer;
-}
-
-/* Hide more content (3 dots icon) */
-.more-icon {
-  font-size: 1.1em;
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-/* Icons alignment */
-.icon-set {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-/* Fix alignment of icons to the right */
-.parent-icons, .child-icons {
-  margin-left: auto;
-  display: flex;
-  gap: 5px;
-  justify-content: flex-end;
-}
-
-/* Gray hover effect for the entire row */
-.parent-item:hover, .child-item:hover {
-  color: black;
-}
-
-/* Make sure each row stays on one line and text truncates with ellipsis */
-.item-text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.wall-item.selected {
-  background-color: #FAC710; /* Yellow for seeks (gains) */
-  color: black; /* Text color change on selection */
-}
-
-.wall-item.selected.d2 {
-  background-color: #C81D11; /* Red for pains */
-  color: white;
+/* Styling for the 'No items' message */
+/* Styling for the 'No items' message */
+.d-no-item {
+  display: block !important; /* Force block display */
+  color: #666;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.1rem;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  margin: 20px auto;
+  visibility: visible !important; /* Ensure it's visible */
 }

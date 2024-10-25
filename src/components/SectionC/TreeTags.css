@@ -17,7 +17,6 @@
     background-color: #e0e0e0;
     border-radius: 3px;
     padding: 5px 10px;
-    margin: 5px;
     display: flex;
     align-items: center;
     justify-content: center; /* Center text inside the tag */
@@ -56,8 +55,8 @@
     position: fixed; /* Fixed so it stays in place during scrolling */
     top: 50%;
     left: 50%;
-    transform: translate(11%, 50%); /* Center the modal horizontally and vertically */
-    width: 80%; /* 80% width of the page */
+    transform: translate(15%, 44%); /* Center the modal horizontally and vertically */
+    width: 77%; /* 80% width of the page */
     height: 350px;
     background-color: white;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -100,7 +99,6 @@
 
 .search-input {
     grid-column: span 3; /* Spanning across three columns */
-    width: 80%; /* Full width for the search input */
     padding: 8px;
     font-size: 1.2em; /* Slightly larger input */
 }
@@ -123,10 +121,11 @@
     align-items: center;
     background-color: #f0f0f0;
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     cursor: pointer;
-    width: 100%; /* Ensures the content fits within the column */
+    width: 100px; /* Ensures the content fits within the column */
+    height: 140px;
 }
 
 /* Big icon for the modal items */
@@ -135,10 +134,6 @@
     margin-bottom: 10px;
 }
 
-/* Bigger text for hashtags and counts */
-.hashtag {
-    font-size: 1.2em; /* Larger text for hashtags */
-}
 
 .pain-count, .gain-count {
     font-size: 0.9em; /* Larger size for pain/gain counts */
