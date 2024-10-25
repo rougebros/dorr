@@ -23,9 +23,6 @@ DORR seeks to enrich the process of giving and receiving feedback by providing a
 
 ## Rating Flow Overview
 
-![DORR Rating Flow](src/files/media/dorr2.png)  
-_Visual representation of the DORR rating flow_
-
 1. **Step 1: Select Language, Network, Layout, and Related Settings**  
    Choose the preferred language, select the network connection (Local, Bluetooth, P2P, etc.), and pick a layout (Wall format). You can also manage settings such as creating profiles, adding SOS contacts, and adding peers.
 
@@ -46,6 +43,9 @@ _Visual representation of the DORR rating flow_
 
 7. **Step 7: Rate Deeds (Relief or Regret)**  
    Rate the deeds that have taken place using relief (💚) or regret (❌) icons to reflect the impact of those actions.
+
+![DORR Rating Flow](src/files/media/dorr2.png)  
+_Visual representation of the DORR rating flow_
 
 ---
 
