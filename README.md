@@ -19,37 +19,6 @@ The current rating systems often fail to capture the complexity of human experie
 DORR seeks to enrich the process of giving and receiving feedback by providing a richer framework for evaluating interactions, experiences, and the impact of actions. With colorful icons, meaningful metrics, and customizable connections, DORR offers an innovative approach to highlight shared experiences that are about more than just five stars.
 
 
----
-# DORR App Documentation
-
-## Rating Flow Overview
-
-1. **Step 1: Select Language, Network, Layout, and Related Settings**  
-   Choose the preferred language, select the network connection (Local, Bluetooth, P2P, etc.), and pick a layout (Wall format). You can also manage settings such as creating profiles, adding SOS contacts, and adding peers.
-
-2. **Step 2: Select POV/Time**  
-   Choose the Point of View (POV) for (self, peers, public) and the timeline (past, now, future).
-
-3. **Step 3: Select Hashtag Tree (WHAT)**  
-   Navigate through the hashtag tree to select the category or item that best represents what you want to rate.
-
-4. **Step 4: Select Pain or Gain (WHY) OR Add Foe or God (WHO)**  
-   Choose whether you're addressing a pain (🩸) or a gain (🔆). Optionally add influences like foes (👹) or gods (👑).
-
-5. **Step 5: Add Thoughts (HOW)**  
-   Add relevant thoughts about the experience, either as actions to do (💜) or not to do (❌).
-
-6. **Step 6: Add Promises (WHOM/WHEN/WHERE)**  
-   Capture commitments or actions that will be done, including the person involved, location, and timing (💙).
-
-7. **Step 7: Rate Deeds (Relief or Regret)**  
-   Rate the deeds that have taken place using relief (💚) or regret (❌) icons to reflect the impact of those actions.
-
-![DORR Rating Flow](src/files/media/dorr2.png)  
-_Visual representation of the DORR rating flow_
-
----
-
 ## Sections Overview
 
 ![DORR Sections Layout](src/files/media/sections.png)  
@@ -69,6 +38,7 @@ _Visual representation of Section B_
 - You can make your filter more precise by double clicking any of the icons:
 ![DORR Section B2](src/files/media/sectionB2.png)  
 _Visual representation of Section B2_
+
 ![DORR Section B3](src/files/media/sectionB3.png)  
 _Visual representation of Section B3_
 
@@ -77,6 +47,7 @@ _Visual representation of Section B3_
 - Each hashtag can be assigned a color to represent different behaviors in the next sections.
 ![DORR Section C](src/files/media/sectionC.png)  
 _Visual representation of Section C_
+
 ![DORR Section C2](src/files/media/sectionC2.png)  
 _Visual representation of Section C2_
 
@@ -101,6 +72,7 @@ _Visual representation of Section D3_
 - **E4**: Social media feeds for selected items.
 ![DORR Section E](src/files/media/sectionE.png)  
 _Visual representation of Section E_
+
 ![DORR Section E2](src/files/media/sectionE1.png)  
 _Visual representation of Section Map_
 
@@ -112,6 +84,13 @@ _Visual representation of Section F_
 
 ### Section G: Footer
 - Customizable shortcuts with colorful icons for easier interaction with ratings.
+
+---
+
+# DORR App Documentation
+
+![DORR Rating Flow](src/files/media/dorr2.png)  
+_Visual representation of the DORR rating flow_
 
 ---
 
