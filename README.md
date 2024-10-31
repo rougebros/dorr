@@ -98,16 +98,11 @@ _Visual representation of Section F_
 
 ---
 
-# DORR App Documentation
+# How DORR Works
 
-![DORR Rating Flow](src/files/media/dorr2.png)  
-_Visual representation of the DORR rating flow_
+## 6 Colorful Rates
 
----
-
-## How DORR Works
-
-[![DORR Rates](src/files/media/dorr-video.gif)](<video controls src="src/files/media/dorr-video.mp4" title="6 Different Dorr Rates"></video>)
+![DORR Rates](src/files/media/dorr-video.gif)(<video controls src="src/files/media/dorr-video.mp4" title="6 Different Dorr Rates"></video>)
 _Visual representation of 6 different DORR Rates_
 
 DORR is built on the idea of using a **rich, expressive ranking system** instead of the limiting five-star ratings. Ratings are ongoing, dynamic, and represent a wider array of experiences.
@@ -118,6 +113,11 @@ DORR is built on the idea of using a **rich, expressive ranking system** instead
 4. **Tasks & Chats**: Keeping these two items next to each other is a must for any team or project.
 
 ---
+## Flow & Examples
+
+![DORR Rating Flow](src/files/media/dorr2.png)  
+_Visual representation of the DORR rating flow_
+
 
 ## Running Locally
 
