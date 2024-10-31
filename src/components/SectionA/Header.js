@@ -4,9 +4,9 @@ import languageIcon from '../../files/icons/languageIcon.svg';
 import layoutIcon from '../../files/icons/layoutIcon.svg';
 import settingsIcon from '../../files/icons/settings.svg';
 import logo from '../../files/icons/logo.svg';
-import dorrImage from './../../files/media/dorr.png'; // Import your first image
+import dorrVideo1 from './../../files/media/dorr-video.mp4'; // Import your first image
 import dorrImage2 from './../../files/media/dorr2.png'; // Import your second image
-import dorrVideo from './../../files/media/dorr.mp4'; // Import your video
+import dorrVideo2 from './../../files/media/dorr.mp4'; // Import your video
 import { FiEdit } from 'react-icons/fi'; // Change this line
 import { MdSettings } from 'react-icons/md'; // Settings icon
 import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5'; // Close (X) icon
@@ -154,11 +154,11 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
   // InfoModal to display the dorr images, video, and controls
   const InfoModal = () => {
     const media = [
-      { type: 'image', src: dorrImage },
+      { type: 'video/mp4', src: dorrVideo1 },
       { type: 'image', src: dorrImage2 },
-      { type: 'video', src: dorrVideo }, // Include video as third media item
+      { type: 'video/mp4', src: dorrVideo2 }, // Include video as third media item
     ];
-
+  
     return (
       <div className="infomodal">
         <div className="infomodal-content" ref={infoModalContentRef}>
@@ -170,7 +170,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
               Your browser does not support the video tag.
             </video>
           )}
-
+  
           <div className="slide-controls">
             <IoChevronBack className="slide-icon" onClick={handlePrevSlide} />
             <span className="slide-number">
@@ -182,6 +182,8 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
       </div>
     );
   };
+  
+
 
   return (
     <header className="App-header">
