@@ -20,6 +20,7 @@ DORR seeks to enrich the process of giving and receiving feedback by providing a
 
 
 ---
+# DORR App Documentation
 
 ## Rating Flow Overview
 
@@ -56,39 +57,67 @@ _Visual representation of different DORR sections_
 
 ### Section A: Header and Navigation
 - Header for language, network, and layout options.
-- Navigation for information and setting page.
+- Navigation for information and settings page.
+![DORR Section A](src/files/media/sectionA.png)  
+_Visual representation of Section A_
 
 ### Section B: Point of View (POV) and Time Selector
 - Filters the ratings and experiences by different perspectives (self, peers, public).
 - Filter by timeline (past, now, future).
+![DORR Section B](src/files/media/sectionB.png)  
+_Visual representation of Section B_
+- You can make your filter more precise by double clicking any of the icons:
+![DORR Section B2](src/files/media/sectionB2.png)  
+_Visual representation of Section B2_
+![DORR Section B3](src/files/media/sectionB3.png)  
+_Visual representation of Section B3_
 
 ### Section C: Hashtags
-- Select the relevant hashtags tree (e.g., #cats or #pizza) you are interested in.
-- Each hashtag can be assigned a color to represent different behaviours in the next sections.
+- Select the relevant hashtag tree (e.g., #cats or #pizza) you are interested in.
+- Each hashtag can be assigned a color to represent different behaviors in the next sections.
+![DORR Section C](src/files/media/sectionC.png)  
+_Visual representation of Section C_
+![DORR Section C2](src/files/media/sectionC2.png)  
+_Visual representation of Section C2_
 
 ### Section D: Wall of Seeks & Pains
 - **D1**: Wall of Seeks - Displays lists of requests or "seeks" shared by others or oneself.
 - **D2**: Wall of Pains - Displays experiences of pains, regrets, or challenges others have faced.
-- Different levels of interaction: add, details, pin, broadcast, subscribe, etc.
+- Various interaction options: add, view details, pin, broadcast, subscribe, etc.
+![DORR Section D](src/files/media/sectionD.png)  
+_Visual representation of Section D_
+- If you are selecting the **self** filter, then you can decide who to broadcast that need/pain to.
+![DORR Section D2](src/files/media/sectionD2.png)  
+_Visual representation of Section D2_
+- If you are selecting the **public/peer** filters, then you can decide who to receive notif of that need/pain from.
+![DORR Section D3](src/files/media/sectionD3.png)  
+_Visual representation of Section D3_
+- **Expand View / Details**: TBA
 
 ### Section E: Map, Chats, Tasks & Social Media
 - **E1**: Visual maps of where certain experiences are occurring.
 - **E2**: Chat lists related to selected items.
-- **E3**: Task lists related to selected items.
+- **E3**: Task lists connected to selected items.
 - **E4**: Social media feeds for selected items.
+![DORR Section E](src/files/media/sectionE.png)  
+_Visual representation of Section E_
+![DORR Section E2](src/files/media/sectionE1.png)  
+_Visual representation of Section Map_
 
 ### Section F: Hall of Fame & Hall of Shame
 - Displays highlighted contributions based on selected hashtags and filters.
 - Recognizes users, experiences, and actions either in a positive (Hall of Fame) or negative (Hall of Shame) light.
+![DORR Section F](src/files/media/sectionF.png)  
+_Visual representation of Section F_
 
 ### Section G: Footer
-- Shortcuts for colorful icons for easier interaction with ratings.
+- Customizable shortcuts with colorful icons for easier interaction with ratings.
 
 ---
 
 ## How DORR Works
 
-![DORR Sections Layout](src/files/media/dorr.png)  
+[Watch the video](src/files/media/dorr.mp4)  
 _Visual representation of different DORR sections_
 
 DORR is built on the idea of using a **rich, expressive ranking system** instead of the limiting five-star ratings. Ratings are ongoing, dynamic, and represent a wider array of experiences.
@@ -96,6 +125,7 @@ DORR is built on the idea of using a **rich, expressive ranking system** instead
 1. **Capturing the Experience**: Select a POV, assign meaningful hashtags, and use colored rates to represent pains, gains, or other facets of the experience.
 2. **Customizable Connections**: Whether you’re using innovative P2P technologies, Bluetooth, or other communication methods, you can connect to multiple networks, broadcast, or receive ratings—all within a single app.
 3. **Recurring Interactions**: Instead of leaving experiences rated once, users can continuously update the status of an interaction as it evolves.
+4. **Tasks & Chats**: Keeping these two items next to each other is a must for any team or project.
 
 ---
 
