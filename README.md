@@ -93,16 +93,16 @@ _Visual representation of Section F_
 ### Section G: Footer
 - Customizable shortcuts with colorful icons for easier interaction with ratings.
 
-### Overview of All Sections
+### Overview of All Sections:
 ![DORR Sections Layout](src/files/media/sections.png)  
 _Visual representation of different DORR sections_
+
 ---
 
 # How DORR Works
 
 ## 6 Colorful Rates
-
-![DORR Rates](src/files/media/dorr-video.gif)(<video controls src="src/files/media/dorr-video.mp4" title="6 Different Dorr Rates"></video>)
+![DORR Rates](src/files/media/dorr-video.gif)
 
 DORR is built on the idea of using a **rich, expressive ranking system** instead of the limiting five-star ratings. Ratings are ongoing, dynamic, and represent a wider array of experiences.
 
