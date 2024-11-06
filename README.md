@@ -6,7 +6,6 @@
 
 DORR provides dynamic, customizable, colorful rates representing different behaviours. With the power to connect via multiple options (e.g., Bluetooth, innovative P2P, LoRa, Torr, WebRTC, centralized servers, etc), DORR promotes a human-centered way of expressing experiences.
 
----
 
 ## Why DORR?
 
@@ -16,7 +15,9 @@ If we all learn from each other's experiences, the failures in our lives wouldn'
 
 The current rating systems often fail to capture the complexity of human experiences, reducing nuanced feedback to a single, aggregated star rating. 
 
-## Value Proposition:
+
+## Value Proposition
+
 "DORR redefines C2C and C2B interactions, moving beyond star rating system to empower people and communities to share experiences or needs. With 6 vibrant colors for tags, hashtags, and notifications, DORR also aims to flip supply-demand chain to demand-supply approach, allowing open and fewer connections on what truly matters to them—to minimizing middlemen."
 
 ---
