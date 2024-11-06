@@ -16,8 +16,10 @@ If we all learn from each other's experiences, the failures in our lives wouldn'
 
 The current rating systems often fail to capture the complexity of human experiences, reducing nuanced feedback to a single, aggregated star rating. 
 
-DORR seeks to enrich the process of giving and receiving feedback by providing a richer framework for evaluating interactions, experiences, and the impact of actions. With colorful icons, meaningful metrics, and customizable connections, DORR offers an innovative approach to highlight shared experiences that are about more than just five stars.
+## Value Proposition:
+"DORR redefines C2C and C2B interactions, moving beyond star rating system to empower people and communities to share experiences or needs. With 6 vibrant colors for tags, hashtags, and notifications, DORR also aims to flip supply-demand chain to demand-supply approach, allowing open and fewer connections on what truly matters to them—to minimizing middlemen."
 
+---
 
 ## Sections Overview
 
