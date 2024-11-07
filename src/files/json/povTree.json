@@ -120,7 +120,7 @@
           }
         },
         "africa_asia": {
-          "label": "Africa and Asia",
+          "label": "Africa & Asia",
           "icon": "🌍",
           "children": {
             "egypt": {

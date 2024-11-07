@@ -1,0 +1,169 @@
+.tree-tags-container {
+    margin: 5px;
+    position: relative; /* For positioning tree icon */
+}
+
+.tags-input {
+    display: flex;
+    justify-content: center; /* Center the tag items horizontally */
+    flex-wrap: wrap;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 91px; /* Ensure minimum height for consistency */
+    align-items: center; /* Vertically align the content */
+}
+
+.tag-item {
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center text inside the tag */
+}
+
+.tag-remove {
+    color: #ff0000;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.tags-input input {
+    border: none;
+    outline: none;
+    padding: 1px;
+    flex: 1;
+}
+
+.empty-what-message {
+    color: gray;
+    font-size: 1.7em;
+    text-align: center;
+    margin-top: 10px;
+    flex: 1; /* Makes sure it centers properly within the container */
+}
+
+.tree-icon {
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    cursor: pointer;
+    font-size: xx-large;
+}
+
+.modal {
+    position: fixed; /* Fixed so it stays in place during scrolling */
+    top: 50%;
+    left: 50%;
+    transform: translate(15%, 44%); /* Center the modal horizontally and vertically */
+    width: 77%; /* 80% width of the page */
+    height: 350px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    border-radius: 5px;
+    padding-top: 15px;
+    max-height: 95vh; /* Limit the height to 90% of the viewport */
+    overflow-y: auto;
+}
+
+.modal-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 10px; /* Space between items */
+    width: 100%; /* Ensure the grid takes the full modal width */
+    justify-items: center; /* Center icons and text horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+/* Custom scrollbar for the modal content */
+.modal-content::-webkit-scrollbar {
+    width: 5px; /* Set the width of the vertical scrollbar */
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background color of the scrollbar track */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #61DAFB; /* Set the color of the scrollbar thumb */
+    border-radius: 10px; /* Make the scrollbar thumb rounded */
+    border: 2px solid #ffffff; /* Add a white border around the thumb */
+}
+
+/* Firefox scrollbar styling */
+.modal-content {
+    scrollbar-width: thin; /* Smaller scrollbar for Firefox */
+    scrollbar-color: #61DAFB #f1f1f1; /* Thumb and track colors for Firefox */
+}
+
+.search-input {
+    grid-column: span 3; /* Spanning across three columns */
+    padding: 8px;
+    font-size: 1.2em; /* Slightly larger input */
+}
+
+/* Grid container for the mind map items */
+.mind-map-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    padding-left: 10px;
+    gap: 30px;
+    width: 100%; /* Ensure the grid takes the full modal width */
+    justify-items: center; /* Center the icons horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+/* For each node in the mind map (icon and text) */
+.tree-node-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    width: 100px; /* Ensures the content fits within the column */
+    height: 140px;
+}
+
+/* Big icon for the modal items */
+.icon {
+    font-size: 3em; /* Big size for icons */
+    margin-bottom: 10px;
+}
+
+
+.pain-count, .gain-count {
+    font-size: 0.9em; /* Larger size for pain/gain counts */
+    margin-top: 5px;
+}
+
+/* Breadcrumb styling */
+.breadcrumb-item {
+    font-size: 0.7em; /* Smaller breadcrumb text */
+    color: #61DAFB;
+    cursor: pointer;
+    overflow-x: auto; /* Horizontal scrolling for breadcrumb items */
+    white-space: nowrap; /* Prevent wrapping */
+    display: inline-block; /* Keep breadcrumb items inline */
+    scroll-behavior: smooth; /* Add smooth scrolling behavior */
+}
+
+.breadcrumb-item::-webkit-scrollbar {
+    height: 5px; /* Set the height of the scrollbar */
+}
+
+.breadcrumb-item::-webkit-scrollbar-thumb {
+    background-color: #61DAFB; /* Set the color of the scrollbar thumb */
+    border-radius: 10px; /* Make the scrollbar rounded */
+}
+
+.close {
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}

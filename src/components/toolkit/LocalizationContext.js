@@ -53,11 +53,12 @@ export const LocalizationProvider = ({ children }) => {
   };
 
   return (
-    <LocalizationContext.Provider value={{ translate, language }}>
+    <LocalizationContext.Provider value={{ translate, language, loadTranslations }}>
       {children}
     </LocalizationContext.Provider>
   );
 };
+
 
 // Custom hook to use localization
 export const useLocalization = () => {
