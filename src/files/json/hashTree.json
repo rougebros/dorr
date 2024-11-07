@@ -313,10 +313,42 @@
                 "schooling": {
                     "label": "Schooling",
                     "icon": "🏫",
-                    "file": "education_schooling.json",
                     "localID": "102",
                     "hashtag": "#education #schooling",
-                    "children": null
+                    "children": {
+                        "reading": {
+                            "label": "Reading",
+                            "icon": "📖",
+                            "file": "education_schooling_reading.json",
+                            "localID": "125",
+                            "hashtag": "#education #schooling #reading",
+                            "children": null
+                        },
+                        "writing": {
+                            "label": "Writing",
+                            "icon": "✍️",
+                            "file": "education_schooling_writing.json",
+                            "localID": "126",
+                            "hashtag": "#education #schooling #writing",
+                            "children": null
+                        },
+                        "speaking": {
+                            "label": "Speaking",
+                            "icon": "🗣️",
+                            "file": "education_schooling_speaking.json",
+                            "localID": "127",
+                            "hashtag": "#education #schooling #speaking",
+                            "children": null
+                        },
+                        "listening": {
+                            "label": "Listening",
+                            "icon": "👂",
+                            "file": "education_schooling_listening.json",
+                            "localID": "128",
+                            "hashtag": "#education #schooling #listening",
+                            "children": null
+                        }
+                    }
                 },
                 "online_courses": {
                     "label": "Online Courses",
@@ -333,6 +365,54 @@
                     "localID": "104",
                     "hashtag": "#education #tutoring",
                     "children": null
+                },
+                "musical_instrument": {
+                    "label": "Musical Instrument",
+                    "icon": "🎶",
+                    "localID": "113",
+                    "hashtag": "#education #musical_instrument",
+                    "children": {
+                        "tanboor": {
+                            "label": "Tanboor",
+                            "icon": "🪕",
+                            "localID": "114",
+                            "hashtag": "#education #musical_instrument #tanboor",
+                            "children": {
+                                "left_hand": {
+                                    "label": "Left Hand",
+                                    "icon": "👈",
+                                    "file": "education_musical_instrument_tanboor_left_hand.json",
+                                    "localID": "115",
+                                    "hashtag": "#education #musical_instrument #tanboor #left_hand",
+                                    "children": null
+                                },
+                                "right_hand": {
+                                    "label": "Right Hand",
+                                    "icon": "👉",
+                                    "file": "education_musical_instrument_tanboor_right_hand.json",
+                                    "localID": "116",
+                                    "hashtag": "#education #musical_instrument #tanboor #right_hand",
+                                    "children": null
+                                },
+                                "beginner": {
+                                    "label": "Beginner",
+                                    "icon": "🔰",
+                                    "file": "education_musical_instrument_tanboor_beginner.json",
+                                    "localID": "117",
+                                    "hashtag": "#education #musical_instrument #tanboor #beginner",
+                                    "children": null
+                                },
+                                "advanced": {
+                                    "label": "Advanced",
+                                    "icon": "🏅",
+                                    "file": "education_musical_instrument_tanboor_advanced.json",
+                                    "localID": "118",
+                                    "hashtag": "#education #musical_instrument #tanboor #advanced",
+                                    "children": null
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -356,6 +436,158 @@
                     "file": "employment_freelancing.json",
                     "localID": "107",
                     "hashtag": "#employment #freelancing",
+                    "children": null
+                }
+            }
+        },
+        "my_projects": {
+            "label": "My Projects",
+            "icon": "🗂️",
+            "localID": "119",
+            "hashtag": "#my_projects",
+            "children": {
+                "dorr": {
+                    "label": "DORR",
+                    "icon": "⚛️",
+                    "localID": "120",
+                    "hashtag": "#my_projects #dorr",
+                    "children": {
+                        "technical": {
+                            "label": "Technical",
+                            "icon": "🔧",
+                            "file": "my_projects_dorr_technical.json",
+                            "localID": "121",
+                            "hashtag": "#my_projects #dorr #technical",
+                            "children": null
+                        },
+                        "strategy": {
+                            "label": "Concept",
+                            "icon": "📊",
+                            "file": "my_projects_dorr_strategy.json",
+                            "localID": "122",
+                            "hashtag": "#my_projects #dorr #strategy",
+                            "children": null
+                        },
+                        "uiux": {
+                            "label": "UI/UX",
+                            "icon": "🎨",
+                            "file": "my_projects_dorr_uiux.json",
+                            "localID": "123",
+                            "hashtag": "#my_projects #dorr #uiux",
+                            "children": null
+                        },
+                        "overall": {
+                            "label": "Overall",
+                            "icon": "🌐",
+                            "file": "my_projects_dorr_overall.json",
+                            "localID": "124",
+                            "hashtag": "#my_projects #dorr #overall",
+                            "children": null
+                        }
+                    }
+                }
+            }
+        },
+        "travel": {
+            "label": "Travel",
+            "icon": "🧳",
+            "localID": "129",
+            "hashtag": "#travel",
+            "children": {
+                "hotel": {
+                    "label": "Hotel",
+                    "icon": "🏨",
+                    "file": "travel_hotel.json",
+                    "localID": "130",
+                    "hashtag": "#travel #hotel",
+                    "children": null
+                },
+                "bus": {
+                    "label": "Bus",
+                    "icon": "🚌",
+                    "file": "travel_bus.json",
+                    "localID": "131",
+                    "hashtag": "#travel #bus",
+                    "children": null
+                },
+                "carpooling": {
+                    "label": "Carpooling",
+                    "icon": "🚗",
+                    "file": "travel_carpooling.json",
+                    "localID": "132",
+                    "hashtag": "#travel #carpooling",
+                    "children": null
+                },
+                "flight": {
+                    "label": "Flight",
+                    "icon": "✈️",
+                    "file": "travel_flight.json",
+                    "localID": "133",
+                    "hashtag": "#travel #flight",
+                    "children": null
+                },
+                "camping": {
+                    "label": "Camping",
+                    "icon": "🏕️",
+                    "file": "travel_camping.json",
+                    "localID": "134",
+                    "hashtag": "#travel #camping",
+                    "children": null
+                },
+                "mountain_climbing": {
+                    "label": "Mountain Climbing",
+                    "icon": "🧗",
+                    "file": "travel_mountain_climbing.json",
+                    "localID": "135",
+                    "hashtag": "#travel #mountain_climbing",
+                    "children": null
+                }
+            }
+        },
+        "shop": {
+            "label": "Shop",
+            "icon": "🛍️",
+            "localID": "136",
+            "hashtag": "#shop",
+            "children": {
+                "groceries": {
+                    "label": "Groceries",
+                    "icon": "🛒",
+                    "file": "shop_groceries.json",
+                    "localID": "137",
+                    "hashtag": "#shop #groceries",
+                    "children": null
+                },
+                "books": {
+                    "label": "Books",
+                    "icon": "📚",
+                    "file": "shop_books.json",
+                    "localID": "138",
+                    "hashtag": "#shop #books",
+                    "children": null
+                },
+                "second_hand_items": {
+                    "label": "Second Hand Items",
+                    "icon": "♻️",
+                    "file": "shop_second_hand_items.json",
+                    "localID": "139",
+                    "hashtag": "#shop #second_hand_items",
+                    "children": null
+                },
+                "digital": {
+                    "label": "Digital",
+                    "icon": "💻",
+                    "file": "shop_digital.json",
+                    "localID": "140",
+                    "hashtag": "#shop #digital",
+                    "children": null
+                },
+                "fruits": {
+                    "label": "Fruits",
+                    "icon": "🍎",
+                    "file": "shop_fruits.json",
+                    "localID": "141",
+                    "hashtag": "#shop #fruits",
                     "children": null
                 }
             }

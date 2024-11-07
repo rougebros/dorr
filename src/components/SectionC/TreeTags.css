@@ -46,7 +46,7 @@
 
 .modal {
     position: fixed;
-    top: 120px;
+    top: 60px !important;
     left: 50%;
     transform: translate(-50%, 0);
     width: 80%;
@@ -56,7 +56,7 @@
     z-index: 9999;
     border-radius: 5px;
     padding-top: 15px;
-    max-height: 90vh;
+    max-height: 100vh;
     overflow-y: auto;
 }
 
@@ -90,7 +90,7 @@
 .mind-map-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 15px;
     width: 100%;
     justify-items: center;
     align-items: center;
@@ -107,6 +107,11 @@
     cursor: pointer;
     width: 100px;
     height: 140px;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.tree-node-content:hover {
+    background-color: #dcdcdc; /* Gray background on hover */
 }
 
 .tree-node-content.disabled-node {

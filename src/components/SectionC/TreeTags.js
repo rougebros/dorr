@@ -24,7 +24,7 @@ function TreeTags() {
         setFilteredData(Object.entries(hashtree.hashtree));
     }, []);
 
-    
+
     useEffect(() => {
         if (translationsLoaded) {
             const params = new URLSearchParams(window.location.search);
@@ -232,33 +232,95 @@ function TreeTags() {
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
-
-        if (currentLevel) {
-            const filtered = Object.entries(currentLevel).filter(([key, node]) => {
+    
+        const searchAllNodes = (level) => {
+            let results = [];
+            Object.entries(level).forEach(([key, node]) => {
                 const englishLabel = node.label.toLowerCase();
                 const localizedLabel = localizedMap[key]?.toLowerCase() || '';  // Get localized label from map
-                return englishLabel.includes(query) || localizedLabel.includes(query);  // Match against both
+    
+                // Check if the node label matches the search query
+                if (englishLabel.includes(query) || localizedLabel.includes(query)) {
+                    results.push([key, { ...node, label: translate(node.localID, node.label) }]);
+                }
+    
+                // Recursively search in children, if they exist
+                if (node.children) {
+                    results = results.concat(searchAllNodes(node.children));
+                }
             });
-            setFilteredData(filtered);
-        }
+            return results;
+        };
+    
+        const filteredResults = query ? searchAllNodes(hashtree.hashtree) : Object.entries(currentLevel || hashtree.hashtree);
+        setFilteredData(filteredResults);
     };
-
+    
 
     const goBack = () => {
-        if (path.length > 0) {
-            const newPath = path.slice(0, -1);
-            setPath(newPath);
+        // console.log("Back button clicked");
+        // console.log("Current path before back:", path);
+    
+        const newPath = path.slice(0, -1); // Remove the last item from the breadcrumb
+        setPath(newPath);
+    
+        if (newPath.length > 0) {
             let level = hashtree.hashtree;
-            newPath.forEach((pathItem) => {
-                level = level[pathItem.label.toLowerCase()]?.children || level;
-            });
-            setCurrentLevel(level);
-            setFilteredData(Object.entries(level).map(([key, node]) => [
+            // console.log("Starting traversal to find new current level:");
+    
+            for (let index = 0; index < newPath.length; index++) {
+                const pathItem = newPath[index];
+                const parentLevel = level;
+    
+                // Try to match by both key and translated label
+                const matchedNode = Object.entries(level).find(
+                    ([key, node]) => 
+                        node.label === pathItem.label || key.toLowerCase() === pathItem.label.toLowerCase()
+                )?.[1];
+    
+                if (matchedNode && matchedNode.children) {
+                    level = matchedNode.children; // Move to the matched level's children
+                    // console.log(`Step ${index + 1}: Traversing to ${pathItem.label}`);
+                    // console.log("Parent level:", parentLevel);
+                    // console.log("Found level:", level);
+                } else {
+                    // console.error(`Traversal error: Level is undefined or missing children at "${pathItem.label}"`);
+                    level = parentLevel; // Use last known valid level to avoid root reset
+                    break;
+                }
+            }
+    
+            // Apply the updated level if found
+            if (level) {
+                setCurrentLevel(level);
+                const newFilteredData = Object.entries(level).map(([key, node]) => [
+                    key, { ...node, label: translate(node.localID, node.label) }
+                ]);
+                setFilteredData(newFilteredData);
+    
+                // console.log("New path after back:", newPath);
+                // console.log("New current level after back:", level);
+                // console.log("New filtered data after back:", newFilteredData);
+            } else {
+                console.error("Could not set the current level: Traversal resulted in undefined level");
+            }
+        } else {
+            // Reset to root if no more parent levels
+            setCurrentLevel(hashtree.hashtree);
+            setFilteredData(Object.entries(hashtree.hashtree).map(([key, node]) => [
                 key, { ...node, label: translate(node.localID, node.label) }
             ]));
+            // console.log("Reset to root level");
         }
+    
+        // console.log("Final path after back:", newPath);
+        // console.log("Final current level after back:", currentLevel);
     };
-
+    
+    
+    
+    
+    
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const whatParam = params.get('what');
