@@ -19,21 +19,22 @@ function TreeTags() {
 
 
     useEffect(() => {
-        // console.log('Initializing hashtree:', hashtree.hashtree);
-        setCurrentLevel(hashtree.hashtree);
-        setFilteredData(Object.entries(hashtree.hashtree));
-    }, []);
-
-
-    useEffect(() => {
-        if (translationsLoaded) {
+        const initialize = async () => {
             const params = new URLSearchParams(window.location.search);
+            const langParam = params.get('language');
             const whatParam = params.get('what');
-
-            if (whatParam) {
+    
+            if (langParam) {
+                await loadTranslations(langParam);  // Set the language first
+                setTranslationsLoaded(true);
+            }
+            if (translationsLoaded && whatParam) {
                 initializeSelectionFromURL(whatParam);
             }
-        }
+        };
+        initialize();
+        setCurrentLevel(hashtree.hashtree);
+        setFilteredData(Object.entries(hashtree.hashtree));
     }, [translationsLoaded]);
 
     const findNodeByLabel = (label, level) => {
@@ -50,18 +51,6 @@ function TreeTags() {
         }
         return null;
     };
-
-
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const langParam = params.get('language');
-
-        if (langParam) {
-            loadTranslations(langParam);  // Set the language first
-            // console.log(`Language set to ${langParam}`);
-        }
-        setTranslationsLoaded(true);  // Mark translations as loaded
-    }, []);
 
 
 
@@ -350,18 +339,6 @@ function TreeTags() {
         // console.log("Final current level after back:", currentLevel);
     };
 
-
-
-
-
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const whatParam = params.get('what');
-        if (whatParam) {
-            // Delay initialization to ensure translate has the correct language context
-            setTimeout(() => initializeSelectionFromURL(whatParam), 0);
-        }
-    }, []);
 
 
     return (

@@ -8,9 +8,9 @@
   border-radius: 8px;
   margin: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  min-height: 150px; /* Set a minimum height for FSection */
-  max-height: 250px !important; /* Optionally set a max height */
-  overflow-y: auto; /* Ensure content inside is scrollable if it overflows */
+  min-height: 200px; /* Set a minimum height for FSection */
+  max-height: 400px; /* Optionally set a max height */
+  overflow: auto; /* Ensure content inside is scrollable if it overflows */
 }
 
 

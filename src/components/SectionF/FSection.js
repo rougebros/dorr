@@ -7,19 +7,38 @@ const FSection = ({ type, color, logo }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [totalRating, setTotalRating] = useState(0);
   const [pov, setPov] = useState(null);
-  const [hoveredItem, setHoveredItem] = useState(null); // Track the hovered item
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); // Track mouse position
-  const [whatPresent, setWhatPresent] = useState(false); // Check if "WHAT" is present
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [whatPresent, setWhatPresent] = useState(false);
   const { translate } = useLocalization();
 
   useEffect(() => {
-    const loadFData = async () => {
-      try {
-        const response = await fetch('/f-data.json'); // Adjust the path as needed
-        const json = await response.json();
-        setData(type === 'gods' ? json.gods : json.foes);
-      } catch (error) {
-        console.error('Failed to load F-data:', error);
+    const loadFData = () => {
+      // Get the "what" parameter, sanitize it for consistent file naming
+      const params = new URLSearchParams(window.location.search);
+      const what = decodeURIComponent(params.get('what') || '')
+        .replace(/#/g, '')         // Remove `#`
+        .replace(/\s+/g, '_')       // Replace spaces with underscores
+        .toLowerCase();
+
+      if (!what) {
+        setWhatPresent(false);
+        setFilteredData([]);
+        return;
+      }
+
+      setWhatPresent(true);
+
+      // Load data from local storage using the sanitized key
+      const storedData = localStorage.getItem(`${what}.json`);
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        const targetData = type === 'gods' ? parsedData.dorr_rates.find(rate => rate.type === '#godly') : parsedData.dorr_rates.find(rate => rate.type === '#foe');
+        setData(targetData ? [targetData] : []);
+        console.log(`Loaded ${what}.json from local storage.`);
+      } else {
+        console.warn(`Data file for ${what} not found in local storage.`);
+        setData([]);
       }
     };
 
@@ -29,42 +48,31 @@ const FSection = ({ type, color, logo }) => {
   useEffect(() => {
     const handleParamsChange = () => {
       const params = new URLSearchParams(window.location.search);
-      const what = params.get('what') || '';
-      const pov = params.get('pov')?.toLowerCase(); // Convert POV to lowercase
-      const time = params.get('time')?.toLowerCase(); // Convert time to lowercase
-      const category = type === 'gods' ? 'gains' : 'pains';
-  
-      setPov(pov);
-  
-      // If "what" is empty, show the message to select a seed first
-      if (!what) {
-        setWhatPresent(false);
-        setFilteredData([]);
-        return;
-      }
-  
-      setWhatPresent(true);
-  
-      const cleanedWhat = what.replace(/[#]+/g, '#').trim();
-  
-      const filtered = data.filter(item => 
-        item.filters.what === cleanedWhat &&
-        item.filters.time.toLowerCase() === time && // Convert data time to lowercase
-        item.filters.category === category
-      ).sort((a, b) => b.rating - a.rating);
-  
+      const povParam = params.get('pov')?.toLowerCase();
+      const timeParam = params.get('time')?.toLowerCase();
+
+      setPov(povParam);
+
+      // Filter data based on parameters
+      const filtered = data.filter(item => {
+        return (
+          item.filters.pov.includes(povParam) &&
+          item.filters.time.includes(timeParam)
+        );
+      });
+
       setFilteredData(filtered);
-  
-      const ratingSum = filtered.reduce((sum, item) => sum + item.rating, 0);
+
+      // Calculate total rating (if ratings are relevant here)
+      const ratingSum = filtered.reduce((sum, item) => sum + (item.rating || 0), 0);
       setTotalRating(ratingSum);
     };
-  
+
     handleParamsChange();
     window.addEventListener('popstate', handleParamsChange);
-  
+
     return () => window.removeEventListener('popstate', handleParamsChange);
-  }, [data, type]);
-  
+  }, [data]);
 
   const handleRatingChange = (id, newRating) => {
     const item = filteredData.find(item => item.id === id);
@@ -106,30 +114,30 @@ const FSection = ({ type, color, logo }) => {
       </div>
 
       {!whatPresent ? (
-        <p>{translate('29', 'Please select a 🌱 #WHAT')} </p> // If "WHAT" is not present
+        <p>{translate('29', 'Please select a 🌱 #WHAT')} </p>
       ) : filteredData.length > 0 ? (
         <ul className="f-section-list">
-          {filteredData.map(item => (
-            <li key={item.id} className="f-section-item">
-            <span 
-              className="name"
-              onMouseEnter={(e) => handleMouseEnter(item, e)}
-              onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMouseMove}
-            >
-              {item.name}
-            </span>
-            {pov === 'self' ? (
-              <input
-                type="number"
-                value={item.rating}
-                onChange={e => handleRatingChange(item.id, parseInt(e.target.value))}
-                className="rating-input"
-              />
-            ) : (
-              <span className="rating">{item.rating}%</span>
-            )}
-          </li>
+          {filteredData.map((item, index) => (
+            <li key={index} className="f-section-item">
+              <span 
+                className="name"
+                onMouseEnter={(e) => handleMouseEnter(item, e)}
+                onMouseLeave={handleMouseLeave}
+                onMouseMove={handleMouseMove}
+              >
+                {item.meta.entity_name}
+              </span>
+              {pov === 'self' ? (
+                <input
+                  type="number"
+                  value={item.rating || 0}
+                  onChange={e => handleRatingChange(item.id, parseInt(e.target.value))}
+                  className="rating-input"
+                />
+              ) : (
+                <span className="rating">{item.rating || 0}%</span>
+              )}
+            </li>
           ))}
         </ul>
       ) : (
@@ -144,17 +152,11 @@ const FSection = ({ type, color, logo }) => {
             left: mousePosition.x + 15 + 'px',
           }}
         >
-          <p>Contact: {hoveredItem.metadata.contact}</p>
-          <p>Location: {hoveredItem.metadata.location}</p>
-          <p>Details: {hoveredItem.metadata.details}</p>
+          <p>Contact: {hoveredItem.meta.contact_info}</p>
+          <p>Location: {hoveredItem.meta.location}</p>
+          <p>Details: {hoveredItem.meta.details}</p>
         </div>
       )}
-
-      {/* {pov === 'self' && whatPresent && (
-        <div className="add-new">
-          <a href="#" className="add-new-link">+ Add</a>
-        </div>
-      )} */}
     </div>
   );
 };

@@ -111,11 +111,12 @@
         "type": "#godly",
         "tags": ["@who"],
         "meta": {
-          "entity_name": "Godly Entity Name",
+          "entity_name": "You",
           "details": "An entity who has positively impacted the context",
           "contact_info": "contact@example.com",
           "location": "Location",
-          "social_links": ["https://socialmedia.com/entity"]
+          "social_links": ["https://socialmedia.com/entity"],
+          "rating": 100
         },
         "filters": {
           "pov": ["self", "peers"],
@@ -127,11 +128,12 @@
         "type": "#foe",
         "tags": ["@who"],
         "meta": {
-          "entity_name": "Foe Entity Name",
+          "entity_name": "Bob",
           "details": "An entity who has negatively impacted the context",
           "contact_info": "contact@example.com",
           "location": "Location",
-          "social_links": ["https://socialmedia.com/entity"]
+          "social_links": ["https://socialmedia.com/entity"],
+          "rating": 100
         },
         "filters": {
           "pov": ["public", "peers"],
