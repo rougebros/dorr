@@ -14,12 +14,12 @@ function TreeTags() {
     const [selectedIcon, setSelectedIcon] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState([]);
-    const { translate, loadTranslations  } = useLocalization();
+    const { translate, loadTranslations } = useLocalization();
     const [translationsLoaded, setTranslationsLoaded] = useState(false);
 
 
     useEffect(() => {
-        console.log('Initializing hashtree:', hashtree.hashtree);
+        // console.log('Initializing hashtree:', hashtree.hashtree);
         setCurrentLevel(hashtree.hashtree);
         setFilteredData(Object.entries(hashtree.hashtree));
     }, []);
@@ -29,62 +29,65 @@ function TreeTags() {
         if (translationsLoaded) {
             const params = new URLSearchParams(window.location.search);
             const whatParam = params.get('what');
-    
+
             if (whatParam) {
                 initializeSelectionFromURL(whatParam);
             }
         }
     }, [translationsLoaded]);
-    
+
     const findNodeByLabel = (label, level) => {
+        const normalizedLabel = label.replace(/_/g, ' ').toLowerCase();
         for (const [key, node] of Object.entries(level)) {
-            if (node.label.toLowerCase() === label) {
+            const nodeLabel = node.label.replace(/_/g, ' ').toLowerCase();
+            if (nodeLabel === normalizedLabel) {
                 return node;
             }
             if (node.children) {
-                const found = findNodeByLabel(label, node.children); // Recursive search in children
+                const found = findNodeByLabel(normalizedLabel, node.children);
                 if (found) return found;
             }
         }
         return null;
     };
+
+
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const langParam = params.get('language');
-    
+
         if (langParam) {
             loadTranslations(langParam);  // Set the language first
-            console.log(`Language set to ${langParam}`);
+            // console.log(`Language set to ${langParam}`);
         }
         setTranslationsLoaded(true);  // Mark translations as loaded
     }, []);
-    
-    
-    
+
+
+
     const initializeSelectionFromURL = async (whatParam) => {
-        console.log('Initializing selection from URL with param:', whatParam);
-    
         const decodedParam = decodeURIComponent(whatParam);
-        console.log('Decoded param:', decodedParam);
-    
         const tags = decodedParam
             .split(' ')
             .map(tag => tag.replace(/^#/, '').trim().toLowerCase());
-        console.log('Parsed tags:', tags);
     
         let level = hashtree.hashtree;
         let foundPath = [];
         let lastMatchedLevel = level;
     
         for (let part of tags) {
-            console.log(`Searching for part "${part}" in current level:`, level);
+            const match = Object.entries(level).find(([_, node]) => {
+                const normalizedNodeLabel = node.label.toLowerCase().replace(/_/g, ' ').trim();
+                const normalizedNodeHashtag = (node.hashtag || '').toLowerCase().replace(/#/g, '').replace(/_/g, ' ').trim();
+                const normalizedPart = part.toLowerCase().replace(/_/g, ' ').trim();
     
-            const match = Object.entries(level).find(([_, node]) => node.label.toLowerCase() === part);
+                return normalizedNodeLabel === normalizedPart || normalizedNodeHashtag === normalizedPart;
+            });
     
             if (match) {
                 const [key, node] = match;
                 foundPath.push({
-                    label: translate(node.localID, node.label),  // Use localized label or fallback
+                    label: translate(node.localID, node.label),
                     icon: node.icon
                 });
                 lastMatchedLevel = node.children || null;
@@ -92,25 +95,43 @@ function TreeTags() {
                 if (node.children) {
                     level = node.children;
                 } else if (node.file) {
-                    console.log(`Attempting to fetch file for node "${node.label}" with file "${node.file}"`);
                     try {
-                        const response = await fetch(`${BASE_URL}${node.file}`);
-                        if (!response.ok) throw new Error('File does not exist');
-                        const data = await response.json();
+                        let data;
+                        
+                        // Check local storage for the file first
+                        const localData = localStorage.getItem(node.file);
+                        if (localData) {
+                            data = JSON.parse(localData);
+                            console.log(`Loaded ${node.file} from local storage.`);
+                        } else {
+                            // Attempt to fetch from GitHub
+                            const response = await fetch(`${BASE_URL}${node.file}`);
+                            if (response.ok) {
+                                data = await response.json();
+                                console.log(`Loaded ${node.file} from GitHub.`);
+                                localStorage.setItem(node.file, JSON.stringify(data)); // Save to local storage
+                            } else {
+                                // If GitHub fetch fails, load from template
+                                console.warn(`File "${node.file}" not found on GitHub. Loading template.`);
+                                const templateResponse = await fetch(`${BASE_URL}dorr_template.json`);
+                                data = await templateResponse.json();
+                                localStorage.setItem(node.file, JSON.stringify(data)); // Save template as new file
+                            }
+                        }
     
-                        const translatedTags = decodedParam
-                            .split(' ')
+                        // Use `data` to set tags and icon
+                        const translatedTags = tags
                             .map(tag => {
                                 const cleanTag = tag.replace(/^#/, '').toLowerCase();
                                 const node = findNodeByLabel(cleanTag, hashtree.hashtree);
                                 return node ? `#${translate(node.localID, node.label)}` : `#${tag}`;
                             })
                             .join(' ');
-                        
+    
                         setSelectedTags([translatedTags]);
                         setSelectedIcon(node.icon);
                     } catch (error) {
-                        console.error(`File not found for node "${node.label}":`, error);
+                        console.error(`Error loading file or template for node "${node.label}":`, error);
                         node.isDisabled = true;
                     }
                     return;
@@ -134,6 +155,11 @@ function TreeTags() {
     
 
 
+
+
+
+
+
     const removeWhatParam = () => {
         const queryParams = new URLSearchParams(window.location.search);
         queryParams.delete('what');  // Remove "what" parameter from URL
@@ -153,11 +179,13 @@ function TreeTags() {
         }
         return null;  // Return null if not found
     };
-
     const updateURLParams = (tags) => {
-        const queryParams = new URLSearchParams(window.location.search);
+        if (!tags || !tags.length) {
+            console.warn("No tags provided for URL update");
+            return;
+        }
 
-        // Use translated tags for the URL to retain localization
+        const queryParams = new URLSearchParams(window.location.search);
         const whatValue = tags.map(tag => `#${tag.replace(/^#+/, '')}`).join(' ');
         queryParams.set('what', encodeURIComponent(whatValue).replace(/%23/g, '#'));
 
@@ -165,51 +193,56 @@ function TreeTags() {
     };
 
 
+
+
+
     const handleNodeClick = async (key, node) => {
         if (node.children) {
-            // Navigate to children
             setPath([...path, { label: translate(node.localID, node.label), icon: node.icon }]);
             setCurrentLevel(node.children);
             setSearchQuery('');
             setFilteredData(Object.entries(node.children).map(([k, n]) => [
                 k, { ...n, label: translate(n.localID, n.label) }
             ]));
-
         } else if (node.file) {
             try {
                 const fileUrl = `${BASE_URL}${node.file}`;
                 const response = await fetch(fileUrl);
-                if (!response.ok) throw new Error('File not found');
 
-                const data = await response.json();
-                // Save to local memory for future use in Section D
-                localStorage.setItem(node.file, JSON.stringify(data));
-                console.log(`Loaded ${node.file} into local memory`);
+                let data;
+                if (response.ok) {
+                    data = await response.json();
+                    //console.log(`Loaded ${node.file} into local memory from GitHub`);
+                } else {
+                    const templateResponse = await fetch(`${BASE_URL}dorr_template.json`);
+                    data = templateResponse.ok ? await templateResponse.json() : null;
+                    //console.log(`Loaded dorr_template.json as fallback for ${node.file}`);
+                }
 
-                setSelectedTags([node.hashtag
-                    .split(' ')
-                    .map(tag => {
-                        const cleanTag = tag.replace(/^#/, '').toLowerCase();
-                        const foundNode = findNodeByLabel(cleanTag, hashtree.hashtree); // Use findNodeByLabel to get node details
-                        return foundNode ? `#${translate(foundNode.localID, foundNode.label)}` : `#${tag}`;
-                    })
-                    .join(' ')
-                ]);
-                setSelectedIcon(node.icon);
-                updateURLParams([data.hashtag]);
-
-                // Optionally refresh the page for full load of new params
+                if (data) {
+                    localStorage.setItem(node.file, JSON.stringify(data));
+                    setSelectedTags([node.hashtag
+                        .split(' ')
+                        .map(tag => {
+                            const cleanTag = tag.replace(/^#/, '').toLowerCase();
+                            const foundNode = findNodeByLabel(cleanTag, hashtree.hashtree);
+                            return foundNode ? `#${translate(foundNode.localID, foundNode.label)}` : `#${tag}`;
+                        })
+                        .join(' ')
+                    ]);
+                    setSelectedIcon(node.icon);
+                    updateURLParams([node.hashtag]);
+                    setIsModalOpen(false); // Close the modal without full page reload
+                }
                 window.location.reload();
+
             } catch (error) {
-                console.error('Error loading JSON file:', error);
-                setFilteredData(prevData =>
-                    prevData.map(([k, n]) =>
-                        k === key ? [k, { ...n, isDisabled: true }] : [k, n]
-                    )
-                );
+                console.error(`Error loading JSON file or template:`, error);
+                setSelectedIcon(node.icon);
             }
         }
     };
+
 
     const [localizedMap, setLocalizedMap] = useState({});
 
@@ -232,18 +265,18 @@ function TreeTags() {
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
-    
+
         const searchAllNodes = (level) => {
             let results = [];
             Object.entries(level).forEach(([key, node]) => {
                 const englishLabel = node.label.toLowerCase();
                 const localizedLabel = localizedMap[key]?.toLowerCase() || '';  // Get localized label from map
-    
+
                 // Check if the node label matches the search query
                 if (englishLabel.includes(query) || localizedLabel.includes(query)) {
                     results.push([key, { ...node, label: translate(node.localID, node.label) }]);
                 }
-    
+
                 // Recursively search in children, if they exist
                 if (node.children) {
                     results = results.concat(searchAllNodes(node.children));
@@ -251,33 +284,33 @@ function TreeTags() {
             });
             return results;
         };
-    
+
         const filteredResults = query ? searchAllNodes(hashtree.hashtree) : Object.entries(currentLevel || hashtree.hashtree);
         setFilteredData(filteredResults);
     };
-    
+
 
     const goBack = () => {
         // console.log("Back button clicked");
         // console.log("Current path before back:", path);
-    
+
         const newPath = path.slice(0, -1); // Remove the last item from the breadcrumb
         setPath(newPath);
-    
+
         if (newPath.length > 0) {
             let level = hashtree.hashtree;
             // console.log("Starting traversal to find new current level:");
-    
+
             for (let index = 0; index < newPath.length; index++) {
                 const pathItem = newPath[index];
                 const parentLevel = level;
-    
+
                 // Try to match by both key and translated label
                 const matchedNode = Object.entries(level).find(
-                    ([key, node]) => 
+                    ([key, node]) =>
                         node.label === pathItem.label || key.toLowerCase() === pathItem.label.toLowerCase()
                 )?.[1];
-    
+
                 if (matchedNode && matchedNode.children) {
                     level = matchedNode.children; // Move to the matched level's children
                     // console.log(`Step ${index + 1}: Traversing to ${pathItem.label}`);
@@ -289,7 +322,7 @@ function TreeTags() {
                     break;
                 }
             }
-    
+
             // Apply the updated level if found
             if (level) {
                 setCurrentLevel(level);
@@ -297,7 +330,7 @@ function TreeTags() {
                     key, { ...node, label: translate(node.localID, node.label) }
                 ]);
                 setFilteredData(newFilteredData);
-    
+
                 // console.log("New path after back:", newPath);
                 // console.log("New current level after back:", level);
                 // console.log("New filtered data after back:", newFilteredData);
@@ -312,15 +345,15 @@ function TreeTags() {
             ]));
             // console.log("Reset to root level");
         }
-    
+
         // console.log("Final path after back:", newPath);
         // console.log("Final current level after back:", currentLevel);
     };
-    
-    
-    
-    
-    
+
+
+
+
+
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const whatParam = params.get('what');
@@ -329,7 +362,7 @@ function TreeTags() {
             setTimeout(() => initializeSelectionFromURL(whatParam), 0);
         }
     }, []);
-    
+
 
     return (
         <div className="tree-tags-container">

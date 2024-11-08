@@ -12,7 +12,7 @@ import { MdSettings } from 'react-icons/md'; // Settings icon
 import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5'; // Close (X) icon
 import './Header.css';
 import { useLocalization } from '../toolkit/LocalizationContext';
-import { MdPerson, MdAccountBalanceWallet, MdPeople, MdLock, MdSos, MdNotifications, MdDelete } from 'react-icons/md';
+import { MdPerson, MdAccountBalanceWallet, MdPeople, MdLock, MdSos, MdNotifications, MdDelete, MdLayersClear } from 'react-icons/md';
 
 
 const languages = [
@@ -150,6 +150,24 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
   const handlePrevSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide - 1 + 3) % 3); // Cycle through 3 items (2 images + 1 video)
   };
+
+  const clearCache = () => {
+    localStorage.clear();
+    console.log("All cache and local memory cleared.");
+
+    // Remove specific URL parameters
+    const queryParams = new URLSearchParams(window.location.search);
+    queryParams.delete("pov");
+    queryParams.delete("time");
+    queryParams.delete("what");
+
+    // Update the URL without reloading the page
+    window.history.replaceState({}, '', `${window.location.pathname}?${queryParams.toString()}`);
+
+    // Reload the page to reset any loaded data from local storage
+    window.location.reload();
+};
+
 
   // InfoModal to display the dorr images, video, and controls
   const InfoModal = () => {
@@ -295,14 +313,16 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
         <p className="icon-label" onClick={() => handleClick('Settings', !!selectedLanguage)}>{translate('5', 'Settings')}</p>
         {dropdownType === 'Settings' && (
           <div className="dropdown-content show">
+            <p><MdNotifications className="hsettings-icon" /> {translate('12', 'Notifications')}</p>
             <p><MdPerson className="hsettings-icon" /> {translate('6', 'Profile')}</p>
             <p><MdAccountBalanceWallet className="hsettings-icon" /> {translate('7', 'Wallets')}</p>
             <p><MdPeople className="hsettings-icon" /> {translate('8', 'Social Medias')}</p>
             <p><MdSos className="hsettings-icon" /> {translate('9', 'SOS')}</p>
             <p><MdLock className="hsettings-icon" /> {translate('10', 'Lock')}</p>
             <p><MdPeople className="hsettings-icon" /> {translate('11', 'Peers')}</p>
-            <p><MdNotifications className="hsettings-icon" /> {translate('12', 'Notifications')}</p>
+            <p onClick={clearCache}><MdLayersClear className="hsettings-icon" /> {translate('142', 'Clear Cache')}</p>
             <p onClick={() => console.log('Logout Clicked')}><MdDelete className="hsettings-icon" /> {translate('13', 'Delete Account')}</p>
+
           </div>
         )}
       </div>
