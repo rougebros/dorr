@@ -246,12 +246,12 @@
                     "hashtag": "#freedom #women",
                     "children": null
                 },
-                "labour": {
+                "laborkids": {
                     "label": "Labor Kids",
                     "icon": "🚸",
-                    "file": "freedom_labourkids.json",
+                    "file": "freedom_laborkids.json",
                     "localID": "94",
-                    "hashtag": "#freedom #labourkids",
+                    "hashtag": "#freedom #laborkids",
                     "children": null
                 }
             }

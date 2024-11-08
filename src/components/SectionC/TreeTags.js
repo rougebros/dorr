@@ -23,7 +23,7 @@ function TreeTags() {
             const params = new URLSearchParams(window.location.search);
             const langParam = params.get('language');
             const whatParam = params.get('what');
-    
+
             if (langParam) {
                 await loadTranslations(langParam);  // Set the language first
                 setTranslationsLoaded(true);
@@ -59,20 +59,20 @@ function TreeTags() {
         const tags = decodedParam
             .split(' ')
             .map(tag => tag.replace(/^#/, '').trim().toLowerCase());
-    
+
         let level = hashtree.hashtree;
         let foundPath = [];
         let lastMatchedLevel = level;
-    
+
         for (let part of tags) {
             const match = Object.entries(level).find(([_, node]) => {
                 const normalizedNodeLabel = node.label.toLowerCase().replace(/_/g, ' ').trim();
                 const normalizedNodeHashtag = (node.hashtag || '').toLowerCase().replace(/#/g, '').replace(/_/g, ' ').trim();
                 const normalizedPart = part.toLowerCase().replace(/_/g, ' ').trim();
-    
+
                 return normalizedNodeLabel === normalizedPart || normalizedNodeHashtag === normalizedPart;
             });
-    
+
             if (match) {
                 const [key, node] = match;
                 foundPath.push({
@@ -80,34 +80,36 @@ function TreeTags() {
                     icon: node.icon
                 });
                 lastMatchedLevel = node.children || null;
-    
+
                 if (node.children) {
                     level = node.children;
                 } else if (node.file) {
                     try {
+                        // Load data based on the `file` attribute
+                        const fileName = node.file;
                         let data;
-                        
-                        // Check local storage for the file first
-                        const localData = localStorage.getItem(node.file);
+
+                        // Check local storage first
+                        const localData = localStorage.getItem(fileName);
                         if (localData) {
                             data = JSON.parse(localData);
-                            console.log(`Loaded ${node.file} from local storage.`);
+                            console.log(`Loaded ${fileName} from local storage.`);
                         } else {
-                            // Attempt to fetch from GitHub
-                            const response = await fetch(`${BASE_URL}${node.file}`);
+                            // If not in local storage, attempt to fetch from GitHub
+                            const response = await fetch(`${BASE_URL}${fileName}`);
                             if (response.ok) {
                                 data = await response.json();
-                                console.log(`Loaded ${node.file} from GitHub.`);
-                                localStorage.setItem(node.file, JSON.stringify(data)); // Save to local storage
+                                console.log(`Loaded ${fileName} from GitHub.`);
+                                localStorage.setItem(fileName, JSON.stringify(data)); // Cache locally
                             } else {
-                                // If GitHub fetch fails, load from template
-                                console.warn(`File "${node.file}" not found on GitHub. Loading template.`);
+                                // If GitHub fetch fails, fall back to template
+                                console.warn(`File "${fileName}" not found on GitHub. Loading template.`);
                                 const templateResponse = await fetch(`${BASE_URL}dorr_template.json`);
                                 data = await templateResponse.json();
-                                localStorage.setItem(node.file, JSON.stringify(data)); // Save template as new file
+                                localStorage.setItem(fileName, JSON.stringify(data)); // Save template as a new file
                             }
                         }
-    
+
                         // Use `data` to set tags and icon
                         const translatedTags = tags
                             .map(tag => {
@@ -116,7 +118,7 @@ function TreeTags() {
                                 return node ? `#${translate(node.localID, node.label)}` : `#${tag}`;
                             })
                             .join(' ');
-    
+
                         setSelectedTags([translatedTags]);
                         setSelectedIcon(node.icon);
                     } catch (error) {
@@ -130,7 +132,7 @@ function TreeTags() {
                 return;
             }
         }
-    
+
         setPath(foundPath);
         setCurrentLevel(lastMatchedLevel);
         setFilteredData(
@@ -141,7 +143,7 @@ function TreeTags() {
                 : []
         );
     };
-    
+
 
 
 
