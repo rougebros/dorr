@@ -1,0 +1,143 @@
+{
+    "dorr_rates": [
+      {
+        "colorid": "🔆",
+        "type": "#gains",
+        "sub_categories": [
+          {
+            "type": "#needs",
+            "time": ["now", "future"],
+            "tags": ["@who"],
+            "meta": {
+              "details": "Specific need details for the current context"
+            },
+            "sub_rates": [
+              {
+                "colorid": "💜",
+                "type": "#thoughts",
+                "meta": {
+                  "notes": ""
+                }
+              },
+              {
+                "colorid": "💜",
+                "type": "#questions",
+                "meta": {
+                  "notes": ""
+                }
+              },
+              {
+                "colorid": "💜",
+                "type": "#next-steps",
+                "meta": {
+                  "notes": ""
+                }
+              }
+            ]
+          },
+          {
+            "type": "#strength",
+            "time": ["now", "past"],
+            "tags": ["@who"],
+            "meta": {
+              "details": "Details on strengths for the current context"
+            }
+          },
+          {
+            "type": "#opportunities",
+            "time": ["future"],
+            "tags": ["@who"],
+            "meta": {
+              "details": "Details on future opportunities for the current context"
+            }
+          }
+        ]
+      },
+      {
+        "colorid": "🩸",
+        "type": "#pains",
+        "sub_categories": [
+          {
+            "type": "#pains",
+            "time": ["now", "past"],
+            "tags": ["@who"],
+            "meta": {
+              "details": "Pain details for the current context"
+            },
+            "sub_rates": [
+              {
+                "colorid": "💜",
+                "type": "#thoughts",
+                "meta": {
+                  "notes": ""
+                }
+              },
+              {
+                "colorid": "💜",
+                "type": "#questions",
+                "meta": {
+                  "notes": ""
+                }
+              },
+              {
+                "colorid": "💜",
+                "type": "#next-steps",
+                "meta": {
+                  "notes": ""
+                }
+              }
+            ]
+          },
+          {
+            "type": "#threats",
+            "time": ["now", "future"],
+            "tags": ["@who"],
+            "meta": {
+              "details": "Details on current and future threats for the context"
+            }
+          },
+          {
+            "type": "#regret",
+            "time": ["now", "past"],
+            "tags": ["@who"],
+            "meta": {
+              "details": "Details on regret or missed opportunities for the context"
+            }
+          }
+        ]
+      },
+      {
+        "colorid": "G",
+        "type": "#godly",
+        "tags": ["@who"],
+        "meta": {
+          "entity_name": "Godly Entity Name",
+          "details": "An entity who has positively impacted the context",
+          "contact_info": "contact@example.com",
+          "location": "Location",
+          "social_links": ["https://socialmedia.com/entity"]
+        },
+        "filters": {
+          "pov": ["self", "peers"],
+          "time": ["now"]
+        }
+      },
+      {
+        "colorid": "F",
+        "type": "#foe",
+        "tags": ["@who"],
+        "meta": {
+          "entity_name": "Foe Entity Name",
+          "details": "An entity who has negatively impacted the context",
+          "contact_info": "contact@example.com",
+          "location": "Location",
+          "social_links": ["https://socialmedia.com/entity"]
+        },
+        "filters": {
+          "pov": ["public", "peers"],
+          "time": ["past"]
+        }
+      }
+    ]
+  }
+  
