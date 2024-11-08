@@ -249,7 +249,7 @@
                 "labour": {
                     "label": "Labor Kids",
                     "icon": "🚸",
-                    "file": "labor_kids.json",
+                    "file": "freedom_labourkids.json",
                     "localID": "94",
                     "hashtag": "#freedom #labourkids",
                     "children": null
