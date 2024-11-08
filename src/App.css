@@ -110,6 +110,7 @@
 /* F1 and F2 sections with max-height */
 .f-section {
   flex: 1;
+  align-self: flex-end !important;
   padding: 3px;
   border-radius: 8px;
   background-color: inherit;
@@ -157,14 +158,39 @@
 
 /* Main body of the App */
 .App-body {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   padding: 1px;
-  margin-right: 0;
-  overflow: hidden; /* Prevent overflow pushing the footer */
+  overflow: hidden; /* Prevent overflow from affecting the layout */
 }
 
 /* Disable Section B and C if language is not selected */
 .disabled-section {
   filter: grayscale(100%);
   cursor: not-allowed !important;
+}
+
+.section-e-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.f-sections-container {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 2px;
+}
+
+.f-section {
+  flex-shrink: 0;
+  max-height: 250px;
+  border-radius: 8px;
+  background-color: inherit;
+  overflow-y: auto;
+  padding: 3px;
+  margin: 0 1px;
 }

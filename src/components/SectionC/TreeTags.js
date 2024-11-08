@@ -39,18 +39,35 @@ function TreeTags() {
 
     const findNodeByLabel = (label, level) => {
         const normalizedLabel = label.replace(/_/g, ' ').toLowerCase();
+        // console.log(`Looking for exact match of label: "${label}", normalized: "${normalizedLabel}"`);
+
         for (const [key, node] of Object.entries(level)) {
-            const nodeLabel = node.label.replace(/_/g, ' ').toLowerCase();
-            if (nodeLabel === normalizedLabel) {
+            // Check if key name matches normalized label directly
+            if (key.toLowerCase() === normalizedLabel) {
+                // console.log(`Match found for key "${key}":`, node);
                 return node;
             }
+
+            // If not, fallback to checking the label property
+            const nodeLabel = node.label.replace(/_/g, ' ').toLowerCase();
+            // console.log(`Checking node label: "${node.label}" (normalized: "${nodeLabel}") against "${normalizedLabel}"`);
+
+            if (nodeLabel === normalizedLabel) {
+                // console.log(`Match found for label "${label}":`, node);
+                return node;
+            }
+
+            // Recursive search in children
             if (node.children) {
                 const found = findNodeByLabel(normalizedLabel, node.children);
                 if (found) return found;
             }
         }
+
+        // console.warn(`No match found for label: "${label}" - normalizedLabel: "${normalizedLabel}"`);
         return null;
     };
+
 
 
 
@@ -60,21 +77,42 @@ function TreeTags() {
             .split(' ')
             .map(tag => tag.replace(/^#/, '').trim().toLowerCase());
 
+        // console.log("Extracted tags from URL:", tags);
+
+
         let level = hashtree.hashtree;
         let foundPath = [];
         let lastMatchedLevel = level;
 
         for (let part of tags) {
-            const match = Object.entries(level).find(([_, node]) => {
-                const normalizedNodeLabel = node.label.toLowerCase().replace(/_/g, ' ').trim();
-                const normalizedNodeHashtag = (node.hashtag || '').toLowerCase().replace(/#/g, '').replace(/_/g, ' ').trim();
-                const normalizedPart = part.toLowerCase().replace(/_/g, ' ').trim();
+            // console.log("Looking for tag part:", part);
 
-                return normalizedNodeLabel === normalizedPart || normalizedNodeHashtag === normalizedPart;
+            const match = Object.entries(level).find(([_, node]) => {
+                // console.log(`Checking node label: "${node.label}", hashtag: "${node.hashtag}"`);
+                // console.log(`Comparing with part: "${part}"`);
+
+                // Split hashtag into individual tags and check against part
+                const hashtagParts = (node.hashtag || '').toLowerCase().replace(/#/g, '').split(' ');
+
+                const labelMatch = node.label.toLowerCase() === part;
+                const hashtagMatch = hashtagParts.includes(part); // Check if part exists in split hashtag parts
+
+                // if (labelMatch) {
+                //     console.log(`Label match found for part: "${part}"`);
+                // }
+                // if (hashtagMatch) {
+                //     console.log(`Hashtag match found for part: "${part}" in ${hashtagParts}`);
+                // }
+
+                return labelMatch || hashtagMatch;
             });
+
 
             if (match) {
                 const [key, node] = match;
+                // console.log("Match found:", key, node);
+
+
                 foundPath.push({
                     label: translate(node.localID, node.label),
                     icon: node.icon
@@ -82,8 +120,12 @@ function TreeTags() {
                 lastMatchedLevel = node.children || null;
 
                 if (node.children) {
+                    //  console.log(`Children of '${node.label}' node:`, Object.keys(node.children)); // Confirm children include laborkids
+
                     level = node.children;
                 } else if (node.file) {
+                    // console.log("Final node file detected:", node.file);
+
                     try {
                         // Load data based on the `file` attribute
                         const fileName = node.file;
@@ -93,13 +135,13 @@ function TreeTags() {
                         const localData = localStorage.getItem(fileName);
                         if (localData) {
                             data = JSON.parse(localData);
-                            console.log(`Loaded ${fileName} from local storage.`);
+                            // console.log(`Loaded ${fileName} from local storage.`);
                         } else {
                             // If not in local storage, attempt to fetch from GitHub
                             const response = await fetch(`${BASE_URL}${fileName}`);
                             if (response.ok) {
                                 data = await response.json();
-                                console.log(`Loaded ${fileName} from GitHub.`);
+                                // console.log(`Loaded ${fileName} from GitHub.`);
                                 localStorage.setItem(fileName, JSON.stringify(data)); // Cache locally
                             } else {
                                 // If GitHub fetch fails, fall back to template
@@ -113,8 +155,16 @@ function TreeTags() {
                         // Use `data` to set tags and icon
                         const translatedTags = tags
                             .map(tag => {
+                                // console.log(`tag ${tag} uncleaned.`);
+
                                 const cleanTag = tag.replace(/^#/, '').toLowerCase();
+                                // console.log(`tag ${cleanTag} cleaned.`);
+
                                 const node = findNodeByLabel(cleanTag, hashtree.hashtree);
+                                // console.log(`node found ${node.label}.`);
+                                // console.log(`node found ${node.label} + ${node.localID}`);
+
+
                                 return node ? `#${translate(node.localID, node.label)}` : `#${tag}`;
                             })
                             .join(' ');
@@ -128,7 +178,7 @@ function TreeTags() {
                     return;
                 }
             } else {
-                console.warn(`Part "${part}" not found. Aborting initialization.`);
+                console.warn(`Tag part "${part}" not found. Aborting initialization.`);
                 return;
             }
         }
@@ -188,7 +238,11 @@ function TreeTags() {
 
 
     const handleNodeClick = async (key, node) => {
+        // console.log("Node clicked:", node.label);
+
         if (node.children) {
+            // console.log("Navigating to children of:", node.label);
+
             setPath([...path, { label: translate(node.localID, node.label), icon: node.icon }]);
             setCurrentLevel(node.children);
             setSearchQuery('');
@@ -198,16 +252,18 @@ function TreeTags() {
         } else if (node.file) {
             try {
                 const fileUrl = `${BASE_URL}${node.file}`;
+                // console.log("Attempting to fetch file:", fileUrl);
+
                 const response = await fetch(fileUrl);
 
                 let data;
                 if (response.ok) {
                     data = await response.json();
-                    //console.log(`Loaded ${node.file} into local memory from GitHub`);
+                    // console.log(`File ${node.file} loaded into memory from GitHub.`);
                 } else {
                     const templateResponse = await fetch(`${BASE_URL}dorr_template.json`);
                     data = templateResponse.ok ? await templateResponse.json() : null;
-                    //console.log(`Loaded dorr_template.json as fallback for ${node.file}`);
+                    // console.warn(`File ${node.file} not found on GitHub. Loading template.`);
                 }
 
                 if (data) {

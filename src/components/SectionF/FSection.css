@@ -1,13 +1,13 @@
 .f-section {
-  flex: 1;
+  flex-shrink: 0;
+  margin-top: auto; /* Push FSection to the bottom */
   border-radius: 8px;
   background-color: inherit;
   padding: 10px;
-  margin: 10px;
-  min-height: 150px;
-  max-height: 250px !important;
+  min-height: 130px;
+  max-height: 250px;
   overflow-y: auto;
-  color: antiquewhite
+  color: antiquewhite;
 }
 
 .f-section-header {
