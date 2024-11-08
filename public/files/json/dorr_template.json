@@ -115,9 +115,9 @@
           "details": "An entity who has positively impacted the context",
           "contact_info": "contact@example.com",
           "location": "Location",
-          "social_links": ["https://socialmedia.com/entity"],
-          "rating": 100
+          "social_links": ["https://socialmedia.com/entity"]
         },
+        "rating": 100,
         "filters": {
           "pov": ["self", "peers"],
           "time": ["now"]
@@ -132,9 +132,9 @@
           "details": "An entity who has negatively impacted the context",
           "contact_info": "contact@example.com",
           "location": "Location",
-          "social_links": ["https://socialmedia.com/entity"],
-          "rating": 100
+          "social_links": ["https://socialmedia.com/entity"]
         },
+        "rating": 100,
         "filters": {
           "pov": ["public", "peers"],
           "time": ["past"]
