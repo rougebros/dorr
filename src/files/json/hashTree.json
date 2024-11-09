@@ -141,6 +141,14 @@
                             "children": null
                         }
                     }
+                },
+                "dentist": {
+                    "label": "Dentist",
+                    "icon": "🦷",
+                    "localID": "171",
+                    "file": "dentist.json",
+                    "hashtag": "#health #dentist",
+                    "children": null
                 }
             }
         },
