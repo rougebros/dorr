@@ -442,7 +442,7 @@ function TreeTags() {
                             autoFocus
                         />
                         {path.length > 0 && (
-                            <div className="breadcrumb-item" onClick={goBack}>
+                            <div className="breadcrumb-tree-item" onClick={goBack}>
                                 {path.map((item) => `${item.icon} ${item.label}`).join(' > ')}
                             </div>
                         )}

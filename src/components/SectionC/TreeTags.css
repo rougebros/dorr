@@ -80,11 +80,13 @@
     color: #61DAFB;
 }
 
-.breadcrumb-item {
+.breadcrumb-tree-item {
     font-size: 0.9em;
     margin-right: 5px;
     color: #61DAFB;
     margin-bottom: 10px;
+    cursor: pointer;
+
 }
 
 .mind-map-grid {
