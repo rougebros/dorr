@@ -435,7 +435,7 @@ function TreeTags() {
                         <span className="close" onClick={() => setIsModalOpen(false)}>&times;</span>
                         <input
                             type="text"
-                            placeholder="Search hashtags..."
+                            placeholder={translate('179', 'Search hashtags ...')}
                             className="search-input"
                             value={searchQuery}
                             onChange={handleSearch}

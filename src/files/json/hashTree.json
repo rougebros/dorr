@@ -318,6 +318,30 @@
                     "hashtag": "#transport #truck",
                     "children": null
                 },
+                "taxi": {
+                    "label": "Taxi",
+                    "icon": "🚕",
+                    "file": "transport_taxi.json",
+                    "localID": "172",
+                    "hashtag": "#transport #taxi",
+                    "children": null
+                },
+                "motorcycle": {
+                    "label": "Motorcycle",
+                    "icon": "🏍️",
+                    "file": "transport_motorcycle.json",
+                    "localID": "180",
+                    "hashtag": "#transport #motorcycle",
+                    "children": null
+                },
+                "moving_services": {
+                    "label": "Moving Services",
+                    "icon": "📦",
+                    "file": "transport_moving_services.json",
+                    "localID": "173",
+                    "hashtag": "#transport #moving_services",
+                    "children": null
+                },
                 "designated_driver": {
                     "label": "Designated Driver",
                     "icon": "🚖",
@@ -462,14 +486,6 @@
                     "hashtag": "#shop #books",
                     "children": null
                 },
-                "second_hand_items": {
-                    "label": "Second Hand Items",
-                    "icon": "♻️",
-                    "file": "shop_second_hand_items.json",
-                    "localID": "139",
-                    "hashtag": "#shop #second_hand_items",
-                    "children": null
-                },
                 "digital": {
                     "label": "Digital",
                     "icon": "💻",
@@ -484,6 +500,14 @@
                     "file": "shop_fruits.json",
                     "localID": "141",
                     "hashtag": "#shop #fruits",
+                    "children": null
+                },
+                "clothing": {
+                    "label": "Clothing",
+                    "icon": "👚",
+                    "file": "shop_clothing.json",
+                    "localID": "177",
+                    "hashtag": "#shop #clothing",
                     "children": null
                 },
                 "furniture": {
@@ -532,6 +556,30 @@
                     "file": "safety_laborkids.json",
                     "localID": "94",
                     "hashtag": "#safety #laborkids",
+                    "children": null
+                },
+                "child_safety": {
+                    "label": "Child Safety",
+                    "icon": "🧒",
+                    "file": "safety_child_safety.json",
+                    "localID": "174",
+                    "hashtag": "#safety #child_safety",
+                    "children": null
+                },
+                "cyber_safety": {
+                    "label": "Cyber Safety",
+                    "icon": "🛡️",
+                    "file": "safety_cyber_safety.json",
+                    "localID": "175",
+                    "hashtag": "#safety #cyber_safety",
+                    "children": null
+                },
+                "community_support": {
+                    "label": "Community Support",
+                    "icon": "🤝",
+                    "file": "safety_community_support.json",
+                    "localID": "176",
+                    "hashtag": "#safety #community_support",
                     "children": null
                 }
             }
@@ -732,6 +780,14 @@
                     "file": "buy_sell_real_estate.json",
                     "localID": "168",
                     "hashtag": "#buy_sell #real_estate",
+                    "children": null
+                },
+                "second_hand_items": {
+                    "label": "Second Hand Items",
+                    "icon": "♻️",
+                    "file": "shop_second_hand_items.json",
+                    "localID": "139",
+                    "hashtag": "#shop #second_hand_items",
                     "children": null
                 },
                 "vehicles": {
