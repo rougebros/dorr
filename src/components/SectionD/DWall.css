@@ -95,7 +95,7 @@
   text-align: center;
   cursor: pointer;
   border-bottom: 2px solid transparent;
-  font-size: small;
+  font-size: smaller;
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
 }
 
@@ -172,14 +172,18 @@
 .icon-group {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   margin-left: auto;
   cursor: pointer;
 
 }
 
 .icon-group svg {
-  font-size: 0.9em; /* Adjust this to match the existing icons' size */
-  color: gray;
+  font-size: 1.2em; /* Adjust this to match the existing icons' size */
+}
+/* Highlighted item text styling */
 
+/* CSS variable for dynamic color */
+:root {
+  --wall-color: initial;
 }

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AddIcon from './../../files/icons/AddIcon.js';
 import SearchIcon from './../../files/icons/SearchIcon.js';
-import { FaTrash, FaPaperclip, FaEllipsisV } from 'react-icons/fa'; // Import icons
+import { FaTrash, FaPaperclip, FaEllipsisV, FaCheckSquare, FaSquare } from 'react-icons/fa'; // Import icons
+import { FaBell, FaBellSlash, FaVolumeUp, FaVolumeMute } from 'react-icons/fa'; // Speaker and bell icons
+
 import hashtree from '../../files/json/hashTree.json';
 import './DWall.css';
 import { useLocalization } from '../toolkit/LocalizationContext';
@@ -13,11 +15,32 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
   const [iconStates, setIconStates] = useState({});
   const [pov, setPov] = useState(null);
   const { translate, loadTranslations } = useLocalization();
+  const [checkboxStates, setCheckboxStates] = useState({});
+
 
   const params = new URLSearchParams(window.location.search);
   const what = params.get('what')?.replace(/\s+/g, '_').toLowerCase();
   const povQuery = params.get('pov')?.toLowerCase();
   const time = params.get('time')?.toLowerCase();
+
+
+  const handleIconClick = (itemId, isSelf) => {
+    setIconStates(prevState => {
+      const newState = { ...prevState };
+      newState[itemId] = isSelf
+        ? (newState[itemId] === '🔇' ? '🔉' : '🔇') // Speaker icons for self POV
+        : (newState[itemId] === '🔕' ? '🔔' : '🔕'); // Bell icons for non-self POV
+      return newState;
+    });
+  };
+
+  // Updated renderIcon function
+  const renderIcon = (itemId, isSelf) => {
+    const state = iconStates[itemId];
+    return isSelf
+      ? (state === '🔉' ? <FaVolumeUp color={wallColor} /> : <FaVolumeMute color={wallColor} />)
+      : (state === '🔔' ? <FaBell color={wallColor} /> : <FaBellSlash color={wallColor} />);
+  };
 
   const findNodeByLabelOrKey = (label, level) => {
     const normalizedLabel = label.toLowerCase().replace(/_/g, ' ').trim();
@@ -33,6 +56,13 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
       }
     }
     return null;
+  };
+
+  const handleCheckboxClick = (index) => {
+    setCheckboxStates((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
   };
 
   const findFileFromWhat = (whatParam) => {
@@ -145,7 +175,9 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
     setPov(povQuery);
   };
 
-
+  useEffect(() => {
+    document.documentElement.style.setProperty('--wall-color', wallColor);
+  }, [wallColor]);
   // Call `loadDData` whenever `activeSection` changes
   useEffect(() => {
     loadDData();
@@ -172,15 +204,15 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
     localStorage.setItem(fileName, JSON.stringify(parsedData));
   };
 
-  const handleIconClick = (itemId, isSelf) => {
-    setIconStates(prevState => {
-      const newState = { ...prevState };
-      newState[itemId] = isSelf ? (newState[itemId] === '🔇' ? '🔉' : '🔇') : (newState[itemId] === '🔕' ? '🔔' : '🔕');
-      return newState;
-    });
-  };
+  // const handleIconClick = (itemId, isSelf) => {
+  //   setIconStates(prevState => {
+  //     const newState = { ...prevState };
+  //     newState[itemId] = isSelf ? (newState[itemId] === '🔇' ? '🔉' : '🔇') : (newState[itemId] === '🔕' ? '🔔' : '🔕');
+  //     return newState;
+  //   });
+  // };
 
-  const renderIcon = (itemId, isSelf) => iconStates[itemId] || (isSelf ? '🔇' : '🔕');
+  // const renderIcon = (itemId, isSelf) => iconStates[itemId] || (isSelf ? '🔇' : '🔕');
 
   const renderIcons = () => (
     <div className="d-icon-section-stack">
@@ -252,17 +284,36 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
             ) : (
               items.map((item, index) => (
                 <div key={index} className="d-child-item">
-                  <span className="item-text">{item.meta.details}</span>
-
+                  <span onClick={() => handleCheckboxClick(index)} className="icon-checkbox">
+                    {checkboxStates[index] ? (
+                      <FaCheckSquare color={wallColor} />
+                    ) : (
+                      <FaSquare color={wallColor} />
+                    )}
+                  </span>
+                  <span
+                    className="item-text"
+                    style={{
+                      backgroundColor: checkboxStates[index] ? wallColor : 'transparent',
+                      color: checkboxStates[index] ? 'white' : 'inherit',
+                      padding: checkboxStates[index] ? '2px 4px' : '0',
+                      borderRadius: checkboxStates[index] ? '3px' : '0',
+                    }}
+                  >
+                    {item.meta.details}
+                  </span>
                   {povQuery === 'self' && (
                     <FaTrash className="delete-icon" onClick={() => handleDeleteItem(index)} />
                   )}
                   <div className="icon-group">
-                  <span className="icon-action" onClick={() => handleIconClick(`item-${index}`, pov === 'self')}>
-                    {renderIcon(`item-${index}`, pov === 'self')}
-                  </span>
-                    <FaPaperclip title={translate(188, "Attachment")} />
-                    <FaEllipsisV title={translate(189, "Options")} />
+                    {/* <span className="icon-action" onClick={() => handleIconClick(`item-${index}`, pov === 'self')}>
+                      {renderIcon(`item-${index}`, pov === 'self')}
+                    </span> */}
+                    <span onClick={() => handleIconClick(`item-${index}`, povQuery === 'self')} className="icon-action">
+                      {renderIcon(`item-${index}`, povQuery === 'self')}
+                    </span>
+                    <FaPaperclip title={translate(188, "Attachment")} color={wallColor} />
+                    <FaEllipsisV title={translate(189, "Options")} color={wallColor} />
                   </div>
                 </div>
 
