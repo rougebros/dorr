@@ -6,14 +6,33 @@ import instagramIcon from './../../files/media/instagram.png'; // Import the act
 import facebookIcon from './../../files/media/facebook.png'; // Import the actual Facebook icon
 import tiktokIcon from './../../files/media/tiktok.png'; // Import the actual TikTok icon
 import { useLocalization } from '../toolkit/LocalizationContext';
+import { FaBell, FaBellSlash, FaRetweet } from 'react-icons/fa'; // Speaker and bell icons
 
 const ESection = () => {
   const [selectedTab, setSelectedTab] = useState(null); // Track selected tab
   const { translate } = useLocalization();
+  const [activeTaskSubtab, setActiveTaskSubtab] = useState('thoughts');
+  const [heartStatus, setHeartStatus] = useState({});
+  const [notificationStatus, setNotificationStatus] = useState({});
+
+  const toggleNotification = (taskKey) => {
+    setNotificationStatus((prev) => ({
+      ...prev,
+      [taskKey]: !prev[taskKey]
+    }));
+  };
+
   // Handle tab click
   const handleTabClick = (tab) => {
     setSelectedTab(tab); // Update selected tab
   };
+  const toggleHeartStatus = (taskKey) => {
+    setHeartStatus((prev) => ({
+      ...prev,
+      [taskKey]: prev[taskKey] === 'done' ? null : prev[taskKey] === 'picked' ? 'done' : 'picked'
+    }));
+  };
+
 
   return (
     <div className="e-section-container">
@@ -127,29 +146,78 @@ const ESection = () => {
 
         {selectedTab === 'tasks' && (
           <div className="tab-content-inner scrollable-content">
-            <div className="task-item">
-              Clean the floor. <span>💜</span>
+            <div className="task-subtabs">
+              {/* Subtabs for #thoughts, #questions, #next-steps */}
+              <div className={`task-subtab ${activeTaskSubtab === 'thoughts' ? 'active' : ''}`} onClick={() => setActiveTaskSubtab('thoughts')}>
+                {translate(190, "#THOUGHTs")}
+              </div>
+              <div className={`task-subtab ${activeTaskSubtab === 'questions' ? 'active' : ''}`} onClick={() => setActiveTaskSubtab('questions')}>
+                {translate(191, "#QUESTIONs")}
+              </div>
+              <div className={`task-subtab ${activeTaskSubtab === 'next-steps' ? 'active' : ''}`} onClick={() => setActiveTaskSubtab('next-steps')}>
+                {translate(192, "#NEXT STEPs")}
+              </div>
             </div>
-            <div className="task-item">
-              Dispose of garbage. <span>💜💙</span>
-            </div>
-            <div className="task-item">
-              Sanitize all surfaces. <span>💜💙</span>
-            </div>
-            <div className="task-item">
-              Finalize checklist and mark completed items. <span>💜💙❌</span>
-            </div>
-            <div className="task-item">
-              Organize cleaning supplies. <span>💜💙💚</span>
-            </div>
-            <div className="task-item">
-              Take picture after completion. <span>💜💙</span>
-            </div>
-            <div className="task-item">
-              Send receipts to this email <span>💜💙</span>
+
+            {/* Display content based on selected subtab */}
+            <div className="task-subtab-content">
+              {activeTaskSubtab === 'thoughts' && (
+                <div className="task-item">
+                  <span className="task-text">Thought example 1</span>
+                  <span className="icon-group">
+                    <FaRetweet color="purple" title="Dispute" className="dispute-icon" />
+                    <span className="notification-icon" onClick={() => toggleNotification('thought1')}>
+                      {notificationStatus['thought1'] ? <FaBell color="purple" /> : <FaBellSlash color="purple" />}
+                    </span>
+                  </span>
+                </div>
+              )}
+              {activeTaskSubtab === 'questions' && (
+                <div className="task-item">
+                  <span className="task-text">Question example 1</span>
+                  <span className="icon-group">
+                    <span className="notification-icon" onClick={() => toggleNotification('question1')}>
+                      {notificationStatus['question1'] ? <FaBell color="purple" /> : <FaBellSlash color="purple" />}
+                    </span>
+                  </span>
+                </div>
+              )}
+              {activeTaskSubtab === 'next-steps' && (
+                <>
+                  <div className="task-item">
+                    <span className="task-text">Complete the report</span>
+                    <span className="icon-group">
+                      <span className="heart-icon" onClick={() => toggleHeartStatus('report')}>
+                        {heartStatus['report'] === 'done' ? '💚' : heartStatus['report'] === 'picked' ? '💙' : '💜'}
+                      </span>
+                      <FaRetweet color="purple" title="Dispute" className="dispute-icon" />
+                      <span className="notification-icon" onClick={() => toggleNotification('report')}>
+                        {notificationStatus['report'] ? <FaBell color="purple" /> : <FaBellSlash color="purple" />}
+                      </span>
+                    </span>
+                  </div>
+                  <div className="task-item">
+                    <span className="task-text">Follow up on client feedback</span>
+                    <span className="icon-group">
+                      <span className="heart-icon" onClick={() => toggleHeartStatus('clientFeedback')}>
+                        {heartStatus['clientFeedback'] === 'done' ? '💚' : heartStatus['clientFeedback'] === 'picked' ? '💙' : '💜'}
+                      </span>
+                      <FaRetweet color="purple" title="Dispute" className="dispute-icon" />
+                      <span className="notification-icon" onClick={() => toggleNotification('clientFeedback')}>
+                        {notificationStatus['clientFeedback'] ? <FaBell color="purple" /> : <FaBellSlash color="purple" />}
+                      </span>
+                    </span>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         )}
+
+
+
+
+
 
         {selectedTab === 'social' && (
           <div className="tab-content-inner">

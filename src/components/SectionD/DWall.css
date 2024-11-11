@@ -6,7 +6,8 @@
   max-height: 180px;
   min-height: 180px;
   overflow-y: auto;
-  width: 80%; /* Maintain width within the container */
+  width: 80%;
+  /* Maintain width within the container */
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -16,24 +17,31 @@
 /* Section that stacks the icons vertically */
 .d-icon-section-stack {
   display: flex;
-  flex-direction: column; /* Stack icons vertically */
-  gap: 10px; /* Space between icons */
-  width: 100%; /* Take full width of the parent container */
+  flex-direction: column;
+  /* Stack icons vertically */
+  gap: 10px;
+  /* Space between icons */
+  width: 100%;
+  /* Take full width of the parent container */
 }
 
 /* Individual Icon Styling */
 .d-icon-item {
-  width: 100%; /* Icon takes the full width of the container */
-  height: 40px; /* Set a consistent height */
+  width: 100%;
+  /* Icon takes the full width of the container */
+  height: 40px;
+  /* Set a consistent height */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem; /* Adjust font size to fit well within 50px height */
+  font-size: 1.5rem;
+  /* Adjust font size to fit well within 50px height */
   cursor: pointer;
   background-color: #fff;
   border-radius: 8px;
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Optional shadow for visual separation */
 }
 
 /* Hover effect for icons */
@@ -59,6 +67,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .item-text {
   font-size: 0.85em;
   white-space: nowrap;
@@ -66,6 +75,7 @@
   text-overflow: ellipsis;
   max-width: 180px;
 }
+
 .d-child-item {
   display: flex;
   align-items: center;
@@ -85,9 +95,11 @@
   display: flex;
   justify-content: space-between;
   position: sticky;
-  top: 28px; /* Adjust this to the height of the header section */
+  top: 28px;
+  /* Adjust this to the height of the header section */
   background-color: white;
-  z-index: 9; /* Slightly lower z-index to remain under the header */
+  z-index: 9;
+  /* Slightly lower z-index to remain under the header */
   border-bottom: 1px solid #ccc;
 }
 
@@ -96,21 +108,28 @@
   cursor: pointer;
   border-bottom: 2px solid transparent;
   font-size: smaller;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Smooth transition for background and text color */
 }
 
 /* Active Tab: D1 (parent color) */
 .d-tab-item.d1.active {
-  background-color: #FAC710; /* D1 color for background */
-  color: white; /* White text for better visibility */
-  border-bottom-color: #FAC710; /* Keep the underline color the same */
+  background-color: #FAC710;
+  /* D1 color for background */
+  color: white;
+  /* White text for better visibility */
+  border-bottom-color: #FAC710;
+  /* Keep the underline color the same */
 }
 
 /* Active Tab: D2 (parent color) */
 .d-tab-item.d2.active {
-  background-color: #C81D11; /* D2 color for background */
-  color: white; /* White text for better visibility */
-  border-bottom-color: #C81D11; /* Keep the underline color the same */
+  background-color: #C81D11;
+  /* D2 color for background */
+  color: white;
+  /* White text for better visibility */
+  border-bottom-color: #C81D11;
+  /* Keep the underline color the same */
 }
 
 /* Active tab styling */
@@ -120,8 +139,10 @@
 
 /* Hover effect for non-active tabs */
 .d-tab-item:hover {
-  background-color: #f0f0f0; /* Light background on hover */
+  background-color: #f0f0f0;
+  /* Light background on hover */
 }
+
 /* Scrollbar styling for container */
 .d-wall-container::-webkit-scrollbar {
   width: 6px;
@@ -135,6 +156,7 @@
 .d-wall-container::-webkit-scrollbar-track {
   background-color: #f0f0f0;
 }
+
 .wall-header {
   font-size: 1.2em;
   flex-grow: 1;
@@ -153,10 +175,12 @@
   display: flex;
   gap: 5px;
 }
+
 /* Styling for the 'No items' message */
 /* Styling for the 'No items' message */
 .d-no-item {
-  display: block !important; /* Force block display */
+  display: block !important;
+  /* Force block display */
   color: #666;
   text-align: center;
   font-style: italic;
@@ -167,8 +191,10 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   max-width: 80%;
   margin: 20px auto;
-  visibility: visible !important; /* Ensure it's visible */
+  visibility: visible !important;
+  /* Ensure it's visible */
 }
+
 .icon-group {
   display: flex;
   align-items: center;
@@ -179,8 +205,10 @@
 }
 
 .icon-group svg {
-  font-size: 1.2em; /* Adjust this to match the existing icons' size */
+  font-size: 1.2em;
+  /* Adjust this to match the existing icons' size */
 }
+
 /* Highlighted item text styling */
 
 /* CSS variable for dynamic color */
