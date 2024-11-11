@@ -83,7 +83,7 @@ const FSection = ({ type, color, logo }) => {
         )
         .sort((a, b) => b.rating - a.rating); // Sort by rating in descending order
   
-      console.log("Loaded, filtered, and sorted data: ", targetData);
+      // console.log("Loaded, filtered, and sorted data: ", targetData);
       setData(targetData);
     } else {
       console.warn(`No data found in localStorage for file "${fileName}".`);
@@ -110,7 +110,7 @@ const FSection = ({ type, color, logo }) => {
   }, []);
 
   const handleAddNewItem = () => {
-    console.log("handleAddNewItem called");
+    // console.log("handleAddNewItem called");
 
     const newEntry = {
       colorid: type === 'gods' ? 'G' : 'F',
@@ -130,14 +130,14 @@ const FSection = ({ type, color, logo }) => {
       },
     };
 
-    console.log("New entry created for addition:", newEntry);
+    // console.log("New entry created for addition:", newEntry);
     saveToLocalStorage(newEntry);
     setNewItem({ entity_name: '', rating: 0 });
     setIsAdding(false);
   };
 
   const saveToLocalStorage = (newEntry) => {
-    console.log("saveToLocalStorage called with entry:", newEntry);
+    // console.log("saveToLocalStorage called with entry:", newEntry);
   
     const whatParam = params.get('what');
     const fileName = findFileFromWhat(whatParam);
@@ -149,7 +149,7 @@ const FSection = ({ type, color, logo }) => {
     const storedData = localStorage.getItem(fileName);
     let parsedData = storedData ? JSON.parse(storedData) : { dorr_rates: [] };
   
-    console.log("Existing data before adding/updating:", JSON.stringify(parsedData.dorr_rates, null, 2));
+    // console.log("Existing data before adding/updating:", JSON.stringify(parsedData.dorr_rates, null, 2));
   
     const existingIndex = parsedData.dorr_rates.findIndex(
       (item) => item.type === newEntry.type && item.meta.entity_name === newEntry.meta.entity_name
@@ -157,14 +157,14 @@ const FSection = ({ type, color, logo }) => {
   
     if (existingIndex === -1) {
       parsedData.dorr_rates.push(newEntry);
-      console.log("Added new entry:", newEntry);
+      // console.log("Added new entry:", newEntry);
     } else {
-      console.log(`Updating existing entry at index ${existingIndex} with`, newEntry);
+      // console.log(`Updating existing entry at index ${existingIndex} with`, newEntry);
       parsedData.dorr_rates[existingIndex] = newEntry;
     }
   
     localStorage.setItem(fileName, JSON.stringify(parsedData));
-    console.log("New data after adding/updating:", JSON.stringify(parsedData.dorr_rates, null, 2));
+    // console.log("New data after adding/updating:", JSON.stringify(parsedData.dorr_rates, null, 2));
   
     const updatedData = parsedData.dorr_rates
       .filter(
@@ -176,7 +176,7 @@ const FSection = ({ type, color, logo }) => {
       .sort((a, b) => b.rating - a.rating);
       
     setData(updatedData);
-    console.log("Updated component state data after sorting:", updatedData);
+    // console.log("Updated component state data after sorting:", updatedData);
   };
 
   const handleMouseEnter = (item) => setHoveredItem(item);
@@ -184,7 +184,7 @@ const FSection = ({ type, color, logo }) => {
 
   const handleDeleteItem = (index) => {
     if (pov !== 'self') return;
-    console.log("Deleting item at index:", index);
+    // console.log("Deleting item at index:", index);
 
     const updatedData = data.filter((_, i) => i !== index);
     setData(updatedData);
@@ -210,7 +210,7 @@ const FSection = ({ type, color, logo }) => {
     });
 
     localStorage.setItem(fileName, JSON.stringify(parsedData));
-    console.log("Data after deletion:", parsedData.dorr_rates);
+    // console.log("Data after deletion:", parsedData.dorr_rates);
   };
 
   return (

@@ -252,41 +252,59 @@ function TreeTags() {
         } else if (node.file) {
             try {
                 const fileUrl = `${BASE_URL}${node.file}`;
-                // console.log("Attempting to fetch file:", fileUrl);
-
-                const response = await fetch(fileUrl);
-
                 let data;
+            
+                // Step 1: Attempt to fetch the file from GitHub
+                const response = await fetch(fileUrl);
+            
                 if (response.ok) {
                     data = await response.json();
-                    // console.log(`File ${node.file} loaded into memory from GitHub.`);
+                    console.log(`File ${node.file} loaded into memory from GitHub.`);
                 } else {
-                    const templateResponse = await fetch(`${BASE_URL}dorr_template.json`);
-                    data = templateResponse.ok ? await templateResponse.json() : null;
-                    // console.warn(`File ${node.file} not found on GitHub. Loading template.`);
+                    console.warn(`File ${node.file} not found on GitHub.`);
+            
+                    // Step 2: Check if the file already exists in localStorage
+                    const existingData = localStorage.getItem(node.file);
+                    if (existingData) {
+                        data = JSON.parse(existingData);
+                        console.log(`File ${node.file} loaded from localStorage.`);
+                    } else {
+                        // Step 3: Load the template if not found on GitHub or in localStorage
+                        const templateResponse = await fetch(`${BASE_URL}dorr_template.json`);
+                        if (templateResponse.ok) {
+                            data = await templateResponse.json();
+                            localStorage.setItem(node.file, JSON.stringify(data));
+                            console.log(`File ${node.file} created from template and saved to localStorage.`);
+                        } else {
+                            console.error("Template file not found. Cannot create new file.");
+                            return; // Exit if template is also unavailable
+                        }
+                    }
                 }
-
+            
+                // Set tags, icon, URL parameters, and close the modal
                 if (data) {
-                    localStorage.setItem(node.file, JSON.stringify(data));
-                    setSelectedTags([node.hashtag
-                        .split(' ')
-                        .map(tag => {
-                            const cleanTag = tag.replace(/^#/, '').toLowerCase();
-                            const foundNode = findNodeByLabel(cleanTag, hashtree.hashtree);
-                            return foundNode ? `#${translate(foundNode.localID, foundNode.label)}` : `#${tag}`;
-                        })
-                        .join(' ')
+                    setSelectedTags([
+                        node.hashtag
+                            .split(' ')
+                            .map(tag => {
+                                const cleanTag = tag.replace(/^#/, '').toLowerCase();
+                                const foundNode = findNodeByLabel(cleanTag, hashtree.hashtree);
+                                return foundNode ? `#${translate(foundNode.localID, foundNode.label)}` : `#${tag}`;
+                            })
+                            .join(' ')
                     ]);
                     setSelectedIcon(node.icon);
                     updateURLParams([node.hashtag]);
                     setIsModalOpen(false); // Close the modal without full page reload
                 }
-                window.location.reload();
-
+            
+                window.location.reload(); // Reload to reflect any new data
+            
             } catch (error) {
-                console.error(`Error loading JSON file or template:`, error);
-                setSelectedIcon(node.icon);
+                console.error("Error loading or saving file:", error);
             }
+            
         }
     };
 
