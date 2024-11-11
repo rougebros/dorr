@@ -1,12 +1,14 @@
 /* E Section Container */
+/* Add margin-top to create spacing between D and E sections */
 .e-section-container {
-    display: flex;
-    width: 100%;
-    min-height: 290px;
-    max-height: 290px;
-    margin-top: 3px;
-    align-items: center; /* Vertically center the large icons */
-  }
+  display: flex;
+  width: 100%;
+  min-height: 280px;
+  max-height: 280px;
+  margin-top: 17px; /* Add spacing between DWall and ESection */
+  align-items: center; /* Vertically center the large icons */
+}
+
   
   /* Large icons container before clicking */
   .e-large-icons {
@@ -45,13 +47,14 @@
   
   /* Sidebar for smaller icons after clicking */
   .e-sidebar {
-    width: 40px; /* Sidebar width for smaller icons */
+    max-width: 35px; /* Sidebar width for smaller icons */
+    min-width: 35px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     border-right: 1px solid #ccc;
-  
+    min-height: 300px;
   }
   
   /* Smaller icons in the sidebar */
@@ -141,7 +144,9 @@
   /* Scrollable content with custom scrollbar */
   .scrollable-content {
     overflow-y: auto;
-    max-height: 230px; /* Limit the content height */
+    max-height: 280px; /* Limit the content height */
+    min-height: 280px; /* Limit the content height */
+
   }
   
   .scrollable-content::-webkit-scrollbar {
