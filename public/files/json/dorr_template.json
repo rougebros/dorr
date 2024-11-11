@@ -97,6 +97,7 @@
         "pov": ["self", "peers"],
         "time": ["now"]
       },
+      "rating": 50,
       "meta": {
         "entity_name": "You",
         "details": "An entity who has positively impacted the context",
@@ -112,6 +113,7 @@
         "pov": ["public", "peers"],
         "time": ["past"]
       },
+      "rating": 50,
       "meta": {
         "entity_name": "Bob",
         "details": "An entity who has negatively impacted the context",

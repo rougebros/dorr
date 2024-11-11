@@ -85,7 +85,7 @@
   display: flex;
   justify-content: space-between;
   position: sticky;
-  top: 28px; /* Adjust this to the height of the header section */
+  top: 20px; /* Adjust this to the height of the header section */
   background-color: white;
   z-index: 9; /* Slightly lower z-index to remain under the header */
   border-bottom: 1px solid #ccc;
@@ -168,18 +168,4 @@
   max-width: 80%;
   margin: 20px auto;
   visibility: visible !important; /* Ensure it's visible */
-}
-.icon-group {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  margin-left: auto;
-  cursor: pointer;
-
-}
-
-.icon-group svg {
-  font-size: 0.9em; /* Adjust this to match the existing icons' size */
-  color: gray;
-
 }

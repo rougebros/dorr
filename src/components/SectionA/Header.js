@@ -29,7 +29,7 @@ const languages = [
   { code: 'fr', name: 'French', native: 'Français' },
   { code: 'es', name: 'Spanish', native: 'Español' },
   { code: 'pt', name: 'Portuguese', native: 'Português' },
-  { code: 'id', name: 'Indonesian', native: 'Bahasa Indonesia' },
+  { code: 'id', name: 'Indonesian', native: 'Bahasa' },
   { code: 'vi', name: 'Vietnamese', native: 'Tiếng Việt' },
   { code: 'it', name: 'Italian', native: 'Italiano' },
   { code: 'th', name: 'Thai', native: 'ภาษาไทย' },
