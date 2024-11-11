@@ -14,6 +14,7 @@ const FSection = ({ type, color, logo }) => {
 
   const params = new URLSearchParams(window.location.search);
   const pov = params.get('pov')?.toLowerCase();
+  const timeParam = params.get('time')?.toLowerCase();
 
   const findNodeByLabelOrKey = (label, level) => {
     const normalizedLabel = label.toLowerCase().replace(/_/g, ' ').trim();
@@ -56,42 +57,61 @@ const FSection = ({ type, color, logo }) => {
 
   const loadFData = () => {
     const whatParam = params.get('what');
+    
     if (!whatParam) {
       console.warn("Missing 'what' parameter in URL.");
       setData([]);
       return;
     }
-
+  
     const fileName = findFileFromWhat(whatParam);
     if (!fileName) {
       console.warn(`No file found for "${whatParam}".`);
       setData([]);
       return;
     }
-
+  
     const storedData = localStorage.getItem(fileName);
     if (storedData) {
       const parsedData = JSON.parse(storedData);
-      const targetData = parsedData.dorr_rates.filter(
-        (rate) =>
-          rate.type === (type === 'gods' ? '#godly' : '#foe') &&
-          rate.filters.pov.includes(pov)
-      );
-      console.log("Loaded data: ", targetData);
+      const targetData = parsedData.dorr_rates
+        .filter(
+          (rate) =>
+            rate.type === (type === 'gods' ? '#godly' : '#foe') &&
+            rate.filters.pov.includes(pov) &&
+            rate.filters.time.includes(timeParam) // Ensure time filter matches timeParam
+        )
+        .sort((a, b) => b.rating - a.rating); // Sort by rating in descending order
+  
+      console.log("Loaded, filtered, and sorted data: ", targetData);
       setData(targetData);
     } else {
       console.warn(`No data found in localStorage for file "${fileName}".`);
       setData([]);
     }
   };
-
+  
   useEffect(() => {
     loadFData();
-  }, [type, pov]);
+  }, [type, pov, timeParam]); // Make sure timeParam is included here
+
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      setMousePosition({
+        x: event.clientX,
+        y: event.clientY,
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   const handleAddNewItem = () => {
     console.log("handleAddNewItem called");
-  
+
     const newEntry = {
       colorid: type === 'gods' ? 'G' : 'F',
       type: type === 'gods' ? '#godly' : '#foe',
@@ -105,17 +125,17 @@ const FSection = ({ type, color, logo }) => {
       },
       rating: newItem.rating,
       filters: {
-        pov: ['self'],
-        time: ['now'],
+        pov: [pov], // Use the POV from URL
+        time: [timeParam], // Use timeParam as an array to match existing structure
       },
     };
-  
+
     console.log("New entry created for addition:", newEntry);
     saveToLocalStorage(newEntry);
     setNewItem({ entity_name: '', rating: 0 });
     setIsAdding(false);
   };
-  
+
   const saveToLocalStorage = (newEntry) => {
     console.log("saveToLocalStorage called with entry:", newEntry);
   
@@ -131,88 +151,95 @@ const FSection = ({ type, color, logo }) => {
   
     console.log("Existing data before adding/updating:", JSON.stringify(parsedData.dorr_rates, null, 2));
   
-    // Add the new entry to parsedData.dorr_rates
-    parsedData.dorr_rates.push(newEntry);
+    const existingIndex = parsedData.dorr_rates.findIndex(
+      (item) => item.type === newEntry.type && item.meta.entity_name === newEntry.meta.entity_name
+    );
   
-    console.log("New data after addition:", JSON.stringify(parsedData.dorr_rates, null, 2));
+    if (existingIndex === -1) {
+      parsedData.dorr_rates.push(newEntry);
+      console.log("Added new entry:", newEntry);
+    } else {
+      console.log(`Updating existing entry at index ${existingIndex} with`, newEntry);
+      parsedData.dorr_rates[existingIndex] = newEntry;
+    }
+  
     localStorage.setItem(fileName, JSON.stringify(parsedData));
+    console.log("New data after adding/updating:", JSON.stringify(parsedData.dorr_rates, null, 2));
   
-    // Updating the data state to reflect changes in the UI
-    const updatedData = parsedData.dorr_rates.filter((item) => item.type === newEntry.type);
+    const updatedData = parsedData.dorr_rates
+      .filter(
+        (item) =>
+          item.type === newEntry.type &&
+          item.filters.pov.includes(pov) &&
+          item.filters.time.includes(timeParam) // Apply the time filter to the updated data
+      )
+      .sort((a, b) => b.rating - a.rating);
+      
     setData(updatedData);
-    console.log("Updated component state data:", updatedData);
+    console.log("Updated component state data after sorting:", updatedData);
   };
-  
-  
-  
+
+  const handleMouseEnter = (item) => setHoveredItem(item);
+  const handleMouseLeave = () => setHoveredItem(null);
 
   const handleDeleteItem = (index) => {
     if (pov !== 'self') return;
-  
     console.log("Deleting item at index:", index);
-  
-    // Remove the item from the displayed list
+
     const updatedData = data.filter((_, i) => i !== index);
     setData(updatedData);
-  
+
     const whatParam = params.get('what');
     const fileName = findFileFromWhat(whatParam);
     if (!fileName) {
       console.error("File name not found for whatParam:", whatParam);
       return;
     }
-  
+
     const storedData = localStorage.getItem(fileName);
     let parsedData = storedData ? JSON.parse(storedData) : { dorr_rates: [] };
-  
-    console.log("Data before deletion:", parsedData.dorr_rates);
-  
-    // Update parsedData.dorr_rates by removing only the item at the specific index for the correct type
     let currentType = type === 'gods' ? '#godly' : '#foe';
     let count = -1;
-  
-    // Filter based on item type and increment the count to match the specific index
+
     parsedData.dorr_rates = parsedData.dorr_rates.filter((item) => {
       if (item.type === currentType) {
         count++;
-        return count !== index; // Remove the item if it matches the index for the current type
+        return count !== index;
       }
       return true;
     });
-  
+
     localStorage.setItem(fileName, JSON.stringify(parsedData));
     console.log("Data after deletion:", parsedData.dorr_rates);
   };
-  
-  
 
   return (
     <div className="f-section" style={{ backgroundColor: color }}>
-      <div className="f-section-header">
-        <span className="logo">{logo}</span>
-        <span className="title">
-          {type === 'gods' ? translate('27', 'Hall of Fame') : translate('28', 'Hall of Shame')}
-        </span>
-        {pov === 'self' && (
-          <button
-            className="add-button"
-            onClick={() => {
-              if (isAdding) {
-                handleAddNewItem();  // Call the function to save when clicked
-              }
-              setIsAdding(!isAdding);
-            }}
-          >
-            {isAdding ? <FaCheck color="green" /> : <FaPlus color="yellow" />}
-          </button>
-        )}
-      </div>
-  
+<div className="f-section-header">
+  <span className="logo">{logo}</span>
+  <span className="title">
+    {type === 'gods' ? translate('27', 'Hall of Fame') : translate('28', 'Hall of Shame')}
+  </span>
+  {pov === 'self' && (
+    <button
+      className="add-button"
+      onClick={() => {
+        if (isAdding) {
+          handleAddNewItem();
+        }
+        setIsAdding(!isAdding);
+      }}
+    >
+      {isAdding ? <FaCheck color="green" /> : <FaPlus color="yellow" />}
+    </button>
+  )}
+</div>
+
       {isAdding ? (
         <div className="add-item-form">
           <input
             type="text"
-            placeholder="Entity Name"
+            placeholder={translate('181', 'Entity Name')}
             value={newItem.entity_name}
             onChange={(e) => setNewItem({ ...newItem, entity_name: e.target.value })}
           />
@@ -229,11 +256,11 @@ const FSection = ({ type, color, logo }) => {
             <li key={index} className="f-section-item">
               <FaEye
                 className="eye-icon"
-                onMouseEnter={(e) => setHoveredItem(item)}
-                onMouseLeave={() => setHoveredItem(null)}
+                onMouseEnter={() => handleMouseEnter(item)}
+                onMouseLeave={handleMouseLeave}
               />
-              <span className="name">{item.meta?.entity_name || 'Unknown'}</span>
               <span className="rating">{item.rating || 0}%</span>
+              <span className="name">{item.meta?.entity_name || 'Unknown'}</span>
               {pov === 'self' && (
                 <FaTrash
                   className="delete-icon"
@@ -246,25 +273,22 @@ const FSection = ({ type, color, logo }) => {
       ) : (
         <p>{translate('30', 'No data found for the selected parameters.')}</p>
       )}
-  
-  // Render the tooltip component
-{hoveredItem && (
-  <div
-    className="tooltip"
-    style={{
-      top: mousePosition.y - 15 + 'px', // Adjusting position to stay near cursor
-      left: mousePosition.x + 'px',
-    }}
-  >
-    <p>Contact: {hoveredItem.meta?.contact_info || 'N/A'}</p>
-    <p>Location: {hoveredItem.meta?.location || 'N/A'}</p>
-    <p>Details: {hoveredItem.meta?.details || 'No details available'}</p>
-  </div>
-)}
 
+      {hoveredItem && (
+        <div
+          className="tooltip"
+          style={{
+            top: `${mousePosition.y + 15}px`,
+            left: `${mousePosition.x + 15}px`,
+          }}
+        >
+          <p>Contact: {hoveredItem.contact_info || 'N/A'}</p>
+          <p>Location: {hoveredItem.location || 'N/A'}</p>
+          <p>Details: {hoveredItem.details || 'No details available'}</p>
+        </div>
+      )}
     </div>
   );
-  
 };
 
 export default FSection;

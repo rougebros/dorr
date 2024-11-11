@@ -2,8 +2,8 @@
   flex-shrink: 0;
   margin-top: auto;
   border-radius: 8px;
+  padding: 3px;
   background-color: inherit;
-  padding: 8px;
   min-height: 130px !important;
   max-height: 130px !important;
   overflow-y: auto; /* Adds scrollbar if content overflows */
@@ -14,15 +14,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Align items evenly */
-  padding: 5px;
 }
 
 .add-button {
-  background-color: #ffeb3b;
+  background-color: #ffcc00;
   border: none;
   border-radius: 4px;
   padding: 4px 8px;
   cursor: pointer;
+  color: black !important;
 }
 
 .f-section .logo {
@@ -43,6 +43,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.f-section p {
+  padding-top: 25px;
+  font-size: small;
 }
 
 .eye-icon {
@@ -80,19 +85,6 @@
   cursor: pointer;
 }
 
-.tooltip {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: white;
-  padding: 8px;
-  border-radius: 5px;
-  font-size: 0.75em;
-  pointer-events: none;
-  z-index: 1000;
-  max-width: 200px;
-  overflow-wrap: break-word;
-}
-
 .f-section-item .actions {
   display: flex;
   align-items: center;
@@ -124,25 +116,7 @@
   border-radius: 10px;
 }
 
-/* Tooltip styling */
-.tooltip {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: white;
-  padding: 8px;
-  border-radius: 5px;
-  font-size: 0.75em;
-  pointer-events: none;
-  z-index: 1000;
-  max-width: 200px;
-  overflow-wrap: break-word;
-  transform: translate(50%, 100%); /* Center above cursor */
 
-}
-.tooltip-text {
-  margin: 0;
-  line-height: 1.2em;
-}
 .eye-icon {
   margin-right: 5px;
   cursor: pointer;
@@ -155,11 +129,66 @@
 
 .f-section li {
   margin-bottom: 2px;
-  padding: 5px;
+  padding: 4px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   
+}
+
+
+/* Remove padding-top in .f-section p to avoid extra space */
+.f-section p {
+  font-size: small;
+  margin: 0; /* Adjust to control spacing */
+}
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 4px; /* Reduced padding */
+  border-radius: 5px;
+  font-size: 0.75em;
+  pointer-events: none;
+  z-index: 1000;
+  max-width: 200px;
+  overflow-wrap: break-word;
+  transform: translate(0%, -50%);
+  display: flex;
+  flex-direction: column; /* Ensure lines are stacked with control */
+  line-height: 1.1em; /* Reduced line height */
+}
+
+.tooltip-text, .tooltip p {
+  margin: 0;
+  padding: 2px 0; /* Minimal padding */
+  line-height: 1.1em;
+}
+
+.tooltip p {
+  font-size: 0.9em; /* Adjust text size for consistency */
+}
+
+
+.add-button {
+  position: absolute;
+  right: 5px; /* Place the add button on the far right */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.f-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space elements evenly */
+  position: relative;
+}
+
+
+.title {
+  flex: 1;
+  text-align: center; /* Center-align title within the header */
 }
