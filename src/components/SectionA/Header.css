@@ -106,6 +106,7 @@
 .language-dropdown {
   max-height: 639px; /* Adjust the height as needed */
   overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden;
   width: 170px;
 }
 

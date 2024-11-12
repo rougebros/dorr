@@ -238,11 +238,16 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
           <div className="dropdown-content show">
             <div className="language-dropdown">
               {languages.map(lang => (
-                <div className="language-row" key={lang.code} style={{ backgroundColor: selectedLanguage === lang.code ? '#f1f1f1' : 'transparent', whiteSpace: 'nowrap' }}>
-                  <p onClick={() => handleSelectionChange('language', lang.code)} >
-                    {lang.native}
-                  </p>
-                  <FiEdit onClick={() => handleEdit(lang.name)} className="edit-icon" />
+                <div
+                  className={`language-row ${selectedLanguage === lang.code ? 'selected' : ''}`}
+                  key={lang.code}
+                  style={{
+                    backgroundColor: selectedLanguage === lang.code ? '#f1f1f1' : 'transparent',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  <p onClick={() => handleSelectionChange('language', lang.code)}>{lang.native}</p>
+                  <FiEdit onClick={() => handleEdit(lang.name)} className="hsettings-icon" />
                 </div>
               ))}
             </div>
@@ -270,21 +275,25 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
         {dropdownType === 'Network' && (
           <div className="dropdown-content show">
             {networks.map(network => (
-              <div className="network-row" key={network.name} style={{ backgroundColor: selectedNetworks.has(network.name) ? '#f1f1f1' : 'transparent', whiteSpace: 'nowrap' }}>
+              <div
+                className={`network-row ${selectedNetworks.has(network.name) ? 'selected' : ''}`}
+                key={network.name}
+                style={{
+                  backgroundColor: selectedNetworks.has(network.name) ? '#f1f1f1' : 'transparent',
+                  whiteSpace: 'nowrap'
+                }}
+              >
                 <input
                   type="checkbox"
                   checked={selectedNetworks.has(network.name)}
-                  onChange={() => handleSelectionChange('network', network.name)} // This will handle the selection change
+                  onChange={() => handleSelectionChange('network', network.name)}
                   id={network.name}
-                  style={{ marginRight: '8px' }} // Add margin for spacing
+                  style={{ marginRight: '8px' }}
                 />
-                <label
-                  htmlFor={network.name}
-                  style={{ cursor: 'pointer', padding: '8px 16px', display: 'inline-block' }}
-                >
+                <label htmlFor={network.name} style={{ cursor: 'pointer', padding: '8px 16px', display: 'inline-block' }}>
                   {network.name}
                 </label>
-                <MdSettings onClick={() => handleEdit(network.name)} className="edit-icon" />
+                <MdSettings onClick={() => handleEdit(network.name)} className="hsettings-icon" />
               </div>
             ))}
             <p onClick={() => handleSelectionChange('network', 'AddN')}>{translate('14', '+ Add New')}</p>
@@ -314,7 +323,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
                 <p onClick={() => handleSelectionChange('layout', layout.name)}>
                   {translate(layout.name === 'Wall' ? '16' : layout.name === 'Circle' ? '17' : layout.name === 'X' ? '18' : '19', layout.name)}
                 </p>
-                <FiEdit onClick={() => handleEdit(layout.name)} className="edit-icon" />
+                <FiEdit onClick={() => handleEdit(layout.name)} className="hsettings-icon" />
               </div>
             ))}
             <p onClick={() => handleSelectionChange('layout', 'AddNew')}>{translate('14', '+ Add New')}</p> {/* Use ID for "+ Add New" */}
@@ -332,18 +341,19 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
         <p className="icon-label" onClick={() => handleClick('Settings', !!selectedLanguage)}>{translate('5', 'Settings')}</p>
         {dropdownType === 'Settings' && (
           <div className="dropdown-content show">
+            <p><MdLock className="hsettings-icon" /> {translate('10', 'Lock')}</p>
             <p><MdNotifications className="hsettings-icon" /> {translate('12', 'Notifications')}</p>
             <p><MdPerson className="hsettings-icon" /> {translate('6', 'Profile')}</p>
-            <p><MdAccountBalanceWallet className="hsettings-icon" /> {translate('7', 'Wallets')}</p>
             <p><MdPeople className="hsettings-icon" /> {translate('8', 'Social Medias')}</p>
-            <p><MdSos className="hsettings-icon" /> {translate('9', 'SOS')}</p>
-            <p><MdLock className="hsettings-icon" /> {translate('10', 'Lock')}</p>
+            <p><MdAccountBalanceWallet className="hsettings-icon" /> {translate('7', 'Wallets')}</p>
             <p><MdPeople className="hsettings-icon" /> {translate('11', 'Peers')}</p>
-            <p onClick={clearCache}><MdLayersClear className="hsettings-icon" /> {translate('142', 'Clear Cache')}</p>
+            <p><MdSos className="hsettings-icon" /> {translate('9', 'SOS')}</p>
+
             <p onClick={toggleNightMode}>
               {isNightMode ? <MdWbSunny className="hsettings-icon" /> : <MdNightlight className="hsettings-icon" />}
               {isNightMode ? translate('193', 'Day Mode') : translate('194', 'Night Mode')}
             </p>
+            <p onClick={clearCache}><MdLayersClear className="hsettings-icon" /> {translate('142', 'Clear Cache')}</p>
 
             <p onClick={() => console.log('Logout Clicked')}><MdDelete className="hsettings-icon" /> {translate('13', 'Delete Account')}</p>
           </div>
