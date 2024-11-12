@@ -12,7 +12,7 @@ import { MdSettings } from 'react-icons/md'; // Settings icon
 import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5'; // Close (X) icon
 import './Header.css';
 import { useLocalization } from '../toolkit/LocalizationContext';
-import { MdPerson, MdAccountBalanceWallet, MdPeople, MdLock, MdSos, MdNotifications, MdDelete, MdLayersClear } from 'react-icons/md';
+import { MdPerson, MdNightlight, MdWbSunny, MdAccountBalanceWallet, MdPeople, MdLock, MdSos, MdNotifications, MdDelete, MdLayersClear } from 'react-icons/md';
 
 
 const languages = [
@@ -74,6 +74,8 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
   const dropdownRefs = useRef([]);
   const infoModalContentRef = useRef(null); // Reference for InfoModal content (only the content, not the modal container)
   const { translate } = useLocalization();
+  const [isNightMode, setIsNightMode] = useState(false);
+
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -88,6 +90,23 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
       setDropdownType(prevType => (prevType === type ? null : type)); // Toggle dropdown visibility
     }
   };
+
+  const toggleNightMode = () => {
+    const newMode = !isNightMode;
+    setIsNightMode(newMode);
+    localStorage.setItem('isNightMode', JSON.stringify(newMode));
+    document.body.classList.toggle('night-mode', newMode);
+  };
+
+  // Load preference on component mount
+  useEffect(() => {
+    const savedMode = JSON.parse(localStorage.getItem('isNightMode'));
+    if (savedMode) {
+      setIsNightMode(savedMode);
+      document.body.classList.add('night-mode');
+    }
+  }, []);
+
 
   const handleSelectionChange = (key, value) => {
     const params = new URLSearchParams(window.location.search);
@@ -166,7 +185,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
 
     // Reload the page to reset any loaded data from local storage
     window.location.reload();
-};
+  };
 
 
   // InfoModal to display the dorr images, video, and controls
@@ -176,7 +195,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
       { type: 'image', src: dorrImage2 },
       { type: 'video/mp4', src: dorrVideo2 }, // Include video as third media item
     ];
-  
+
     return (
       <div className="infomodal">
         <div className="infomodal-content" ref={infoModalContentRef}>
@@ -188,7 +207,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
               Your browser does not support the video tag.
             </video>
           )}
-  
+
           <div className="slide-controls">
             <IoChevronBack className="slide-icon" onClick={handlePrevSlide} />
             <span className="slide-number">
@@ -200,7 +219,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
       </div>
     );
   };
-  
+
 
 
   return (
@@ -321,10 +340,15 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
             <p><MdLock className="hsettings-icon" /> {translate('10', 'Lock')}</p>
             <p><MdPeople className="hsettings-icon" /> {translate('11', 'Peers')}</p>
             <p onClick={clearCache}><MdLayersClear className="hsettings-icon" /> {translate('142', 'Clear Cache')}</p>
-            <p onClick={() => console.log('Logout Clicked')}><MdDelete className="hsettings-icon" /> {translate('13', 'Delete Account')}</p>
+            <p onClick={toggleNightMode}>
+              {isNightMode ? <MdWbSunny className="hsettings-icon" /> : <MdNightlight className="hsettings-icon" />}
+              {isNightMode ? translate('193', 'Day Mode') : translate('194', 'Night Mode')}
+            </p>
 
+            <p onClick={() => console.log('Logout Clicked')}><MdDelete className="hsettings-icon" /> {translate('13', 'Delete Account')}</p>
           </div>
         )}
+
       </div>
 
       {/* Render the InfoModal if it is open */}
