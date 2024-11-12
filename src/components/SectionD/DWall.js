@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AddIcon from './../../files/icons/AddIcon.js';
 import SearchIcon from './../../files/icons/SearchIcon.js';
 import { FaTrash, FaPaperclip, FaEllipsisV, FaCheckSquare, FaSquare } from 'react-icons/fa'; // Import icons
-import { FaBell, FaBellSlash, FaVolumeUp, FaVolumeMute } from 'react-icons/fa'; // Speaker and bell icons
+import { FaBell, FaBellSlash, FaVolumeUp, FaVolumeMute, FaHashtag, FaAt, FaMapMarkerAlt } from 'react-icons/fa'; // Speaker and bell icons
 
 import hashtree from '../../files/json/hashTree.json';
 import './DWall.css';
@@ -16,6 +16,7 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
   const [pov, setPov] = useState(null);
   const { translate, loadTranslations } = useLocalization();
   const [checkboxStates, setCheckboxStates] = useState({});
+  const [locationMutedStates, setLocationMutedStates] = useState({});
 
 
   const params = new URLSearchParams(window.location.search);
@@ -37,9 +38,10 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
   // Updated renderIcon function
   const renderIcon = (itemId, isSelf) => {
     const state = iconStates[itemId];
+    const iconColor = state === '🔉' || state === '🔔' ? wallColor : "#888"; // Gray for disabled, wallColor when active
     return isSelf
-      ? (state === '🔉' ? <FaVolumeUp color={wallColor} /> : <FaVolumeMute color={wallColor} />)
-      : (state === '🔔' ? <FaBell color={wallColor} /> : <FaBellSlash color={wallColor} />);
+      ? (state === '🔉' ? <FaVolumeUp color={iconColor} /> : <FaVolumeMute color={iconColor} />)
+      : (state === '🔔' ? <FaBell color={iconColor} /> : <FaBellSlash color={iconColor} />);
   };
 
   const findNodeByLabelOrKey = (label, level) => {
@@ -183,6 +185,12 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
     loadDData();
   }, [activeSection, povQuery, wallType]);
 
+  const toggleLocationMute = (itemId) => {
+    setLocationMutedStates((prevState) => ({
+      ...prevState,
+      [itemId]: !prevState[itemId], // Toggle the mute status for the specific item
+    }));
+  };
 
   const handleDeleteItem = (index) => {
     const updatedItems = items.filter((_, i) => i !== index);
@@ -255,6 +263,10 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
           )}
           <SearchIcon selectedColor={wallColor} />
         </div>
+        <div className="header-right-tags">
+          <FaHashtag color={wallColor} className="tag-item-right" />
+          <FaAt color={wallColor} className="tag-item-right" />
+        </div>
         <h3 className="wall-header" style={{ color: wallColor }}>{wallTitle}</h3>
       </div>
 
@@ -284,7 +296,7 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
             ) : (
               items.map((item, index) => (
                 <div key={index} className="d-child-item">
-                  <span onClick={() => handleCheckboxClick(index)} className="icon-checkbox">
+                  <span onClick={() => handleCheckboxClick(index)} className="icon-action">
                     {checkboxStates[index] ? (
                       <FaCheckSquare color={wallColor} />
                     ) : (
@@ -302,16 +314,21 @@ const DWall = ({ wallType, wallTitle, wallColor }) => {
                   >
                     {item.meta.details}
                   </span>
-                  {povQuery === 'self' && (
+                  {/* {povQuery === 'self' && (
                     <FaTrash className="delete-icon" onClick={() => handleDeleteItem(index)} />
-                  )}
+                  )} */}
                   <div className="icon-group">
-                    {/* <span className="icon-action" onClick={() => handleIconClick(`item-${index}`, pov === 'self')}>
-                      {renderIcon(`item-${index}`, pov === 'self')}
-                    </span> */}
-                    <span onClick={() => handleIconClick(`item-${index}`, povQuery === 'self')} className="icon-action">
+                    <span onClick={() => handleIconClick(`item-${index}`, povQuery === 'self')} className={`icon-action ${iconStates[`item-${index}`] === '🔉' || iconStates[`item-${index}`] === '🔔' ? 'active' : ''}`}>
                       {renderIcon(`item-${index}`, povQuery === 'self')}
                     </span>
+
+                    <span onClick={() => toggleLocationMute(`item-${index}`)} className="icon-action">
+                      <FaMapMarkerAlt
+                        color={locationMutedStates[`item-${index}`] ? wallColor : "#888"} // Muted gray color if false
+                        title={translate(200, "Location")}
+                      />
+                    </span>
+
                     <FaPaperclip title={translate(188, "Attachment")} color={wallColor} />
                     <FaEllipsisV title={translate(189, "Options")} color={wallColor} />
                   </div>

@@ -414,3 +414,7 @@ body {
   color: #444 !important;
 
 }
+
+.night-mode .tab-description {
+  color: #e0e0e0 !important;
+}

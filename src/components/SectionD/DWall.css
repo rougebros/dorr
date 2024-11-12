@@ -74,6 +74,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 180px;
+  margin-right: 7px;
+
 }
 
 .d-child-item {
@@ -214,4 +216,49 @@
 /* CSS variable for dynamic color */
 :root {
   --wall-color: initial;
+}
+
+.header-right-tags {
+  display: flex;
+  gap: 3px;
+  position: absolute;
+  right: 0px;
+}
+
+.tag-item-right {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.tag-item-right:hover {
+  border: 1px solid #444;
+
+}
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between icons */
+}
+
+.icon-group .icon-action {
+  font-size: 18px; /* Standardize icon size */
+  width: 20px;     /* Fixed width for alignment */
+  height: 20px;    /* Fixed height for alignment */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-action {
+  font-size: 18px;   /* Keep icon size consistent */
+  width: 20px;       /* Fixed width for consistent spacing */
+  height: 20px;      /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;       /* Default to gray for disabled */
+  cursor: pointer;
+}
+
+/* Use wallColor for active icons (hover or toggled) */
+.icon-action.active {
+  color: var(--wall-color);
 }

@@ -6,7 +6,7 @@ import instagramIcon from './../../files/media/instagram.png'; // Import the act
 import facebookIcon from './../../files/media/facebook.png'; // Import the actual Facebook icon
 import tiktokIcon from './../../files/media/tiktok.png'; // Import the actual TikTok icon
 import { useLocalization } from '../toolkit/LocalizationContext';
-import { FaBell, FaBellSlash, FaRetweet } from 'react-icons/fa'; // Speaker and bell icons
+import { FaBell, FaBellSlash, FaRetweet, FaVolumeUp, FaVolumeMute } from 'react-icons/fa'; // Speaker and bell icons
 
 const ESection = () => {
   const [selectedTab, setSelectedTab] = useState(null); // Track selected tab
@@ -14,9 +14,24 @@ const ESection = () => {
   const [activeTaskSubtab, setActiveTaskSubtab] = useState('thoughts');
   const [heartStatus, setHeartStatus] = useState({});
   const [notificationStatus, setNotificationStatus] = useState({});
+  const [speakerStatus, setSpeakerStatus] = useState({});
+
+  const [bellStatus, setBellStatus] = useState({});
+
+  const params = new URLSearchParams(window.location.search);
+  const pov = params.get('pov')?.toLowerCase(); // Retrieve the POV parameter
+  const isSelf = pov === 'self'; // Determine if it is self or not based on POV
+
 
   const toggleNotification = (taskKey) => {
     setNotificationStatus((prev) => ({
+      ...prev,
+      [taskKey]: !prev[taskKey]
+    }));
+  };
+
+  const toggleBellStatus = (taskKey) => {
+    setBellStatus((prev) => ({
       ...prev,
       [taskKey]: !prev[taskKey]
     }));
@@ -33,6 +48,12 @@ const ESection = () => {
     }));
   };
 
+  const toggleSpeakerStatus = (taskKey) => {
+    setSpeakerStatus((prev) => ({
+      ...prev,
+      [taskKey]: !prev[taskKey]
+    }));
+  };
 
   return (
     <div className="e-section-container">
@@ -144,79 +165,151 @@ const ESection = () => {
           </div>
         )}
 
-        {selectedTab === 'tasks' && (
-          <div className="tab-content-inner scrollable-content">
-            <div className="task-subtabs">
-              {/* Subtabs for #thoughts, #questions, #next-steps */}
-              <div className={`task-subtab ${activeTaskSubtab === 'thoughts' ? 'active' : ''}`} onClick={() => setActiveTaskSubtab('thoughts')}>
-                {translate(190, "#THOUGHTs")}
-              </div>
-              <div className={`task-subtab ${activeTaskSubtab === 'questions' ? 'active' : ''}`} onClick={() => setActiveTaskSubtab('questions')}>
-                {translate(191, "#QUESTIONs")}
-              </div>
-              <div className={`task-subtab ${activeTaskSubtab === 'next-steps' ? 'active' : ''}`} onClick={() => setActiveTaskSubtab('next-steps')}>
-                {translate(192, "#NEXT STEPs")}
-              </div>
-            </div>
+{selectedTab === 'tasks' && (
+  <div className="tab-content-inner scrollable-content">
+    <div className="task-subtabs">
+      <div
+        className={`task-subtab ${activeTaskSubtab === 'thoughts' ? 'active' : ''}`}
+        onClick={() => setActiveTaskSubtab('thoughts')}
+      >
+        {translate(190, "#THOUGHTs")}
+      </div>
+      <div
+        className={`task-subtab ${activeTaskSubtab === 'questions' ? 'active' : ''}`}
+        onClick={() => setActiveTaskSubtab('questions')}
+      >
+        {translate(191, "#QUESTIONs")}
+      </div>
+      <div
+        className={`task-subtab ${activeTaskSubtab === 'next-steps' ? 'active' : ''}`}
+        onClick={() => setActiveTaskSubtab('next-steps')}
+      >
+        {translate(192, "#NEXT STEPs")}
+      </div>
+    </div>
 
-            {/* Display content based on selected subtab */}
-            <div className="task-subtab-content">
-              {activeTaskSubtab === 'thoughts' && (
-                <div className="task-item">
-                  <span className="task-text">Thought example 1</span>
-                  <span className="icon-group">
-                    <FaRetweet color="purple" title="Dispute" className="dispute-icon" />
-                    <span className="notification-icon" onClick={() => toggleNotification('thought1')}>
-                      {notificationStatus['thought1'] ? <FaBell color="purple" /> : <FaBellSlash color="purple" />}
-                    </span>
-                  </span>
-                </div>
+    <div className="task-subtab-content">
+      {activeTaskSubtab === 'thoughts' && (
+        <div className="task-item">
+          <span className="task-text">Thought example 1</span>
+          <span className="icon-group">
+            <FaRetweet color="purple" title="Dispute" className="dispute-icon" />
+            {isSelf ? (
+              <span className="speaker-icon" onClick={() => toggleSpeakerStatus('thought1')}>
+                {speakerStatus['thought1'] ? <FaVolumeUp color="purple" /> : <FaVolumeMute color="gray" />}
+              </span>
+            ) : (
+              <span className="notification-icon" onClick={() => toggleNotification('thought1')}>
+                {notificationStatus['thought1'] ? <FaBell color="purple" /> : <FaBellSlash color="gray" />}
+              </span>
+            )}
+          </span>
+        </div>
+      )}
+      {activeTaskSubtab === 'questions' && (
+        <div className="task-item">
+          <span className="task-text">Question example 1</span>
+          <span className="icon-group">
+            {isSelf ? (
+              <span className="speaker-icon" onClick={() => toggleSpeakerStatus('question1')}>
+                {speakerStatus['question1'] ? <FaVolumeUp color="purple" /> : <FaVolumeMute color="gray" />}
+              </span>
+            ) : (
+              <span className="notification-icon" onClick={() => toggleNotification('question1')}>
+                {notificationStatus['question1'] ? <FaBell color="purple" /> : <FaBellSlash color="gray" />}
+              </span>
+            )}
+          </span>
+        </div>
+      )}
+      <div className="task-subtab-content">
+      {activeTaskSubtab === 'next-steps' && (
+        <>
+          <div className="task-item">
+            <span className="task-text">Complete the report</span>
+            <span className="icon-group">
+              <span className="heart-icon" onClick={() => toggleHeartStatus('report')}>
+                {heartStatus['report'] === 'done' ? '💚' : heartStatus['report'] === 'picked' ? '💙' : '💜'}
+              </span>
+              <FaRetweet color="purple" title="Dispute" className="dispute-icon" />
+              
+              {isSelf ? (
+                <span className="speaker-icon" onClick={() => toggleSpeakerStatus('report')}>
+                  {speakerStatus['report'] ? (
+                    heartStatus['report'] === 'picked'
+                      ? <FaBell color="blue" />
+                      : heartStatus['report'] === 'done'
+                      ? <FaVolumeUp color="green" />
+                      : <FaVolumeUp color="purple" />
+                  ) : (
+                    heartStatus['report'] === 'picked'
+                      ? <FaBellSlash color="gray" />  // Muted blue bell for self
+                      : <FaVolumeMute color="gray" />
+                  )}
+                </span>
+              ) : (
+                <span className="notification-icon" onClick={() => toggleNotification('report')}>
+                  {notificationStatus['report'] ? (
+                    heartStatus['report'] === 'picked'
+                      ? <FaVolumeUp color="blue" />
+                      : heartStatus['report'] === 'done'
+                      ? <FaBell color="green" />
+                      : <FaBell color="purple" />
+                  ) : (
+                    heartStatus['report'] === 'picked'
+                      ? <FaVolumeMute color="gray" />  // Muted blue speaker for not self
+                      : <FaBellSlash color="gray" />
+                  )}
+                </span>
               )}
-              {activeTaskSubtab === 'questions' && (
-                <div className="task-item">
-                  <span className="task-text">Question example 1</span>
-                  <span className="icon-group">
-                    <span className="notification-icon" onClick={() => toggleNotification('question1')}>
-                      {notificationStatus['question1'] ? <FaBell color="purple" /> : <FaBellSlash color="purple" />}
-                    </span>
-                  </span>
-                </div>
-              )}
-              {activeTaskSubtab === 'next-steps' && (
-                <>
-                  <div className="task-item">
-                    <span className="task-text">Complete the report</span>
-                    <span className="icon-group">
-                      <span className="heart-icon" onClick={() => toggleHeartStatus('report')}>
-                        {heartStatus['report'] === 'done' ? '💚' : heartStatus['report'] === 'picked' ? '💙' : '💜'}
-                      </span>
-                      <FaRetweet color="purple" title="Dispute" className="dispute-icon" />
-                      <span className="notification-icon" onClick={() => toggleNotification('report')}>
-                        {notificationStatus['report'] ? <FaBell color="purple" /> : <FaBellSlash color="purple" />}
-                      </span>
-                    </span>
-                  </div>
-                  <div className="task-item">
-                    <span className="task-text">Follow up on client feedback</span>
-                    <span className="icon-group">
-                      <span className="heart-icon" onClick={() => toggleHeartStatus('clientFeedback')}>
-                        {heartStatus['clientFeedback'] === 'done' ? '💚' : heartStatus['clientFeedback'] === 'picked' ? '💙' : '💜'}
-                      </span>
-                      <FaRetweet color="purple" title="Dispute" className="dispute-icon" />
-                      <span className="notification-icon" onClick={() => toggleNotification('clientFeedback')}>
-                        {notificationStatus['clientFeedback'] ? <FaBell color="purple" /> : <FaBellSlash color="purple" />}
-                      </span>
-                    </span>
-                  </div>
-                </>
-              )}
-            </div>
+            </span>
           </div>
-        )}
 
-
-
-
+          <div className="task-item">
+            <span className="task-text">Follow up on client feedback</span>
+            <span className="icon-group">
+              <span className="heart-icon" onClick={() => toggleHeartStatus('clientFeedback')}>
+                {heartStatus['clientFeedback'] === 'done' ? '💚' : heartStatus['clientFeedback'] === 'picked' ? '💙' : '💜'}
+              </span>
+              <FaRetweet color="purple" title="Dispute" className="dispute-icon" />
+              
+              {isSelf ? (
+                <span className="speaker-icon" onClick={() => toggleSpeakerStatus('clientFeedback')}>
+                  {speakerStatus['clientFeedback'] ? (
+                    heartStatus['clientFeedback'] === 'picked'
+                      ? <FaBell color="blue" />
+                      : heartStatus['clientFeedback'] === 'done'
+                      ? <FaVolumeUp color="green" />
+                      : <FaVolumeUp color="purple" />
+                  ) : (
+                    heartStatus['clientFeedback'] === 'picked'
+                      ? <FaBellSlash color="gray" />  // Muted blue bell for self
+                      : <FaVolumeMute color="gray" />
+                  )}
+                </span>
+              ) : (
+                <span className="notification-icon" onClick={() => toggleNotification('clientFeedback')}>
+                  {notificationStatus['clientFeedback'] ? (
+                    heartStatus['clientFeedback'] === 'picked'
+                      ? <FaVolumeUp color="blue" />
+                      : heartStatus['clientFeedback'] === 'done'
+                      ? <FaBell color="green" />
+                      : <FaBell color="purple" />
+                  ) : (
+                    heartStatus['clientFeedback'] === 'picked'
+                      ? <FaVolumeMute color="gray" />  // Muted blue speaker for not self
+                      : <FaBellSlash color="gray" />
+                  )}
+                </span>
+              )}
+            </span>
+          </div>
+        </>
+      )}
+      </div>
+    </div>
+  </div>
+)}
 
 
         {selectedTab === 'social' && (
