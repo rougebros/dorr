@@ -269,8 +269,8 @@ body {
 
 /* Night Mode Overrides */
 .night-mode .pov-item:hover {
-  background-color: #333 !important;
-  border: 1px solid #444;
+  background-color: #444 !important;
+  border: 1px solid #212121;
 }
 
 .night-mode .tag-item .time-item.selected {
@@ -303,13 +303,13 @@ body {
 }
 
 .night-mode .pov-item:hover {
-  background-color: #212121 !important;
-  border: 1px solid #444 !important;
+  background-color: #444 !important;
+  border: 1px solid #212121 !important;
 }
 
 .night-mode .time-item:hover {
-  background-color: #212121 !important;
-  border: 1px solid #444 !important;
+  background-color: #444 !important;
+  border: 1px solid #212121 !important;
 
 }
 
@@ -412,18 +412,22 @@ body {
   color: #444 !important;
 
 }
+
 .night-mode .language-row:hover {
   color: #444 !important;
 
 }
+
 .night-mode .network-row p:hover {
   color: #444 !important;
 
 }
+
 .night-mode .netword-row:hover {
   color: #444 !important;
 
 }
+
 .night-mode .edit-icon,
 .delete-icon {
   color: #444 !important;
@@ -437,7 +441,8 @@ body {
 /* Dark Mode adjustments for selected dropdown items */
 .night-mode .dropdown-content .language-row.selected p,
 .night-mode .dropdown-content .network-row.selected p {
-  color: #444 !important; /* Darker color for selected item text */
+  color: #444 !important;
+  /* Darker color for selected item text */
 }
 
 /* Ensure a highlighted background color for selected items */
@@ -448,32 +453,40 @@ body {
 
 /* Dark Mode adjustments specifically for selected network dropdown items */
 .night-mode .dropdown-content .network-row.selected {
-  background-color: #e0e0e0 !important; /* Dark background for selected item */
+  background-color: #e0e0e0 !important;
+  /* Dark background for selected item */
 }
 
 .night-mode .dropdown-content .network-row.selected label {
-  color: #444 !important; /* Distinct text color for selected network item */
+  color: #444 !important;
+  /* Distinct text color for selected network item */
 }
 
 .night-mode .dropdown-content .network-row label:hover {
-  color: #444 !important; /* Distinct text color for selected network item */
+  color: #444 !important;
+  /* Distinct text color for selected network item */
 }
+
 /* Remove border for selected items in both light and dark modes */
-.language-row.selected, .network-row.selected {
+.language-row.selected,
+.network-row.selected {
   border: none !important;
   outline: none !important;
 }
 
 /* Additional rule to handle focus and hover states if they are causing the issue */
-.language-row.selected:focus, .network-row.selected:focus,
-.language-row.selected:hover, .network-row.selected:hover {
+.language-row.selected:focus,
+.network-row.selected:focus,
+.language-row.selected:hover,
+.network-row.selected:hover {
   border: none !important;
   outline: none !important;
-  box-shadow: none !important; /* Remove any potential shadow */
+  box-shadow: none !important;
+  /* Remove any potential shadow */
 }
 
 /* For night mode specifically */
-.night-mode .language-row.selected, 
+.night-mode .language-row.selected,
 .night-mode .network-row.selected {
   border: none !important;
   outline: none !important;

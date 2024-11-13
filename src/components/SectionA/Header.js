@@ -12,7 +12,7 @@ import { MdSettings } from 'react-icons/md'; // Settings icon
 import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5'; // Close (X) icon
 import './Header.css';
 import { useLocalization } from '../toolkit/LocalizationContext';
-import { MdPerson, MdNightlight, MdWbSunny, MdAccountBalanceWallet, MdPeople, MdLock, MdSos, MdNotifications, MdDelete, MdLayersClear } from 'react-icons/md';
+import { MdDashboard, MdPerson, MdNightlight, MdWbSunny, MdAccountBalanceWallet, MdPeople, MdLock, MdSos, MdNotifications, MdDelete, MdLayersClear } from 'react-icons/md';
 
 
 const languages = [
@@ -64,7 +64,7 @@ const layouts = [
   { name: 'Browse' },
 ];
 
-function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) {
+function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, toggleNotificationCenter }) {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [selectedNetworks, setSelectedNetworks] = useState(new Set());
   const [selectedLayout, setSelectedLayout] = useState(null);
@@ -75,6 +75,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
   const infoModalContentRef = useRef(null); // Reference for InfoModal content (only the content, not the modal container)
   const { translate } = useLocalization();
   const [isNightMode, setIsNightMode] = useState(false);
+  const [isNotificationCenterActive, setIsNotificationCenterActive] = useState(false); // New state for Notification Center
 
 
   useEffect(() => {
@@ -187,6 +188,11 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
     window.location.reload();
   };
 
+  const toggleNotificationCenterDisplay = () => {
+    setIsNotificationCenterActive(!isNotificationCenterActive);
+    toggleNotificationCenter();
+    setDropdownType(null); // Close the settings dropdown when toggling notifications
+  };
 
   // InfoModal to display the dorr images, video, and controls
   const InfoModal = () => {
@@ -342,7 +348,12 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected }) 
         {dropdownType === 'Settings' && (
           <div className="dropdown-content show">
             <p><MdLock className="hsettings-icon" /> {translate('10', 'Lock')}</p>
-            <p><MdNotifications className="hsettings-icon" /> {translate('12', 'Notifications')}</p>
+            <div onClick={toggleNotificationCenterDisplay}>
+              <p>
+                {isNotificationCenterActive ? <MdDashboard className="hsettings-icon" /> : <MdNotifications className="hsettings-icon" />}
+                {translate(isNotificationCenterActive ? '195' : '12', isNotificationCenterActive ? 'Dashboard' : 'Notifications')}
+              </p>
+            </div>
             <p><MdPerson className="hsettings-icon" /> {translate('6', 'Profile')}</p>
             <p><MdPeople className="hsettings-icon" /> {translate('8', 'Social Medias')}</p>
             <p><MdAccountBalanceWallet className="hsettings-icon" /> {translate('7', 'Wallets')}</p>

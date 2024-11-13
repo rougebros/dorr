@@ -9,6 +9,7 @@ import DWall from './components/SectionD/DWall';
 import FSection from './components/SectionF/FSection';
 import ESection from './components/SectionE/ESection';
 import { LocalizationProvider, useLocalization } from './components/toolkit/LocalizationContext';
+import NotificationCenter from './components/SectionC/NotificationCenter'; // Adjust path as needed
 
 import './App.css';
 
@@ -21,6 +22,12 @@ function App() {
   const [isSettingsSelected, setIsSettingsSelected] = useState(false);
   const [selectedWhat, setSelectedWhat] = useState(null);
   const [layoutType, setLayoutType] = useState('Default');
+  const [showNotificationCenter, setShowNotificationCenter] = useState(false);
+
+  const toggleNotificationCenter = () => {
+    setShowNotificationCenter((prev) => !prev);
+  };
+
 
   const dropdownRef = useRef(null);
 
@@ -76,19 +83,24 @@ function App() {
           isNetworkSelected={isNetworkSelected}
           isLayoutSelected={isLayoutSelected}
           isSettingsSelected={isSettingsSelected}
+          toggleNotificationCenter={toggleNotificationCenter} // Pass toggle function to Header
         />
       </header>
 
       <main className="App-body">
-        {layoutType === 'Circle' ? (
+        {/* Section B: POVSelector and TimeSelector - Always Displayed */}
+        <div className={`pov-time-holder ${!isLanguageSelected ? 'disabled-section' : ''}`}>
+          <POVSelector />
+          <div className="divider"></div>
+          <TimeSelector />
+        </div>
+
+        {showNotificationCenter ? (
+          <NotificationCenter /> // Show NotificationCenter when notification icon is clicked
+        ) : layoutType === 'Circle' ? (
           <CircleLayout selectedColor={selectedColor} setSelectedColor={setSelectedColor} />
         ) : (
           <>
-            <div className={`pov-time-holder ${!isLanguageSelected ? 'disabled-section' : ''}`}>
-              <POVSelector />
-              <div className="divider"></div>
-              <TimeSelector />
-            </div>
             <div className={`tree-tags-container ${!isLanguageSelected ? 'disabled-section' : ''}`}>
               <TreeTags />
             </div>
@@ -118,6 +130,8 @@ function App() {
           </>
         )}
       </main>
+
+
       {!shouldHideSections && (
         <footer className="App-footer">
           <Footer />

@@ -1,0 +1,157 @@
+.notification-center {
+  padding: 20px;
+  max-height: 700px;
+  margin-top: 10px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bell-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-right: 15px;
+  border: 2px solid white;
+}
+
+.notification-content {
+  flex: 1;
+  text-align: left;
+}
+
+.notification-content h3 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.notification-content p {
+  margin: 5px 0 0;
+  color: #666;
+}
+
+.notification-icon {
+  flex-shrink: 0;
+  margin-left: 15px;
+  color: #888;
+  font-size: 2.1em;
+}
+
+/* Custom scrollbar */
+.notification-center::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notification-center::-webkit-scrollbar-thumb {
+  background-color: #61dafb;
+  border-radius: 10px;
+}
+
+/* Dark Mode */
+body.night-mode .notification-center {
+  background-color: #333;
+  border-color: #444;
+}
+
+body.night-mode .notification-item {
+  background-color: #444;
+  border-color: #555;
+}
+
+body.night-mode .notification-content h3 {
+  color: #e0e0e0;
+}
+
+body.night-mode .notification-content p {
+  color: #ccc;
+}
+
+body.night-mode .bell-icon {
+  border-color: #444;
+}
+
+body.night-mode .notification-icon {
+  color: #aaa;
+}
+
+/* Dark Mode Custom Scrollbar */
+body.night-mode .notification-center::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+/* Transparent dark mode backgrounds based on color */
+body.night-mode .notification-item.red {
+  background-color: rgba(255, 69, 0, 0.2);
+}
+
+body.night-mode .notification-item.yellow {
+  background-color: rgba(255, 215, 0, 0.2);
+}
+
+body.night-mode .notification-item.blue {
+  background-color: rgba(30, 144, 255, 0.2);
+}
+
+body.night-mode .notification-item.green {
+  background-color: rgba(50, 205, 50, 0.2);
+}
+
+body.night-mode .notification-item.purple {
+  background-color: rgba(147, 112, 219, 0.2);
+}
+
+/* Transparent backgrounds based on color */
+.notification-item.red {
+  background-color: rgba(255, 69, 0, 0.1);
+  /* Red */
+}
+
+.notification-item.yellow {
+  background-color: rgba(255, 215, 0, 0.1);
+  /* Yellow */
+}
+
+.notification-item.blue {
+  background-color: rgba(30, 144, 255, 0.1);
+  /* Blue */
+}
+
+.notification-item.green {
+  background-color: rgba(50, 205, 50, 0.1);
+  /* Green */
+}
+
+.notification-item.purple {
+  background-color: rgba(147, 112, 219, 0.1);
+  /* Purple */
+}
+
+.notification-item.orange {
+  background-color: rgba(255, 165, 0, 0.1);
+  /* Orange */
+}
+
+
+body.night-mode .notification-item.orange {
+  background-color: rgba(255, 165, 0, 0.2);
+  /* Orange */
+}
