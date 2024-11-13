@@ -13,6 +13,7 @@ import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5'; // C
 import './Header.css';
 import { useLocalization } from '../toolkit/LocalizationContext';
 import { MdDashboard, MdPerson, MdNightlight, MdWbSunny, MdAccountBalanceWallet, MdPeople, MdLock, MdSos, MdNotifications, MdDelete, MdLayersClear } from 'react-icons/md';
+import { MdOutlineVisibilityOff } from 'react-icons/md';
 
 
 const languages = [
@@ -127,7 +128,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
   };
 
   const handleEdit = (item) => {
-    console.log(`Edit ${item}`);
+    // console.log(`Edit ${item}`);
   };
 
   // Close dropdown when clicking outside
@@ -173,7 +174,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
 
   const clearCache = () => {
     localStorage.clear();
-    console.log("All cache and local memory cleared.");
+    // console.log("All cache and local memory cleared.");
 
     // Remove specific URL parameters
     const queryParams = new URLSearchParams(window.location.search);
@@ -365,6 +366,7 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
               {isNightMode ? translate('193', 'Day Mode') : translate('194', 'Night Mode')}
             </p>
             <p onClick={clearCache}><MdLayersClear className="hsettings-icon" /> {translate('142', 'Clear Cache')}</p>
+            <p><MdOutlineVisibilityOff className="hsettings-icon" /> {translate('199', 'Incognito')}</p>
 
             <p onClick={() => console.log('Logout Clicked')}><MdDelete className="hsettings-icon" /> {translate('13', 'Delete Account')}</p>
           </div>

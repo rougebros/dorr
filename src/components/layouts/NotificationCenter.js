@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { MdNotifications, MdNotificationsOff } from 'react-icons/md';
+import { MdNotifications, MdNotificationsOff, MdNotificationsActive, MdTimer } from 'react-icons/md';
+import { FaHeart } from 'react-icons/fa';
 import './NotificationCenter.css';
+import { useLocalization } from '../toolkit/LocalizationContext';
 
 const bellColors = {
   red: '#FF4500',
@@ -8,7 +10,7 @@ const bellColors = {
   blue: '#1E90FF',
   green: '#32CD32',
   purple: '#9370DB',
-  orange: '#FFA500', // Additional color
+  orange: '#FFA500',
 };
 
 const notifications = [
@@ -26,6 +28,29 @@ const notifications = [
 
 function NotificationCenter() {
   const [mutedItems, setMutedItems] = useState(new Set());
+  const [statuses, setStatuses] = useState({});
+  const { translate } = useLocalization();
+
+  const toggleStatus = (index, type) => {
+    setStatuses((prev) => ({
+      ...prev,
+      [index]: {
+        ...prev[index],
+        [type]: prev[index]?.[type] ? null : type,
+      },
+    }));
+  };
+
+  const toggleThirdHeart = (index) => {
+    setStatuses((prev) => ({
+      ...prev,
+      [index]: {
+        ...prev[index],
+        green: prev[index]?.green ? null : prev[index]?.red ? 'green' : 'red',
+        red: prev[index]?.red ? null : prev[index]?.green ? 'red' : null,
+      },
+    }));
+  };
 
   const toggleMute = (index) => {
     setMutedItems((prev) => {
@@ -51,8 +76,36 @@ function NotificationCenter() {
             {mutedItems.has(index) ? <MdNotificationsOff size={24} /> : <MdNotifications size={24} />}
           </div>
           <div className="notification-content">
-            <h3> {notif.tag}</h3>
+            <h3>{notif.tag}</h3>
             <p>{notif.description}</p>
+            <div className="heart-icons">
+              <div className="heart-container">
+                <FaHeart
+                  className={`heart-icon ${statuses[index]?.purple ? 'purple' : 'gray'}`}
+                  onClick={() => toggleStatus(index, 'purple')}
+                  title={translate('61', '💜 THOUGHTs')}
+                />
+                <div className="underline purple-line"></div>
+              </div>
+              <div className="heart-container">
+                <FaHeart
+                  className={`heart-icon ${statuses[index]?.blue ? 'blue' : 'gray'}`}
+                  onClick={() => statuses[index]?.purple && toggleStatus(index, 'blue')}
+                  title={translate('62', '💙 PROMISEs')}
+                />
+                <div className="underline blue-line"></div>
+              </div>
+              <div className="heart-container">
+                <FaHeart
+                  className={`heart-icon ${
+                    statuses[index]?.green ? 'green' : statuses[index]?.red ? 'red' : 'gray'
+                  }`}
+                  onClick={() => statuses[index]?.blue && toggleThirdHeart(index)}
+                  title={translate('63', '💚 DEEDs')}
+                />
+                <div className="underline green-line"></div>
+              </div>
+            </div>
           </div>
           <div className="notification-icon">
             <span>{notif.icon}</span>

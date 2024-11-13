@@ -9,7 +9,9 @@ import DWall from './components/SectionD/DWall';
 import FSection from './components/SectionF/FSection';
 import ESection from './components/SectionE/ESection';
 import { LocalizationProvider, useLocalization } from './components/toolkit/LocalizationContext';
-import NotificationCenter from './components/SectionC/NotificationCenter'; // Adjust path as needed
+import NotificationCenter from './components/layouts/NotificationCenter'; // Adjust path as needed
+import NotificationCenterFooter from './components/SectionG/NotificationCenterFooter'; // Adjust path as needed
+
 
 import './App.css';
 
@@ -86,17 +88,17 @@ function App() {
           toggleNotificationCenter={toggleNotificationCenter} // Pass toggle function to Header
         />
       </header>
-
+  
       <main className="App-body">
-        {/* Section B: POVSelector and TimeSelector - Always Displayed */}
+        {/* POVSelector and TimeSelector Section */}
         <div className={`pov-time-holder ${!isLanguageSelected ? 'disabled-section' : ''}`}>
           <POVSelector />
           <div className="divider"></div>
           <TimeSelector />
         </div>
-
+  
         {showNotificationCenter ? (
-          <NotificationCenter /> // Show NotificationCenter when notification icon is clicked
+          <NotificationCenter /> // NotificationCenter view
         ) : layoutType === 'Circle' ? (
           <CircleLayout selectedColor={selectedColor} setSelectedColor={setSelectedColor} />
         ) : (
@@ -107,18 +109,8 @@ function App() {
             {selectedWhat && (
               <>
                 <div className="row small">
-                  <DWall
-                    wallType="seeks"
-                    wallTitle={translate('21', "Wall of #Seeks")}
-                    wallColor="#FAC710"
-                    textColor="#FAC710"
-                  />
-                  <DWall
-                    wallType="pains"
-                    wallTitle={translate('22', "Wall of #Pains")}
-                    wallColor="#C81D11"
-                    textColor="#C81D11"
-                  />
+                  <DWall wallType="seeks" wallTitle={translate('21', "Wall of #Seeks")} wallColor="#FAC710" textColor="#FAC710" />
+                  <DWall wallType="pains" wallTitle={translate('22', "Wall of #Pains")} wallColor="#C81D11" textColor="#C81D11" />
                 </div>
                 <ESection />
                 <div className="f-sections-container">
@@ -130,15 +122,18 @@ function App() {
           </>
         )}
       </main>
-
-
-      {!shouldHideSections && (
-        <footer className="App-footer">
+  
+      {/* Display new footer if Notification Center is active */}
+      <footer className="App-footer">
+        {showNotificationCenter ? (
+          <NotificationCenterFooter />
+        ) : (
           <Footer />
-        </footer>
-      )}
+        )}
+      </footer>
     </div>
   );
+  
 }
 
 export default function AppWrapper() {

@@ -259,7 +259,7 @@ function TreeTags() {
             
                 if (response.ok) {
                     data = await response.json();
-                    console.log(`File ${node.file} loaded into memory from GitHub.`);
+                    // console.log(`File ${node.file} loaded into memory from GitHub.`);
                 } else {
                     console.warn(`File ${node.file} not found on GitHub.`);
             
@@ -267,14 +267,14 @@ function TreeTags() {
                     const existingData = localStorage.getItem(node.file);
                     if (existingData) {
                         data = JSON.parse(existingData);
-                        console.log(`File ${node.file} loaded from localStorage.`);
+                        // console.log(`File ${node.file} loaded from localStorage.`);
                     } else {
                         // Step 3: Load the template if not found on GitHub or in localStorage
                         const templateResponse = await fetch(`${BASE_URL}dorr_template.json`);
                         if (templateResponse.ok) {
                             data = await templateResponse.json();
                             localStorage.setItem(node.file, JSON.stringify(data));
-                            console.log(`File ${node.file} created from template and saved to localStorage.`);
+                            // console.log(`File ${node.file} created from template and saved to localStorage.`);
                         } else {
                             console.error("Template file not found. Cannot create new file.");
                             return; // Exit if template is also unavailable

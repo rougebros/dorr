@@ -1,6 +1,6 @@
 .notification-center {
   padding: 20px;
-  max-height: 700px;
+  max-height: 670px !important;
   margin-top: 10px;
   overflow-y: auto;
   border: 1px solid #ddd;
@@ -154,4 +154,126 @@ body.night-mode .notification-item.purple {
 body.night-mode .notification-item.orange {
   background-color: rgba(255, 165, 0, 0.2);
   /* Orange */
+}
+.notification-center {
+  padding: 20px;
+  max-height: 700px;
+  margin-top: 10px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bell-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-right: 15px;
+  border: 2px solid white;
+}
+
+.notification-content {
+  flex: 1;
+  text-align: left;
+}
+
+.notification-content h3 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.notification-content p {
+  margin: 5px 0 0;
+  color: #666;
+}
+
+.notification-icon {
+  flex-shrink: 0;
+  margin-left: 15px;
+  color: #888;
+  font-size: 2.1em;
+}
+
+.heart-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.heart-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.underline {
+  position: absolute;
+  bottom: -2px;
+  width: 70%;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.purple-line {
+  background-color: purple;
+}
+
+.blue-line {
+  background-color: blue;
+}
+
+.green-line {
+  background-color: green;
+}
+
+.heart-icon {
+  cursor: pointer;
+  font-size: 1.2em;
+  color: gray;
+}
+
+.heart-icon.purple {
+  color: #9370DB;
+}
+
+.heart-icon.blue {
+  color: #1E90FF;
+}
+
+.heart-icon.green {
+  color: #32CD32;
+}
+
+.heart-icon.red {
+  color: red;
+}
+
+/* Footer */
+.notification-footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  background-color: #f0f0f0;
 }
