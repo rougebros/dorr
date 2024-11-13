@@ -20,6 +20,20 @@ The current rating systems often fail to capture the complexity of human experie
 
 "DORR redefines C2C and C2B interactions, moving beyond star rating system to empower people and communities to share experiences or needs. With 6 vibrant colors for tags, hashtags, and notifications, DORR also aims to flip supply-demand chain to demand-supply approach, allowing open and fewer connections on what truly matters to them—to minimizing middlemen."
 
+
+## Purpose and Mission
+
+DORR's mission is to empower people to share and learn from each other’s experiences with a focus on transparency, mutual support, and independence from traditional platform-centric models. By giving users full control over what they share and how they connect—without intermediaries dictating terms—DORR fosters a community-driven environment where insights, needs, and offers are exchanged directly.
+
+
+## A Unique Perspective on Sharing
+
+In DORR, each tag or experience is more than just a data point; it’s a piece of wisdom, highlighted with meaningful color-coding that adds layers of insight and clarity. By organizing hashtags and notifications with a color-coded approach, DORR enables people to see what matters in vivid clarity—whether it’s an urgent need, an opportunity, or a supportive presence within the community.
+
+## The Path Forward
+
+Inspired by the model of Unix, which grew organically as a collaborative tool, DORR aims to establish itself as an open-source platform that benefits both individuals and communities. Like Unix’s open framework, DORR’s structure allows flexibility, transparency, and room for meaningful user-generated evolution. Although it’s free to use, DORR sustains itself by generating true, lasting value—connecting people who genuinely benefit from each other’s shared experiences without the need for profit-driven motives.
+
 ---
 
 ## Sections Overview
