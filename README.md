@@ -9,8 +9,8 @@ Developed with insights from ChatGPT and inspired by ancient wisdom, DORR create
 ```
 به نیکی گرای و میازار کس
 ره رستگاری، همین است و بس
-Do good and harm none in your quest,
-This is the path to salvation, nothing else is best.
+Practice kindness and harm none in your quest,
+This is the ultimate path to salvation, nothing else is best.
 ```
 
 ---
