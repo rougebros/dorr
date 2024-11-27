@@ -1,118 +1,185 @@
-.notification-center-footer {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    background-color: #e6e6e6;
-    border-top: 1px solid #ccc;
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .footer-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: color 0.3s, transform 0.2s;
-  }
-  
-  .footer-item span {
-    margin-top: 5px;
-    font-size: 0.9em;
-    color: #333;
-  }
-  
-  /* Colorful gradient for Pending text only */
-  .pending-text {
-    color: transparent;
-    background: linear-gradient(45deg, #FF4500, #FFD700, #1E90FF, #32CD32, #9370DB);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  /* Gray icon for Pending bell */
-  .pending-icon svg {
-    color: gray;
-  }
-  
-  /* Blue color for Accepted bell with check mark */
-  .accepted-icon svg {
-    color: #1E90FF;
-  }
-  
-  .icon-with-check {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .check-icon {
-    position: absolute;
-    bottom: 4px;
-    right: -2px;
-    color: #1E90FF;
-  }
-  
-  /* Icon color for Time Off */
-  .time-off-icon svg {
-    color: gray;
-  }
-  
-  /* Highlight current tab with a border and white background */
-  .current-tab {
-    font-weight: bold;
-    transform: scale(1.1);
-    border: 2px solid gray;
-    border-radius: 8px;
-    padding: 5px;
-    background-color: white; /* Set background to white for better visibility */
-  }
-  
-  /* Hover effect for footer items */
-  .footer-item:hover {
-    color: #61dafb;
-    transform: scale(1.1);
-  }
-  
-  /* Dark mode styling */
-  body.night-mode .notification-center-footer {
-    background-color: #333;
-    border-top: 1px solid #444;
-  }
-  
-  body.night-mode .footer-item {
-    color: #bbb;
-  }
-  
-  body.night-mode .footer-item span {
-    color: #ddd;
-  }
-  
-  body.night-mode .pending-text {
-    color: transparent;
-    background: linear-gradient(45deg, #FF4500, #FFD700, #1E90FF, #32CD32, #9370DB);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  body.night-mode .footer-item:hover {
-    color: #61dafb;
-  }
-  
-  body.night-mode .current-tab {
-    color: #61dafb;
-    border-color: #444;
-    background-color: transparent; /* No white background in night mode */
-  }
-  
-  body.night-mode .pending-icon svg {
-    color: gray;
-  }
-  
-  body.night-mode .accepted-icon svg {
-    color: #1E90FF;
-  }
-  
+.notification-footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #f4f4f4; /* Slightly lighter than main footer */
+  border-top: 1px solid #ddd;
+  height: 10vh;
+  position: fixed;
+  bottom: 7vh; /* Above the main footer */
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 20; /* Higher than the main footer */
+}
+
+.notification-footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.notification-footer-item span {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+/* Colorful gradient for Pending text only */
+.pending-text {
+  color: transparent;
+  background: linear-gradient(45deg, #FF4500, #FFD700, #1E90FF, #32CD32, #9370DB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Icon Colors */
+.pending-icon svg {
+  color: gray;
+}
+
+.accepted-icon svg {
+  color: #1E90FF;
+}
+
+.icon-with-check {
+  position: relative;
+  display: inline-block;
+}
+
+.check-icon {
+  position: absolute;
+  bottom: 4px;
+  right: -2px;
+  color: #1E90FF;
+}
+
+.time-off-icon svg {
+  color: gray;
+}
+
+/* Highlight current tab with a border and white background */
+.current-tab {
+  font-weight: bold;
+  transform: scale(1.1);
+  border: 2px solid gray;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: white; /* Set background to white for better visibility */
+}
+
+/* Hover Effect */
+.notification-footer-item:hover {
+  color: #61dafb;
+  transform: scale(1.1);
+}
+
+/* Dark Mode Styling */
+body.night-mode .notification-footer {
+  background-color: #444;
+  border-top: 1px solid #555;
+}
+
+body.night-mode .notification-footer-item {
+  color: #bbb;
+}
+
+body.night-mode .notification-footer-item span {
+  color: #ddd;
+}
+
+body.night-mode .pending-text {
+  color: transparent;
+  background: linear-gradient(45deg, #FF4500, #FFD700, #1E90FF, #32CD32, #9370DB);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.night-mode .notification-footer-item:hover {
+  color: #61dafb;
+}
+
+body.night-mode .current-tab {
+  color: #61dafb;
+  border-color: #444;
+  background-color: transparent;
+}
+
+body.night-mode .pending-icon svg {
+  color: gray;
+}
+
+body.night-mode .accepted-icon svg {
+  color: #1E90FF;
+}
+.notification-footer {
+  background-color: #f4f4f4; /* Keep it lighter to differentiate */
+  position: fixed;
+  bottom: 7vh; /* Ensure it stays above the main footer */
+  z-index: 20; /* Stacks above the main footer */
+}
+
+.notification-footer .current-tab {
+  font-weight: bold;
+  border-color: #aaa; /* Slightly darker for better contrast */
+}
+.notification-footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  background-color: #f4f4f4; /* Slightly lighter */
+  border-top: 1px solid #ccc;
+  height: 10vh;
+  position: fixed;
+  bottom: 7vh; /* Position above the main footer */
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 20;
+}
+
+.notification-footer .footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.notification-footer .footer-item span {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #333;
+}
+
+/* Highlight Current Tab */
+.notification-footer .current-tab {
+  font-weight: bold;
+  transform: scale(1.1);
+  border: 2px solid gray;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: white; /* Set background to white for better visibility */
+}
+
+/* Dark Mode Styling */
+body.night-mode .notification-footer {
+  background-color: #444;
+  border-top: 1px solid #555;
+}
+
+body.night-mode .notification-footer .footer-item {
+  color: #bbb;
+}
+
+body.night-mode .notification-footer .footer-item span {
+  color: #ddd;
+}
+
+body.night-mode .notification-footer .current-tab {
+  color: #61dafb;
+  border-color: #666;
+  background-color: #333;
+}

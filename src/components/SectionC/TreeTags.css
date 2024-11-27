@@ -1,5 +1,8 @@
 .tree-tags-container {
-    margin: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
     position: relative;
 }
 
@@ -63,6 +66,7 @@
 .modal-content {
     padding: 20px;
     width: 100%;
+    z-index: 1000;
 }
 
 .search-input {
@@ -122,7 +126,7 @@
     background-color: #e0e0e0;
 }
 
-.icon {
+.tree-tag-icon {
     font-size: 3em;
     margin-bottom: 10px;
 }
@@ -134,10 +138,10 @@
     cursor: pointer;
     font-size: 1.5em;
 }
+
 .tree-node-content.disabled {
     color: gray;
     pointer-events: none;
     opacity: 0.5;
     cursor: not-allowed;
-  }
-  
+}

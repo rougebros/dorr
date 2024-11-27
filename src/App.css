@@ -91,7 +91,6 @@
 /* Footer fixed in height */
 .App-footer {
   height: 6%;
-  /* Footer smaller to fit within viewport */
   background-color: #282c34;
   color: white;
   display: flex;
@@ -100,9 +99,10 @@
   text-align: center;
   margin: 0;
   padding: 0;
-  position: relative;
+  position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 100; /* Ensure the footer is always above other elements */
 }
 
 .bold-header {
@@ -115,12 +115,7 @@
   /* Darker color for better readability */
 }
 
-/* Flex container for F1 and F2 */
-.f-sections-container {
-  display: flex;
-  padding: 2px;
-  flex-wrap: nowrap;
-}
+
 
 /* F1 and F2 sections with max-height */
 .f-section {
@@ -187,8 +182,8 @@
   flex-direction: column;
   flex: 1;
   padding: 1px;
-  overflow: hidden;
-  /* Prevent overflow from affecting the layout */
+  overflow: auto; /* Ensure scrolling for content that overflows */
+  margin-bottom: 6%; /* Add space for the footer height */
 }
 
 /* Disable Section B and C if language is not selected */
@@ -202,23 +197,6 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
-}
-
-.f-sections-container {
-  display: flex;
-  justify-content: center;
-  margin-top: auto;
-  padding: 2px;
-}
-
-.f-section {
-  flex-shrink: 0;
-  max-height: 250px;
-  border-radius: 8px;
-  background-color: inherit;
-  overflow-y: auto;
-  padding: 3px;
-  margin: 0 1px;
 }
 
 /* Default Light Mode */
@@ -490,4 +468,40 @@ body {
 .night-mode .network-row.selected {
   border: none !important;
   outline: none !important;
+}
+.App-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1px;
+  overflow: hidden; /* Prevent scrolling for the entire page */
+  margin-bottom: 6%; /* Leave space for the footer */
+}
+
+.f-sections-container {
+  display: flex;
+  justify-content: center;
+  padding: 2px;
+  flex-wrap: wrap; /* Allow wrapping if space is constrained */
+  max-height: calc(100vh - 12% - 6vh); /* Subtract header, footer, and other elements' height */
+  overflow-y: auto; /* Enable scrolling within the container if content exceeds available space */
+  box-sizing: border-box;
+  scroll-behavior: smooth; /* Smooth scrolling for better user experience */
+}
+
+/* Footer fixed in height */
+.App-footer {
+  height: 6%;
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100; /* Ensure the footer is always above other elements */
 }

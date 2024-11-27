@@ -313,7 +313,8 @@ const ESection = () => {
 
 
         {selectedTab === 'social' && (
-          <div className="tab-content-inner">
+                    <div className="tab-content-inner scrollable-content">
+
             {/* Social media icons at the top */}
             <div className="social-tab-icons">
               <img src={twitterIcon} alt="Twitter" />

@@ -99,8 +99,9 @@
   border-radius: 5px; /* Slightly rounded corners */
   width: 50%; /* Ensure it takes full width */
   box-sizing: border-box; /* Make sure padding is included within the width */
-  margin-right: 1px;
-  margin-left: 2px;
+  margin-right: 2px;
+  margin-left: 1px;
+
 }
 
 .breadcrumb-actions {

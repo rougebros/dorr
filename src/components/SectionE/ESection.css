@@ -3,12 +3,12 @@
 .e-section-container {
   display: flex;
   width: 100%;
-  min-height: 280px;
-  max-height: 280px;
-  margin-top: 17px;
+  min-height: 285px;
+  max-height: 285px;
   /* Add spacing between DWall and ESection */
   align-items: center;
   /* Vertically center the large icons */
+  margin-top: 5px;
 }
 
 
@@ -63,7 +63,6 @@
   justify-content: flex-start;
   align-items: center;
   border-right: 1px solid #ccc;
-  min-height: 300px;
 }
 
 /* Smaller icons in the sidebar */

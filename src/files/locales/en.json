@@ -18,7 +18,7 @@
   "17": "Circle",
   "18": "X",
   "19": "Browse",
-  "20": "WHAT IS YOUR #WHAT?",
+  "20": "#What topic brings you here?",
   "21": "Wall of #Seeks",
   "22": "Wall of #Pains",
   "23": "Map",
@@ -197,5 +197,6 @@
   "196": "Pending",
   "197": "Accepted",
   "198": "Time Off",
-  "199": "Incognito"
+  "199": "Incognito",
+  "200": ""
 }

@@ -1,17 +1,78 @@
-/* src/components/Footer.css */
+/* Base Styles */
+.main-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #e6e6e6;
+  border-top: 1px solid #ccc;
+  height: 7vh;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px 0;
+  z-index: 10;
+}
 
-.App-footer {
-    background-color: #f1f1f1;
-    padding: 10px;
-    color: white;
-    display: flex;
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
-  }
-  
-  .App-footer-icon {
-    height: 44px; /* Adjusted size for larger icons */
-    width: 44px; /* Ensure width matches height */
-    margin: 0 26px; /* Add spacing between icons */
-  }
-  
+.main-footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  color: #333;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.3s;
+}
+
+.main-footer-item .main-footer-icon {
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.main-footer-item:hover {
+  color: #1e90ff;
+  transform: scale(1.1);
+}
+
+.main-footer-item span {
+  font-size: 0.8em !important;
+  text-align: center;
+  margin-top: 2px;
+}
+
+/* Active State Styling */
+.main-footer-item.active .main-footer-icon {
+  color: #1e90ff;
+}
+
+.main-footer-item.active span {
+  font-weight: bold;
+  color: #1e90ff;
+}
+
+/* Dark Mode Styling */
+body.night-mode .main-footer {
+  background-color: #333;
+  border-top: 1px solid #444;
+}
+
+body.night-mode .main-footer-item {
+  color: #bbb;
+}
+
+body.night-mode .main-footer-item .main-footer-icon {
+  color: #777;
+}
+
+body.night-mode .main-footer-item:hover {
+  color: #61dafb;
+}
+
+body.night-mode .main-footer-item.active .main-footer-icon {
+  color: #61dafb;
+}
+
+body.night-mode .main-footer-item.active span {
+  color: #61dafb;
+}

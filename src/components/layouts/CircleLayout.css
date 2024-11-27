@@ -6,11 +6,6 @@
 }
 
 /* Adjust POV and Time selectors positioning */
-.pov-time-holder {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
 
 /* Circle filter section */
 .circle-filter {
@@ -99,11 +94,6 @@
   align-items: center;
 }
 /* Add some space below POV and Time selectors */
-.pov-time-holder {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
 
 .circle-filter {
   display: flex;

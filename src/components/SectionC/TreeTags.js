@@ -423,7 +423,7 @@ function TreeTags() {
                 {selectedTags.length > 0 ? (
                     selectedTags.map((tag, index) => (
                         <div className="tag-item" key={index}>
-                            <span className="icon">{selectedIcon}</span>
+                            <span className="tree-tag-icon">{selectedIcon}</span>
                             {tag}
                             <span
                                 className="tag-remove"
@@ -471,7 +471,7 @@ function TreeTags() {
                                     className={`tree-node-content ${node.isDisabled ? 'disabled' : ''}`}
                                     onClick={() => !node.isDisabled && handleNodeClick(key, node)}
                                 >
-                                    <span className="icon">{node.icon}</span>
+                                    <span className="tree-tag-icon">{node.icon}</span>
                                     <span>{translate(node.localID, node.label)}</span>
                                 </div>
                             ))}

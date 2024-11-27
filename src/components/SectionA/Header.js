@@ -8,10 +8,12 @@ import dorrVideo1 from './../../files/media/dorr-video.mp4'; // Import your firs
 import dorrImage2 from './../../files/media/dorr2.png'; // Import your second image
 import dorrVideo2 from './../../files/media/dorr.mp4'; // Import your video
 import { FiEdit } from 'react-icons/fi'; // Change this line
-import { MdSettings } from 'react-icons/md'; // Settings icon
+import { MdSettings, MdBugReport } from 'react-icons/md'; // Bug icon for testing
 import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5'; // Close (X) icon
 import './Header.css';
 import { useLocalization } from '../toolkit/LocalizationContext';
+import { fetchAndUpdateTemplateSync } from '../toolkit/gptToolkit';
+
 import { MdDashboard, MdPerson, MdNightlight, MdWbSunny, MdAccountBalanceWallet, MdPeople, MdLock, MdSos, MdNotifications, MdDelete, MdLayersClear } from 'react-icons/md';
 import { MdOutlineVisibilityOff } from 'react-icons/md';
 
@@ -77,7 +79,31 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
   const { translate } = useLocalization();
   const [isNightMode, setIsNightMode] = useState(false);
   const [isNotificationCenterActive, setIsNotificationCenterActive] = useState(false); // New state for Notification Center
+  const [loading, setLoading] = useState(false);
+  const [testResult, setTestResult] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
+  const handleTestUpdate = () => {
+    if (loading) return;
+    setLoading(true);
+
+    console.log("Running OpenAI Test...");
+    const testInput = "Update the Dorr template with this new insight.";
+
+    const updatedTemplate = fetchAndUpdateTemplateSync(testInput);
+
+    if (updatedTemplate) {
+      setTestResult("Test Passed! Template updated successfully.");
+      console.log("Updated JSON template:", updatedTemplate);
+    } else {
+      setTestResult("Test Failed! Please check the console for more details.");
+    }
+
+    setShowPopup(true);
+    setLoading(false);
+  };
+
+  const closePopup = () => setShowPopup(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -349,12 +375,6 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
         {dropdownType === 'Settings' && (
           <div className="dropdown-content show">
             <p><MdLock className="hsettings-icon" /> {translate('10', 'Lock')}</p>
-            <div onClick={toggleNotificationCenterDisplay}>
-              <p>
-                {isNotificationCenterActive ? <MdDashboard className="hsettings-icon" /> : <MdNotifications className="hsettings-icon" />}
-                {translate(isNotificationCenterActive ? '195' : '12', isNotificationCenterActive ? 'Dashboard' : 'Notifications')}
-              </p>
-            </div>
             <p><MdPerson className="hsettings-icon" /> {translate('6', 'Profile')}</p>
             <p><MdPeople className="hsettings-icon" /> {translate('8', 'Social Medias')}</p>
             <p><MdAccountBalanceWallet className="hsettings-icon" /> {translate('7', 'Wallets')}</p>
@@ -367,7 +387,14 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
             </p>
             <p onClick={clearCache}><MdLayersClear className="hsettings-icon" /> {translate('142', 'Clear Cache')}</p>
             <p><MdOutlineVisibilityOff className="hsettings-icon" /> {translate('199', 'Incognito')}</p>
+            <p onClick={() => {
+              alert("Running OpenAI Test...");
+              handleTestUpdate();
+            }}>
+              <MdBugReport className="hsettings-icon" />
+              {loading ? "Processing..." : "OpenAI Test"}
 
+            </p>
             <p onClick={() => console.log('Logout Clicked')}><MdDelete className="hsettings-icon" /> {translate('13', 'Delete Account')}</p>
           </div>
         )}
@@ -376,6 +403,16 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
 
       {/* Render the InfoModal if it is open */}
       {isInfoModalOpen && <InfoModal />}
+
+      {/* Display Test Popup */}
+      {showPopup && (
+        <div className="test-popup">
+          <div className="test-popup-content">
+            <h3>{testResult}</h3>
+            <button onClick={closePopup}>Close</button>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
