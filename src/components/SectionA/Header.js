@@ -10,6 +10,8 @@ import dorrVideo2 from './../../files/media/dorr.mp4'; // Import your video
 import { FiEdit } from 'react-icons/fi'; // Change this line
 import { MdSettings, MdBugReport } from 'react-icons/md'; // Bug icon for testing
 import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5'; // Close (X) icon
+import PaymentModal from '../../components/modals/PaymentModal';
+
 import './Header.css';
 import { useLocalization } from '../toolkit/LocalizationContext';
 import { fetchAndUpdateTemplateSync } from '../toolkit/gptToolkit';
@@ -82,6 +84,8 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
   const [loading, setLoading] = useState(false);
   const [testResult, setTestResult] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+
 
   const handleTestUpdate = () => {
     if (loading) return;
@@ -377,7 +381,14 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
             <p><MdLock className="hsettings-icon" /> {translate('10', 'Lock')}</p>
             <p><MdPerson className="hsettings-icon" /> {translate('6', 'Profile')}</p>
             <p><MdPeople className="hsettings-icon" /> {translate('8', 'Social Medias')}</p>
-            <p><MdAccountBalanceWallet className="hsettings-icon" /> {translate('7', 'Wallets')}</p>
+            <p onClick={() => {
+              console.log("Opening Payment Modal and closing dropdown");
+              setShowPaymentModal(true);
+              setDropdownType(null); // Close dropdown
+            }}>
+
+              <MdAccountBalanceWallet className="hsettings-icon" /> {translate('7', 'Wallets')}
+            </p>
             <p><MdPeople className="hsettings-icon" /> {translate('11', 'Peers')}</p>
             <p><MdSos className="hsettings-icon" /> {translate('9', 'SOS')}</p>
 
@@ -412,6 +423,13 @@ function Header({ setLanguageSelected, setNetworkSelected, setLayoutSelected, to
             <button onClick={closePopup}>Close</button>
           </div>
         </div>
+      )}
+      {/* Render the PaymentModal if it is open */}
+      {showPaymentModal && (
+        <PaymentModal
+          onClose={() => setShowPaymentModal(false)}
+          translate={translate}
+        />
       )}
     </header>
   );

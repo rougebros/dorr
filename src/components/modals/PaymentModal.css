@@ -1,0 +1,140 @@
+.payment-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.payment-modal-container {
+    background-color: white;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    position: relative;
+}
+
+.payment-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.payment-modal-header h2 {
+    margin: 0;
+}
+
+.close-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.payment-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.payment-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between; /* Ensures items spread across the row */
+}
+
+.payment-details-input,
+.payment-type-dropdown {
+    flex-grow: 2; /* Ensure input and dropdown grow evenly */
+    max-width: calc(50% - 20px); /* Prevent items from overflowing */
+}
+
+.delete-icon {
+    font-size: 1.5rem;
+    color: red;
+    cursor: pointer;
+    margin-left: auto; /* Push delete icon to the far right */
+    transition: color 0.3s;
+}
+
+.delete-icon:hover {
+    color: darkred;
+}
+
+
+.add-more-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px 15px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-more-button:hover {
+    background-color: #1c86ee;
+}
+
+.payment-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.modal-close-button {
+    padding: 10px 20px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-close-button:hover {
+    background-color: #bbb;
+}
+
+/* Night Mode */
+body.night-mode .payment-modal-container {
+    background-color: #2c2c2c;
+    color: white;
+}
+
+body.night-mode .payment-type-dropdown,
+body.night-mode .payment-details-input {
+    background-color: #444;
+    color: white;
+    border: 1px solid #666;
+}
+
+body.night-mode .delete-icon {
+    color: #ff5555;
+}
+
+body.night-mode .add-more-button {
+    background-color: #555;
+}
+
+body.night-mode .add-more-button:hover {
+    background-color: #666;
+}
+
+body.night-mode .modal-close-button {
+    background-color: #555;
+}
+
+body.night-mode .modal-close-button:hover {
+    background-color: #666;
+}

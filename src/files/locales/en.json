@@ -198,5 +198,13 @@
   "197": "Accepted",
   "198": "Time Off",
   "199": "Incognito",
-  "200": ""
+  "200": "Chat GPT",
+  "201": "Payment Information",
+  "202": "Bank Account",
+  "203": "PayPal Account",
+  "204": "Binance Wallet",
+  "205": "Other",
+  "206": "Enter details here...",
+  "207": "Add More",
+  "208": "Close"
 }
