@@ -67,7 +67,24 @@ Dorr **flips the supply-demand model**—needs and pains define what should be s
 Dorr structures **service-based interactions** just as easily as selling goods—whether it’s **requesting a doctor, a driver, food, a hotel, a cleaner, a plumber, or even community aid.**  
 
 📦 **If you think it’s just a rating system…**  
-Dorr **decentralizes ratings**, letting you see scores from **trusted circles, not just a global average.**  
+Unlike **5-star ratings** that lack context, Dorr **simplifies rating input** and makes ranking **dynamic and category-based:**  
+- Users **only rate with REGRET (🩸) or RELIEF (🔆)**—no need to overthink between **1⭐ or 5⭐.**  
+- **View rankings as A-F instead of a meaningless global average like 4.8⭐.**  
+- **Each service is ranked by relevant categories**—for example:  
+  - A plumber might have **A for timeliness, C for pricing, B for quality.**  
+  - A restaurant might be ranked separately for **hygiene, service speed, and taste.**  
+  - A business could have **A in innovation but D in ethical practices.**  
+- **Rankings adapt dynamically based on:**  
+  - **Circles** (personal, trusted, public) → A service can be **A-ranked in one circle but D-ranked in another**, reflecting different experiences across networks.  
+  - **Time relevance** (past, recent, current) → Ratings **aren't frozen in time**—a high rank from years ago doesn’t mean the service is still great today, and vice versa.  
+  - **Service type** (what actually matters in each category) → Instead of one **overall meaningless score**, rankings are based on **specific factors relevant to that service.**  
+- **A-F ranks are based on % of reliefs vs. regrets within a circle:**  
+  - The **highest relief % in a circle is set as A (100%)**, and others are ranked **relative to that max score.**  
+  - Example: If **Bob has the highest relief % (60%) in one circle,** he is **A**, and someone with 50% becomes **B**.  
+  - But if Bob rank is viewed in a circle where **90% is the highest, his 60% may now be a C.**  
+  - This **pushes competition for progress** while keeping ratings **meaningful and comparative within different circles.**  
+- **No manipulated averages**—**you control whose ratings you see and what criteria matter most.**  
+
 
 📦 **If you think it’s just a map…**  
 Dorr **visualizes needs, pains, and services** on a **colorful heatmap for actionable impact.**  
