@@ -128,7 +128,7 @@ Unlike traditional notifications, **DORR flips the way updates are received**—
 - 📥 Mid Priority | Check-in:  
   - Example: 🟡🔔 Someone near your route needs a ride this evening.  
 - 🔕 Long-Term Impact | Silent:  
-  - Example: 🟡🔔 Community project seeking volunteers for seasonal planting.  
+  - Example: 🟡🔕 Community project seeking volunteers for seasonal planting.  
 
  🟣🔔 Thoughts & Discussions (Ideas & Debates)  
 - 🚨 High Priority | Urgent:  
