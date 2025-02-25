@@ -28,7 +28,7 @@ In today's digital world, people struggle with **fragmented tools** that don’t
 
 ---
 
-## **Dorr’s Flow in Poetry**   
+## **DORR’s Flow in Poetry**   
 ```
 حال خونین دلان، که گوید زار؟ 🩸
 🩸 @Who speaks out for the voiceless bleeding hearts?
@@ -54,7 +54,7 @@ In today's digital world, people struggle with **fragmented tools** that don’t
 
 ## **What is DORR? – A Quick Overview**  
 
-*"Is Dorr just another e-commerce platform?"*  
+*"Is DORR just another e-commerce platform?"*  
 *"A job marketplace? A map?"*  
 *"Another rating system?"*  
 *"Another task management tool?"*  
@@ -64,13 +64,13 @@ In today's digital world, people struggle with **fragmented tools** that don’t
 **Dorr is none of these alone, but all of them together in a structured way.**  
 
 📦 **If you think it’s just e-commerce…**  
-Dorr **flips the supply-demand model**: Instead of suppliers pushing products, needs and pains define what must be created, supplied, or solved.
+DORR **flips the supply-demand model**: Instead of suppliers pushing products, needs and pains define what must be created, supplied, or solved.
 
 📦 **If you think it’s just a job marketplace…**  
-Dorr structures **service-based interactions** just as easily as selling goods—whether it’s **requesting a doctor, a driver, food, a hotel, a cleaner, a plumber, or even community aid.**  
+DORR structures **service-based interactions** just as easily as selling goods—whether it’s **requesting a doctor, a driver, food, a hotel, a cleaner, a plumber, or even community aid.**  
 
 📦 **If you think it’s just a rating system…**  
-Unlike **5-star ratings** that lack context, Dorr **simplifies rating input** and makes ranking **dynamic and category-based:**  
+Unlike **5-star ratings** that lack context, DORR **simplifies rating input** and makes ranking **dynamic and category-based:**  
 - Users **only rate with REGRET (🩸) or RELIEF (🔆)**—no need to overthink between **1⭐ or 5⭐.**  
 - **View rates with dynamic A-F rankings** instead of a **meaningless global average like 4.8⭐.**  
 - **Each service is ranked by relevant categories**—for example:  
@@ -89,41 +89,87 @@ Unlike **5-star ratings** that lack context, Dorr **simplifies rating input** an
 - **No manipulated averages**—**you control whose ratings you see and what criteria matter most.**  
 
 📦 **If you think it’s just a map…**  
-Unlike static review maps like Google or Yelp, Dorr’s map updates **dynamically—highlighting urgent needs (🔴), available services (🔆), and community-driven rankings (A-F) in real time.**
+Unlike static review maps like Google or Yelp, DORR’s map updates **dynamically—highlighting urgent needs (🔴), available services (🔆), and community-driven rankings (A-F) in real time.**
 
 📦 **If you think it’s just a to-do app…**  
-Dorr **isn’t just about managing tasks—it structures commitments, tracks progress, and ranks actions transparently.**  
+DORR **isn’t just about managing tasks—it structures commitments, tracks progress, and ranks actions transparently.**  
 
-- **Color-coded states** → Tasks flow from **thoughts (💜) to promises (💙) to completed actions (💚).**  
-- **Color-coded @WHO** → Identify key roles in action:  
+Unlike traditional notifications, **DORR flips the way updates are received**—giving **meaning, color, and full customization to alerts based on what truly matters.**  
+
+- **🎨 Color-coded states** → Tasks flow from **thoughts (💜) → promises (💙) → completed actions (💚).**  
+- **🎨 Color-coded @WHO** → Identify key roles in action:  
   - **🔴@ Who suffers?**—raising awareness of pains.  
   - **👑/👹 @Who reveals or hides?**—gods, foes, or key influences.  
   - **🟣@ Who plans?**—sharing next steps or strategies.  
   - **🔵@ Who commits?**—taking responsibility for execution.  
   - **🟢@ Who delivers?**—fulfilling promises.  
   - **🟡@ Who benefits?**—gaining relief, joy, or resolution.  
-- **⏳ Colorful Hourglasses** → Track time dynamically across past, present, and future, categorized by meaningful Dorr colors.
+- **⏳ Colorful Hourglasses** → Track time dynamically across past, present, and future, categorized by meaningful DORR colors.  
 - **📋 Colorful Checklists** → Organize tasks visually for **clarity, collaboration, and execution.**  
-- **🔔 Colorful Notifications** → **Unlike traditional notifications,** Dorr flips the way updates are received—**bringing meaning, color, and full customization to alerts based on what truly matters:**  
-  - **🔴🔔 Pain Alerts** → Get notified of **urgent issues, struggles, or crises.**  
-    - *Example:* **🔴🔔 for #stray_cats** alerts you when new reports appear in your circle (e.g., an injured stray, urgent medical need).  
-  - **🟡🔔 Needs & Requests** → Get updates on **new requests or open opportunities.**  
-    - *Example:* **🟡🔔 for #transport_truck** notifies you when someone needs a truck.  
-  - **🟣🔔 Thoughts & Discussions** → Stay informed about **new ideas, proposals, or evolving plans.**  
-    - *Example:* **🟣🔔 for #urban_planning** alerts you when a new city project proposal is discussed.  
-  - **🔵🔔 Task Assignments & Commitments** → Get notified when a task is assigned to you.  
-    - *Example:* **🔵🔔 for #plumber_jobs** lets you know when a plumbing request is assigned.  
-  - **🟢🔔 Task Completion & Achievements** → See updates when an action is **verified or marked as done.**  
-    - *Example:* **🟢🔔 for #delivery_orders** alerts you when an order is completed.  
-  - **🟠🔔 Gods👑, Foes👹 & Key Influences** → Get notified when major figures or authorities engage in a topic.  
-    - *Example:* **🟠👑🔔 for #housing** alerts you when **a landlord, tenant association, or legal expert is found in circles.**  
+- **🔔 Colorful Notifications** → Unlike traditional notifications, **DORR doesn’t just ping you—it structures updates based on urgency, relevance, and actionability.** Every notification is **color-coded** and **classified into four interaction types:**  
+  - **Silent 🔕** → Non-intrusive updates that can be reviewed anytime.  
+  - **Check-in 📥** → Mid-level reminders for ongoing tasks or commitments.  
+  - **Alert 🚨** → Immediate & urgent actions requiring attention.  
+  - **Custom 🛠️** → Fully personalized alert settings per need.
+
+**Notification Categoris & Examples:**
+```
+🔴🔔 Pain Alerts (Critical Issues & Struggles)
+- 🚨 High Priority | Urgent:
+  - Example: 🔴🔔 Injured stray needs immediate rescue at 📍[location].
+- 📥 Mid Priority | Check-in:
+  - Example: 🔴🔔 Weekly mental health update: 5 new crisis cases reported.
+- 🔕 Long-Term Impact | Silent:  
+  - Example: 🔴🔕 Air pollution has worsened in your area over 6 months.
+
+ 🟡🔔 Needs & Requests (Opportunities & Support Calls)  
+- 🚨 High Priority | Urgent:  
+  - Example: 🟡🔔 Urgent request: Type O-negative blood needed at [hospital].  
+- 📥 Mid Priority | Check-in:  
+  - Example: 🟡🔔 Someone near your route needs a ride this evening.  
+- 🔕 Long-Term Impact | Silent:  
+  - Example: 🟡🔔 Community project seeking volunteers for seasonal planting.  
+
+ 🟣🔔 Thoughts & Discussions (Ideas & Debates)  
+- 🚨 High Priority | Urgent:  
+  - Example: 🟣🔔 Local government to vote on the new road project tomorrow.  
+- 📥 Mid Priority | Check-in:  
+  - Example: 🟣🔔 Reminder: Book club meeting in 2 days—vote on the next book today!  
+- 🔕 Long-Term Impact | Silent:  
+  - Example: 🟣🔕 Monthly summary: 3 new discussions on education reform.  
+
+ 🔵🔔 Task Assignments & Commitments (Things You Agreed To Do)  
+- 🚨 High Priority | Urgent:  
+  - Example: 🔵🔔 New freelance gig assigned: Website redesign due in 5 days.  
+- 📥 Mid Priority | Check-in:  
+  - Example: 🔵🔔 Reminder: You scheduled to fix the sink leak tomorrow at 7 PM.  
+- 🔕 Long-Term Impact | Silent:  
+  - Example: 🔵🔕 Progress check: You committed to running 5km per week—how’s it going?  
+
+ 🟢🔔 Task Completion & Achievements (Verifications & Done Deals)  
+- 🚨 High Priority | Urgent:  
+  - Example: 🟢🔔 Update: Your package was delivered—verify if received.  
+- 📥 Mid Priority | Check-in:  
+  - Example: 🟢🔔 Milestone achieved: API integration completed. Review progress?  
+- 🔕 Long-Term Impact | Silent:  
+  - Example: 🟢🔕 Progress summary: You’ve completed 50 language lessons this year!  
+
+ 🟠🔔 Gods👑, Foes👹 & Key Influences (Major Figures Engaging in Topics)  
+- 🚨 High Priority | Urgent:  
+  - Example: 🟠👑🔔 Breaking: A key policymaker is addressing rental laws in your city.  
+- 📥 Mid Priority | Check-in:  
+  - Example: 🟠👹🔔 Update: 2 new witnesses spoke out against corruption.  
+- 🔕 Long-Term Impact | Silent:  
+  - Example: 🟠👑🔕 Reflection: The top-rated philosophy post this month was on existentialism.  
+```
+💡 **DORR isn’t just a notification system** —it’s an intelligent, color-driven, structured way to track what matters most, while avoiding noise and alert fatigue. 
 
 
 📦 **If you think it’s social media…**  
-Dorr **doesn’t replace platforms—it integrates and structures social feeds** into meaningful categories, all in one place.  
+DORR **doesn’t replace platforms—it integrates and structures social feeds** into meaningful categories, all in one place.  
 
 📦 **If you think it’s just AI automation…**  
-Dorr **uses AI to structure information**—organizing tasks, voice inputs, and user interactions into **a meaningful, shareable format.**   
+DORR **uses AI to structure information**—organizing tasks, voice inputs, and user interactions into **a meaningful, shareable format.**   
 
 ---
 
@@ -282,7 +328,7 @@ Whether you want to **customize the experience for a specific use case, add new 
 **Email**: rougebros@gmail.com  
 **GitHub**: [rougebros](https://github.com/rougebros/dorr)  
 
-Join us in shaping the future of decentralized interaction. Fork, improve, and contribute—**Dorr is yours to build.**
+Join us in shaping the future of decentralized interaction. Fork, improve, and contribute—**DORR is yours to build.**
 
 ---
 
